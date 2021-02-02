@@ -9,7 +9,7 @@ class Party(db.Model):
     gold = db.Column(db.Integer, default=0)
     silver = db.Column(db.Integer, default=0)
     copper = db.Column(db.Integer, default=0)
-    user_id = db.Column(db.Integer, db.ForeignKey('users'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     members = db.relationship("Member", back_populates="party")
     items = db.relationship("Item", back_populates="party")
