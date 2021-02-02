@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request, redirect
 from app.models import db, Member, Item
 from flask_login import login_required, current_user
 # import forms here
-party_routes = Blueprint('parties', __name__)
+party_routes = Blueprint('party', __name__)
 import json
 
 @party_routes.route('/')
@@ -45,14 +45,14 @@ def post_new_party():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 @party_routes.route("/delete/<int:id>", methods=["DELETE"])
-def post_delete_party(id):
+def delete_party(id):
     party = Party.query.get(id)
     db.session.delete(party)
     db.session.commit()
     return {"message": "Party Deleted Successfully"}
 
 @party_routes.route("/update/<int:id>", methods=["PUT"])
-def post_update_party(id):
+def put_update_party(id):
     content = request.json
     party = Party.query.get(id)
     party.name = content["name"]
@@ -61,4 +61,4 @@ def post_update_party(id):
     party.silver = content["silver"]
     party.copper = content["copper"]
     db.session.commit()
-    return redirect(f'/api/parties/{id}')
+    return redirect(f'/api/party/{id}')
