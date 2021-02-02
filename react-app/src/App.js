@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import BigImpact from "./components/BigImpact";
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path="/impact">
+          <BigImpact text="Hoiya"/>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
