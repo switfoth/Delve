@@ -1,4 +1,7 @@
 #main-page {
     border: solid black 2px;
     margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 23% 77%;
+    height: 100%;
 }

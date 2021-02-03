@@ -2,6 +2,7 @@ import React from "react";
 import "./mainpage.css";
 import Member from '../Member_Page/index'
 import Party from '../Party_Page/index'
+import SideBar from "../SideBar";
 
 const MainPage = ()=>{
 
@@ -9,9 +10,13 @@ const MainPage = ()=>{
     return (
         <>
             <div id='main-page'>
-                <h1>Main Page</h1>
-                <Party/>
-                <Member/>
+                <div id='side-container'>
+                    <SideBar id="main-sidebar"/>
+                </div>
+                <div id='main-container'>
+                    <Party id="main-partypage"/>
+                    <Member id="main-memberpage"/>
+                </div>
             </div>
         </>
     )
