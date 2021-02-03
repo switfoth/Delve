@@ -10,6 +10,8 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.party_routes import party_routes
 from .api.member_routes import member_routes
+from .api.item_routes import item_routes
+from .api.item_type_routes import item_type_routes
 
 from .seeds import seed_commands
 
@@ -35,6 +37,8 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(party_routes, url_prefix='/api/party')
 app.register_blueprint(member_routes, url_prefix='/api/member')
+app.register_blueprint(item_routes, url_prefix='/api/item')
+app.register_blueprint(item_type_routes, url_prefix='/api/item_type')
 db.init_app(app)
 Migrate(app, db)
 
