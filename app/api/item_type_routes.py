@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, redirect
-from app.models import Category, db
+from app.models import ItemType, db
 
 item_type_routes = Blueprint('item_type', __name__)
 

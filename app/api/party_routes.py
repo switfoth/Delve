@@ -1,6 +1,6 @@
 from .auth_routes import validation_errors_to_error_messages
 from flask import Blueprint, jsonify, request, redirect
-from app.models import db, Member, Item
+from app.models import db, Member, Party, Item
 from flask_login import login_required, current_user
 # import forms here
 party_routes = Blueprint('party', __name__)

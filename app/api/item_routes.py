@@ -33,13 +33,13 @@ def post_new_item():
     if form.validate_on_submit():
         item = Item(
             name = form.data['name'],
-            description = form.data['description']
-            platinum_value = form.data['platinum_value']
-            gold_value= form.data['gold_value']
-            silver_value= form.data['silver_value']
-            copper_value= form.data['copper_value']
-            party_id= form.data['party_id']
-            member_id= form.data['member_id']
+            description = form.data['description'],
+            platinum_value = form.data['platinum_value'],
+            gold_value= form.data['gold_value'],
+            silver_value= form.data['silver_value'],
+            copper_value= form.data['copper_value'],
+            party_id= form.data['party_id'],
+            member_id= form.data['member_id'],
             type_id= form.data['type_id']
         )
         db.session.add(item)
