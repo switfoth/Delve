@@ -2,7 +2,7 @@ from .auth_routes import validation_errors_to_error_messages
 from flask import Blueprint, jsonify, request, redirect
 from app.models import db, Member, Item
 from flask_login import login_required, current_user
-# import forms here
+from app.forms import NewMemberForm
 member_routes = Blueprint('member', __name__)
 
 
