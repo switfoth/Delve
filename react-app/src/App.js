@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UserComps/UsersList";
 import User from "./components/UserComps/User";
 import BigImpact from "./components/BigImpact/BigImpact";
+import MainPage from "./components/MainPage/index"
 import { authenticate } from "./services/auth";
 
 function App() {
