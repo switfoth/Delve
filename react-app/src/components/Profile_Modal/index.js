@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import LoginForm from './LoginForm';
+import ProfileForm from './ProfileForm';
 
-function LoginFormModal() {
+function ProfileFormModal() {
   const [showModal, setShowModal] = useState(false);
 
   const style = {
@@ -16,14 +16,14 @@ function LoginFormModal() {
 
   return (
     <>
-      <button style={style} onClick={() => setShowModal(true)}>Log In</button>
+      <button style={style} onClick={() => setShowModal(true)}>Profile</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <LoginForm />
+          <ProfileForm />
         </Modal>
       )}
     </>
   );
 }
 
-export default LoginFormModal;
+export default ProfileFormModal;
