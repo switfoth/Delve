@@ -2,8 +2,11 @@
     margin-left: 12%;
     margin-right: 12%;
     margin-bottom: 0px;
+    padding-bottom: 0px;
     margin-top: 0px;
     border: solid black 6px;
-    height: 100%;
-    padding: 0%;
+    min-height: 100%;
+    box-sizing: border-box;
+    background-color: salmon;
+    position: sticky;
 }
