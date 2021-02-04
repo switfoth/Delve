@@ -18,7 +18,6 @@ const NavBar = ({ setAuthenticated }) => {
             <LogoutButton setAuthenticated={setAuthenticated} />
           </li>
         </ul>
-        <MainPage/>
       </nav>
     </div>
   );

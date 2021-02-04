@@ -15,7 +15,7 @@ const MainPage = ()=>{
                 </div>
                 <div id='main-container'>
                     <Party id="main-partypage"/>
-                    <Member id="main-memberpage"/>
+                    <Member id="main-memberpage" isHidden="True"/>
                 </div>
             </div>
         </>
