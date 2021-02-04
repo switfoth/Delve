@@ -1,7 +1,15 @@
 #main-page {
     border: solid black 2px;
-    margin-bottom: 0;
+    height: inherit;
     display: grid;
     grid-template-columns: 23% 77%;
-    height: 100%;
+}
+
+
+#side-container {
+    float: left;
+}
+
+#main-container {
+    float: right;
 }

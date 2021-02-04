@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar.js";
@@ -28,7 +28,6 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
       <AppWrapper>
         <NavBar setAuthenticated={setAuthenticated} />
         <Switch>
@@ -52,7 +51,6 @@ function App() {
           </ProtectedRoute>
         </Switch>
       </AppWrapper>
-    </BrowserRouter>
   );
 }
 
