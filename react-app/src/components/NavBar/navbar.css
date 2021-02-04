@@ -1,3 +1,7 @@
 #navbar {
     border: solid black 1px;
 }
+
+#login-link {
+    float: right;
+}
