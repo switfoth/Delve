@@ -1,8 +1,8 @@
 #main-page {
     border: solid black 2px;
-    height: calc(100% - 200px);
     display: grid;
     grid-template-columns: 23% 77%;
+    height: 86%;
 }
 
 

@@ -6,4 +6,5 @@
     box-sizing: border-box;
     background-color: salmon;
     position: sticky;
+    grid-template-rows: 10% 4% 86%;
 }
