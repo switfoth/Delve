@@ -1,7 +1,5 @@
 import React from "react";
 import "./mainpage.css";
-import Member from '../Member_Page/index';
-import Party from '../Party_Page/index';
 import SideBar from "../SideBar";
 
 const MainPage = ()=>{

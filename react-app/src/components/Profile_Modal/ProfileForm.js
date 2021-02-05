@@ -6,7 +6,7 @@ import "./profileform.css";
 function ProfileForm({ user }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([]);
 
@@ -16,7 +16,7 @@ function ProfileForm({ user }) {
   };
 
   return (
-    <div className="profile-page">
+    <div className="profile-box">
       <h1>Profile Page</h1>
       <form className="profile-form" onSubmit={handleSubmit}>
         <ul>
@@ -24,20 +24,22 @@ function ProfileForm({ user }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-          <input
-            placeholder="Username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            placeholder="Email"
-            type=""
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <h3>Username</h3>
+            <input
+              placeholder="Username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          <h3>Email</h3>
+            <input
+              placeholder="Email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
         <button type="submit">Edit Profile</button>
       </form>
     </div>

@@ -1,6 +1,7 @@
 const SET_PARTIES = 'party/setParties'
 const ADD_PARTY = 'party/addParty'
 const DELETE_PARTY = 'party/deleteParty'
+const SELECT_PARTY = 'party/selectParty'
 
 const setParties = (parties) => ({
     type: SET_PARTIES,
@@ -16,6 +17,11 @@ const deleteParty = (id) => ({
     type: DELETE_PARTY,
     payload: id
 });
+
+const selectParty = (id) => ({
+    type: SELECT_PARTY,
+    payload: id
+})
 
 export const getUserParties = (id) => async (dispatch) => {
     const res = await fetch(`/api/party/user/${id}`)
@@ -47,7 +53,15 @@ export const deleteSingleParty = (partyToDelete) => async (dispatch) => {
     dispatch(deleteParty(partyToDelete.id))
 }
 
-const initialstate = { partyList: [],}
+export const selectCurrentParty = (id) => async (dispatch) => {
+    dispatch(selectParty(id))
+}
+
+export const deselectParty = () => async (dispatch) => {
+    dispatch(selectParty(undefined))
+}
+
+const initialstate = { partyList: [], currentParty: null}
 
 function reducer (state = initialstate, action) {
     let newState;
@@ -65,6 +79,10 @@ function reducer (state = initialstate, action) {
                 return party.id !== party.payload
             })
             return newState;
+        case SELECT_PARTY:
+            newState = Object.assign({}, state);
+            newState.currentParty = action.payload
+            return newState
         default:
             return state;
 
