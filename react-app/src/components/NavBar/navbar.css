@@ -1,5 +1,6 @@
 #navbar {
     border: solid black 1px;
+    justify-content: space-around;
 }
 
 #login-link {
