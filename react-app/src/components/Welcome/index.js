@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./welcome.css";
+import SignUpForm from '../auth/SignUpForm'
 
 const Welcome = ()=>{
+    const [authenticated, setAuthenticated] = useState(false);
+
     return (
         <>
-            <h1 id="welcome-page">Welcome Page</h1>
+            <div id="welcome-page">
+                <h1>Welcome Page</h1>
+                <SignUpForm props={authenticated, setAuthenticated}/>
+            </div>
         </>
     )
 }

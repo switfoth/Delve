@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
 import "./profileform.css";
 
-function ProfileForm() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+function ProfileForm({ user }) {
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.username);
+  const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {

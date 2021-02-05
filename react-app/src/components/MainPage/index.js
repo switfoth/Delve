@@ -12,8 +12,6 @@ const MainPage = ()=>{
                     <SideBar id="main-sidebar"/>
                 </div>
                 <div id='main-container'>
-                    <Party id="main-partypage"/>
-                    <Member id="main-memberpage"/>
                 </div>
               </div>
             </>
