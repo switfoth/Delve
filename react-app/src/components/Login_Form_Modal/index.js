@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import PartyForm from './PartyForm';
+import LoginForm from './LoginForm';
 
-function PartyFormModal() {
+function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
 
   const style = {
@@ -16,14 +16,14 @@ function PartyFormModal() {
 
   return (
     <>
-      <button style={style} onClick={() => setShowModal(true)}>Create Party</button>
+      <button style={style} onClick={() => setShowModal(true)}>Log In</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PartyForm />
+          <LoginForm />
         </Modal>
       )}
     </>
   );
 }
 
-export default PartyFormModal;
+export default LoginFormModal;

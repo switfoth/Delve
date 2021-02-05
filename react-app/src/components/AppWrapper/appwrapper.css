@@ -6,4 +6,6 @@
     box-sizing: border-box;
     background-color: salmon;
     position: sticky;
+    display: grid;
+    grid-template-rows: 10% 4% 86%;
 }
