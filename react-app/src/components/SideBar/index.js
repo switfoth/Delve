@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { getUserParties, selectCurrentParty } from '../../store/party';
-import { getPartyMembers } from '../../store/member';
+import { getUserParties, selectCurrentParty, deselectParty } from '../../store/party';
+import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store/member';
+import PartyFormModal from '../Party_Creation_Modal/index';
+import MemberFormModal from '../Member_Creation_Modal/index';
 import "./sidebar.css";
 
 const SideBar = ()=>{
     const sessionUser = useSelector(state => state.session.user);
     const parties = useSelector(state => state.party.partyList);
     const currentParty = useSelector(state => state.party.currentParty)
+    const currentMember = useSelector(state => state.member.currentMember)
     const dispatch = useDispatch();
     let members;
 
@@ -28,11 +31,22 @@ const SideBar = ()=>{
         });
     }
 
+    const PartyBackButton = () =>{
+        return (
+            <div className="party-block" onClick={()=>{
+                dispatch(deselectParty())
+            }}>Back to Party List</div>
+        )
+    }
+
+
     const LoadMembers = () =>{
         if (members){
             return members.map( member=> {
                 return (
-                    <div key={member.id} classname="member-block">{member.name}</div>
+                    <div key={member.id} classname="member-block" onClick={() => {
+                        dispatch(selectCurrentMember(member.id));
+                    }}>{member.name}</div>
                 )
             });
         } else {
@@ -40,15 +54,36 @@ const SideBar = ()=>{
         }
     }
 
+    const MemberBackButton = () =>{
+        return (
+            <div className="party-block" onClick={()=>{
+                dispatch(deselectMember())
+            }}>Back to Member List</div>
+        )
+    }
+
     let sideBarContent;
     if (currentParty === null){
         sideBarContent =(
-        <LoadParties/>
+            <>
+                <LoadParties/>
+                <PartyFormModal/>
+            </>
         );
     } else if (currentParty !== null){
         sideBarContent = (
-        <LoadMembers/>
+            <>
+                <PartyBackButton/>
+                <LoadMembers/>
+                <MemberFormModal/>
+            </>
         );
+    } else if (currentParty && currentMember !== null){
+        sideBarContent = (
+            <>
+                <MemberBackButton/>
+            </>
+        )
     }
 
     return (

@@ -58,7 +58,7 @@ export const selectCurrentParty = (id) => async (dispatch) => {
 }
 
 export const deselectParty = () => async (dispatch) => {
-    dispatch(selectParty(undefined))
+    dispatch(selectParty(null))
 }
 
 const initialstate = { partyList: [], currentParty: null}

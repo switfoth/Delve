@@ -1,6 +1,7 @@
 const SET_MEMBERS = 'member/setMembers'
 const ADD_MEMBER = 'member/addMember'
 const DELETE_MEMBER = 'member/deleteMember'
+const SELECT_MEMBER = 'member/selectMember'
 
 const setMembers = (members) => ({
     type: SET_MEMBERS,
@@ -16,6 +17,11 @@ const deleteMember = (id) => ({
     type: DELETE_MEMBER,
     payload: id
 });
+
+const selectMember = (id) => ({
+    type: SELECT_MEMBER,
+    payload: id
+})
 
 export const getPartyMembers = (id) => async (dispatch) => {
     const res = await fetch(`/api/member/${id}`)
@@ -37,6 +43,8 @@ export const addSingleMember = (newMember) => async (dispatch) => {
     }
 }
 
+
+
 export const deleteSingleMember = (memberToDelete) => async (dispatch) => {
     await fetch(`/api/member/delete/${memberToDelete.id}`, {
         method: "DELETE",
@@ -47,7 +55,15 @@ export const deleteSingleMember = (memberToDelete) => async (dispatch) => {
     dispatch(deleteMember(memberToDelete.id))
 }
 
-const initialstate = { memberList: [],}
+export const selectCurrentMember = (id) => async (dispatch) => {
+    dispatch(selectMember(id))
+}
+
+export const deselectMember = (id) => async (dispatch) => {
+    dispatch(selectMember(undefined))
+}
+
+const initialstate = { memberList: [], currentMember: null}
 
 function reducer (state = initialstate, action) {
     let newState;
@@ -65,6 +81,10 @@ function reducer (state = initialstate, action) {
                 return member.id !== member.payload
             })
             return newState;
+        case SELECT_MEMBER:
+            newState = Object.assign({}, state);
+            newState.currentMember = action.payload
+            return newState
         default:
             return state;
 
