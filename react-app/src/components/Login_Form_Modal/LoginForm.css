@@ -6,6 +6,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .login-form {

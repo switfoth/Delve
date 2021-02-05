@@ -12,9 +12,9 @@ function ItemForm() {
   };
 
   return (
-    <div className="item-form">
+    <div className="item-box">
       <h1>Add Item</h1>
-      <form className="name" onSubmit={handleSubmit}>
+      <form className="item-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

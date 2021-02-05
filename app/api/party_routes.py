@@ -27,19 +27,11 @@ def post_new_party():
     form = NewPartyForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # members = request.json["added_members"] <<< Could be used to add members at party creation.
         party = Party(
             name=form.data['name'],
             user_id=current_user.id,
         )
         db.session.add(party)
-        db.session.flush()
-        # for i in range(len(members)): <<< Logic for adding members when party is created.
-        #     new_member = Member(
-        #         name = members[i]["name"],
-        #         party_id = party.id
-        #     )
-        #     db.session.add(new_member)
         db.session.commit()
         return party.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}

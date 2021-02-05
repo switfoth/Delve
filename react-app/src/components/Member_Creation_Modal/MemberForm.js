@@ -11,9 +11,9 @@ function MemberForm() {
   };
 
   return (
-    <div className="member-form">
+    <div className="member-box">
       <h1>Add Member</h1>
-      <form className="name" onSubmit={handleSubmit}>
+      <form className="member-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

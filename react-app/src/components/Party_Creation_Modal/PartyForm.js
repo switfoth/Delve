@@ -12,13 +12,13 @@ function PartyForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors([]);
     dispatch(
       addSingleParty({
         name,
         user_id: user.id
       })
     )
-    setErrors([]);
   };
 
   return (
