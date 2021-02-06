@@ -6,7 +6,7 @@ from app.forms import NewPartyForm
 party_routes = Blueprint('party', __name__)
 import json
 
-@party_routes.route('/')
+@party_routes.route('')
 def parties():
     parties = Party.query.all()
     return {"parties": [party.to_dict() for party in parties]}

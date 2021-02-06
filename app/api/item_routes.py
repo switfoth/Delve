@@ -5,7 +5,7 @@ from flask_login import login_required, current_user
 from app.forms import NewItemForm
 item_routes = Blueprint('item', __name__)
 
-@item_routes.route('/')
+@item_routes.route('')
 def items():
     items = Item.query.all()
     return {"items": [item.to_dict() for item in items]}
