@@ -9,10 +9,10 @@ import "./sidebar.css";
 const SideBar = ()=>{
     const sessionUser = useSelector(state => state.session.user);
     const parties = useSelector(state => state.party.partyList);
+    const members = useSelector(state => state.member.memberList)
     const currentParty = useSelector(state => state.party.currentParty)
     const currentMember = useSelector(state => state.member.currentMember)
     const dispatch = useDispatch();
-    let members;
 
     useEffect(()=> {
         dispatch(getUserParties(sessionUser.id))
@@ -24,7 +24,7 @@ const SideBar = ()=>{
                 <>
                     <div key={party.id} className="party-block" onClick={() => {
                         dispatch(selectCurrentParty(party.id));
-                        members = dispatch(getPartyMembers(party.id))
+                        dispatch(getPartyMembers(party.id))
                     }}>{party.name}</div>
                 </>
             )
@@ -41,17 +41,13 @@ const SideBar = ()=>{
 
 
     const LoadMembers = () =>{
-        if (members){
             return members.map( member=> {
                 return (
-                    <div key={member.id} classname="member-block" onClick={() => {
+                    <div key={member.id} className="member-block" onClick={() => {
                         dispatch(selectCurrentMember(member.id));
                     }}>{member.name}</div>
                 )
             });
-        } else {
-            return null
-        }
     }
 
     const MemberBackButton = () =>{
@@ -70,7 +66,7 @@ const SideBar = ()=>{
                 <PartyFormModal/>
             </>
         );
-    } else if (currentParty !== null){
+    } else if (currentParty !== null && currentMember === null){
         sideBarContent = (
             <>
                 <PartyBackButton/>
@@ -78,7 +74,7 @@ const SideBar = ()=>{
                 <MemberFormModal/>
             </>
         );
-    } else if (currentParty && currentMember !== null){
+    } else if (currentParty !== null && currentMember !== null){
         sideBarContent = (
             <>
                 <MemberBackButton/>

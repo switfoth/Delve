@@ -4,9 +4,9 @@ from app.models import db, Member, Item
 from flask_login import login_required, current_user
 from app.forms import NewMemberForm
 member_routes = Blueprint('member', __name__)
+import json
 
-
-@member_routes.route('/')
+@member_routes.route('')
 def get_members():
     members = Member.query.all()
     return {"members": [member.to_dict() for member in members]}
@@ -19,10 +19,12 @@ def get_party_members(id):
 @member_routes.route('/new', methods=["POST"])
 def post_new_member():
     form = NewMemberForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
         member = Member(
-            name=form.data["name"],
-            party_id=form.data["party_id"]
+            name=form.data['name'],
+            party_id=form.data['party_id']
         )
         db.session.add(member)
         db.session.commit()

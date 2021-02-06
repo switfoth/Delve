@@ -8,7 +8,7 @@ function MemberForm() {
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
-  const party = useSelector(state => state.party.currentParty)
+  const party_id = useSelector(state => state.party.currentParty)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ function MemberForm() {
     dispatch(
       addSingleMember({
         name,
-        party_id: party.id
+        party_id
       })
     )
   };

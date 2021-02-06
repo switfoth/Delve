@@ -43,8 +43,6 @@ export const addSingleMember = (newMember) => async (dispatch) => {
     }
 }
 
-
-
 export const deleteSingleMember = (memberToDelete) => async (dispatch) => {
     await fetch(`/api/member/delete/${memberToDelete.id}`, {
         method: "DELETE",
@@ -60,7 +58,7 @@ export const selectCurrentMember = (id) => async (dispatch) => {
 }
 
 export const deselectMember = (id) => async (dispatch) => {
-    dispatch(selectMember(undefined))
+    dispatch(selectMember(null))
 }
 
 const initialstate = { memberList: [], currentMember: null}
