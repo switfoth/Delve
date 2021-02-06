@@ -1,14 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import LoginFormModal from '../Login_Form_Modal';
-import ItemFormModal from '../Item_Modal';
-import MemberFormModal from '../Member_Creation_Modal';
-import PartyFormModal from '../Party_Creation_Modal';
 import ProfileFormModal from '../Profile_Modal';
 import "./navbar.css"
 
-const NavBar = ({ isLoaded }) => {
+const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -16,14 +12,11 @@ const NavBar = ({ isLoaded }) => {
     sessionLinks = (
       <>
         <ProfileFormModal user={sessionUser} />
-        <PartyFormModal/>
       </>
     );
   } else {
     sessionLinks = (
       <>
-        <ItemFormModal/>
-        <MemberFormModal/>
         <LoginFormModal/>
       </>
     );

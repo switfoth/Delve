@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import MainPage from '../MainPage/index';
 import NavBar from '../NavBar/NavBar';
 import Header from '../Header/index';
+import Footer from '../Footer/index';
 import Welcome from '../Welcome/index';
 
 
@@ -26,6 +27,7 @@ const AppWrapper = ()=>{
                <Header/>
                <NavBar/>
                {sessionLinks}
+               <Footer/>
            </div>
         </>
     )

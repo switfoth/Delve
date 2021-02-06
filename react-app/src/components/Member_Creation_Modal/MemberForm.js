@@ -1,13 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { addSingleMember } from '../../store/member';
 import "./memberform.css";
 
 function MemberForm() {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
+  const dispatch = useDispatch();
+
+  const party_id = useSelector(state => state.party.currentParty)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    dispatch(
+      addSingleMember({
+        name,
+        party_id
+      })
+    )
   };
 
   return (

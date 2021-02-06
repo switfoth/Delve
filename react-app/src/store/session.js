@@ -10,24 +10,41 @@ const removeUser = () => ({
   type: REMOVE_USER
 });
 
-export const login = ({ username, password }) => async (dispatch) => {
-  const res = await fetch('/api/auth/login', {
-    method: 'POST',
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ username, password })
+// export const login = ({ username, password }) => async (dispatch) => {
+//   const res = await fetch('/api/auth/login', {
+//     method: 'POST',
+//     headers: {"Content-Type": "application/json"},
+//     body: JSON.stringify({ username, password })
+//   });
+//   if(res.ok) {
+//     const data = await res.json()
+//     dispatch(setUser(data));
+//   }
+//   return res;
+// };
+export const login = (user) => async (dispatch) => {
+  const { username, password } = user;
+  const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+          username,
+          password,
+      }),
   });
-  if(res.ok) {
-    const data = await res.json()
+  if (response.ok) {
+    let data = await response.json()
     dispatch(setUser(data));
   }
-  return res;
 };
+
 
 export const restoreUser = () => async (dispatch) => {
   const res = await fetch('/api/auth');
   if(res.ok){
     const data = await res.json()
     dispatch(setUser(data));
+    return data;
   }
   return res;
 };

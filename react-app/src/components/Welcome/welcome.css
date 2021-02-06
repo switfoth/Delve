@@ -1,3 +1,15 @@
 #welcome-page {
     border: solid black 2px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#temp-form{
+    justify-self: center;
+}
+
+#welcome-message{
+    justify-self: center;
+    align-items: center;
 }

@@ -4,8 +4,8 @@
     border: solid black 6px;
     height: 100%;
     box-sizing: border-box;
-    background-color: salmon;
+    background-color: blanchedalmond;
     position: sticky;
     display: grid;
-    grid-template-rows: 10% 4% 86%;
+    grid-template-rows: 10% 4% 78% 8%;
 }

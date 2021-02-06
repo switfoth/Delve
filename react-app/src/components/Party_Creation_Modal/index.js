@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PartyForm from './PartyForm';
+import './button.css'
 
 function PartyFormModal() {
   const [showModal, setShowModal] = useState(false);
 
-  const style = {
-    background: 'blue',
-    border: 0,
-    color: 'white',
-    height: '35px',
-    padding: '0 30px',
-    float: 'right'
-  };
 
   return (
     <>
-      <button style={style} onClick={() => setShowModal(true)}>Create Party</button>
+      <button id="make-party-button" onClick={() => setShowModal(true)}>Create Party</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PartyForm />

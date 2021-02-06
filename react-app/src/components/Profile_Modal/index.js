@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import ProfileForm from './ProfileForm';
+import './button.css'
 
 function ProfileFormModal() {
   const [showModal, setShowModal] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
 
-  const style = {
-    background: 'blue',
-    border: 0,
-    color: 'white',
-    height: '35px',
-    padding: '0 30px',
-    float: 'right'
-  };
+
 
   return (
     <>
-      <button style={style} onClick={() => setShowModal(true)}>Profile</button>
+      <button id="profile-button" onClick={() => setShowModal(true)}>Profile</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ProfileForm />
+          <ProfileForm user={sessionUser}/>
         </Modal>
       )}
     </>

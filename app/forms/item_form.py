@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError, Length
-from app.models import User
+from app.models import Item
 
 class NewItemForm(FlaskForm):
     name = StringField('name', validators=[DataRequired(), Length(max=60)])

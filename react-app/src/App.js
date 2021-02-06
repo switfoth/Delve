@@ -8,20 +8,23 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UserComps/UsersList";
 import User from "./components/UserComps/User";
 import { authenticate } from "./services/auth";
+import { useDispatch } from "react-redux";
+import * as sessionActions from './store/session'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async() => {
-      const user = await authenticate();
+      const user = await dispatch(sessionActions.restoreUser())
       if (!user.errors) {
         setAuthenticated(true);
       }
       setLoaded(true);
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
