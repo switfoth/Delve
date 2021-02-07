@@ -5,6 +5,7 @@ import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store
 import PartyFormModal from '../Party_Creation_Modal/index';
 import MemberFormModal from '../Member_Creation_Modal/index';
 import "./sidebar.css";
+import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
 
 const SideBar = ()=>{
     const sessionUser = useSelector(state => state.session.user);
@@ -25,6 +26,7 @@ const SideBar = ()=>{
                     <div key={party.id} className="party-block" onClick={() => {
                         dispatch(selectCurrentParty(party.id));
                         dispatch(getPartyMembers(party.id))
+                        dispatch(getPartyItems(party.id))
                     }}>{party.name}</div>
                 </>
             )
@@ -35,6 +37,7 @@ const SideBar = ()=>{
         return (
             <div className="party-block" onClick={()=>{
                 dispatch(deselectParty())
+                dispatch(clearItems())
             }}>Back to Party List</div>
         )
     }
@@ -45,6 +48,7 @@ const SideBar = ()=>{
                 return (
                     <div key={member.id} className="member-block" onClick={() => {
                         dispatch(selectCurrentMember(member.id));
+                        dispatch(getMemberItems(member.id))
                     }}>{member.name}</div>
                 )
             });
@@ -54,6 +58,7 @@ const SideBar = ()=>{
         return (
             <div className="party-block" onClick={()=>{
                 dispatch(deselectMember())
+                dispatch(getPartyItems(currentParty))
             }}>Back to Member List</div>
         )
     }

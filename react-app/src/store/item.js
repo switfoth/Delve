@@ -35,6 +35,10 @@ export const getMemberItems = (id) => async (dispatch) => {
     dispatch(setItems(data.items))
 }
 
+export const clearItems = () => async (dispatch) => {
+    dispatch(setItems([]))
+}
+
 export const addSingleItem = (newItem) => async (dispatch) => {
     const res = await fetch(`/api/item/new`, {
         method: "POST",
