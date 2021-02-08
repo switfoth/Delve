@@ -6,7 +6,7 @@ import "./itemform.css";
 
 function ItemForm() {
   const [name, setName] = useState("");
-  const [type_id, setTypeId] = useState("");
+  const [type_id, setTypeId] = useState(null);
   const [description, setDescription] = useState("");
   const [platinum_value, setPlatinum_Value] = useState(0);
   const [gold_value, setGold_Value] = useState(0);
@@ -15,7 +15,8 @@ function ItemForm() {
   const [errors, setErrors] = useState([]);
 
   const party_id = useSelector(state => state.party.currentParty)
-  const member_id = useSelector(state => state.member.currentMember)
+  // const member_id = useSelector(state => state.member.currentMember)
+  const member_id = 0
   const itemtypes = useSelector(state => state.itemtype.itemTypeList)
 
   const dispatch = useDispatch();
@@ -67,7 +68,8 @@ function ItemForm() {
             onChange={(e) => setTypeId(e.target.value)}
             required
           >
-              {itemtypes.map(type => {
+            <option value={null}>Select Item Category</option>
+            {itemtypes.map(type => {
               return <option key={type.id} value={type.id}>{type.name}</option>
             })}
           </select>
