@@ -17,10 +17,10 @@ const MainPage = ()=>{
         <>
           <div key={item.id} className="item-row">
             <div>{item.name}</div>
-            <div>Platinum Value: {item.platinum_value}</div>
-            <div>Gold Value:  {item.gold_value}</div>
-            <div>Silver Value:  {item.silver_value}</div>
-            <div>Copper Value:  {item.copper_value}</div>
+            <div>Platinum: {item.platinum_value}</div>
+            <div>Gold:  {item.gold_value}</div>
+            <div>Silver:  {item.silver_value}</div>
+            <div>Copper:  {item.copper_value}</div>
             <div>DETAILS</div>
           </div>
         </>

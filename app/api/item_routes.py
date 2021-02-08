@@ -17,7 +17,10 @@ def item(id):
 
 @item_routes.route('/party/<int:id>')
 def items_by_party(id):
-    items = Item.query.filter(Item.party_id == id)
+    items = Item.query.filter(
+        Item.party_id == id,
+        Item.member_id == None
+        )
     return {"items": [item.to_dict() for item in items]}
 
 @item_routes.route('/member/<int:id>')
