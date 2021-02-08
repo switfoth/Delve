@@ -15,8 +15,7 @@ function ItemForm() {
   const [errors, setErrors] = useState([]);
 
   const party_id = useSelector(state => state.party.currentParty)
-  // const member_id = useSelector(state => state.member.currentMember)
-  const member_id = 0
+  let member_id = useSelector(state => state.member.currentMember)
   const itemtypes = useSelector(state => state.itemtype.itemTypeList)
 
   const dispatch = useDispatch();
@@ -30,6 +29,9 @@ function ItemForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    if (member_id === null){
+      member_id = undefined
+    }
     dispatch(
       addSingleItem({
         name,
