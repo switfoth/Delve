@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getUserParties, selectCurrentParty, deselectParty } from '../../store/party';
 import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store/member';
+import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
+import { getItemTypes } from "../../store/itemtype"
 import PartyFormModal from '../Party_Creation_Modal/index';
 import MemberFormModal from '../Member_Creation_Modal/index';
 import "./sidebar.css";
-import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
 
 const SideBar = ()=>{
     const sessionUser = useSelector(state => state.session.user);
@@ -16,7 +17,8 @@ const SideBar = ()=>{
     const dispatch = useDispatch();
 
     useEffect(()=> {
-        dispatch(getUserParties(sessionUser.id))
+        dispatch(getUserParties(sessionUser.id));
+        dispatch(getItemTypes())
     }, [dispatch])
 
     const LoadParties = () =>{

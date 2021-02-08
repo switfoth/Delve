@@ -2,13 +2,9 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import "./mainpage.css";
 import SideBar from "../SideBar";
-import * as partyActions from "../../store/party"
-import * as memberActions from "../../store/member"
-import * as itemActions from "../../store/item"
 import ItemFormModal from "../Item_Modal";
 
 const MainPage = ()=>{
-  const sessionUser = useSelector(state => state.session.user);
   const currentParty = useSelector(state => state.party.currentParty)
   const currentMember = useSelector(state => state.member.currentMember)
   const items = useSelector(state => state.item.itemList)
@@ -19,7 +15,14 @@ const MainPage = ()=>{
     return items.map( item=>{
       return (
         <>
-          <div key={item.id} className="item-row">{item.name}</div>
+          <div key={item.id} className="item-row">
+            <div>{item.name}</div>
+            <div>Platinum Value: {item.platinum_value}</div>
+            <div>Gold Value:  {item.gold_value}</div>
+            <div>Silver Value:  {item.silver_value}</div>
+            <div>Copper Value:  {item.copper_value}</div>
+            <div>DETAILS</div>
+          </div>
         </>
       )
     })

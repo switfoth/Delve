@@ -4,12 +4,14 @@ import session from './session';
 import party from './party';
 import member from './member'
 import item from './item'
+import itemtype from './itemtype'
 
 const rootReducer = combineReducers({
   session,
   party,
   member,
-  item
+  item,
+  itemtype
 });
 
 let enhancer;

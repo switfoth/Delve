@@ -3,7 +3,7 @@ from app.models import ItemType, db
 
 item_type_routes = Blueprint('item_type', __name__)
 
-@item_type_routes.route('/', methods=["GET"])
+@item_type_routes.route('', methods=["GET"])
 def get_categories():
     item_types = ItemType.query.all()
     return {"item_types": [item_type.to_dict() for item_type in item_types]}

@@ -12,3 +12,14 @@
 #main-container {
     float: right;
 }
+
+.item-row {
+    padding: 5px;
+    box-sizing: border-box;
+    border: black solid 1px;
+    font-size: 18pt;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

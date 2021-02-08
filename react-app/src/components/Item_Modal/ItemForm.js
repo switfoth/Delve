@@ -1,14 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { addSingleItem } from "../../store/item";
+import { getItemTypes } from "../../store/itemtype";
 import "./itemform.css";
 
 function ItemForm() {
   const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
+  const [type_id, setTypeId] = useState("");
+  const [description, setDescription] = useState("");
+  const [platinum_value, setPlatinum_Value] = useState(0);
+  const [gold_value, setGold_Value] = useState(0);
+  const [silver_value, setSilver_Value] = useState(0);
+  const [copper_value, setCopper_Value] = useState(0);
   const [errors, setErrors] = useState([]);
+
+  const party_id = useSelector(state => state.party.currentParty)
+  const member_id = useSelector(state => state.member.currentMember)
+  const itemtypes = useSelector(state => state.itemtype.itemTypeList)
+
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getItemTypes())
+  }, [dispatch])
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    dispatch(
+      addSingleItem({
+        name,
+        type_id,
+        description,
+        platinum_value,
+        gold_value,
+        silver_value,
+        copper_value,
+        party_id,
+        member_id
+      })
+
+    )
   };
 
   return (
@@ -27,12 +61,46 @@ function ItemForm() {
             onChange={(e) => setName(e.target.value)}
             required
           />
+          <select
+            placeholder="Item Type"
+            value={type_id}
+            onChange={(e) => setTypeId(e.target.value)}
+            required
+          >
+              {itemtypes.map(type => {
+              return <option key={type.id} value={type.id}>{type.name}</option>
+            })}
+          </select>
           <input
             placeholder="Item Description"
-            type="text"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
+            type="textarea"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             required
+          />
+          <input
+            placeholder="Platinum Value"
+            type="number"
+            value={platinum_value}
+            onChange={(e) => setPlatinum_Value(e.target.value)}
+          />
+          <input
+            placeholder="Gold Value"
+            type="number"
+            value={gold_value}
+            onChange={(e) => setGold_Value(e.target.value)}
+          />
+          <input
+            placeholder="Silver Value"
+            type="number"
+            value={silver_value}
+            onChange={(e) => setSilver_Value(e.target.value)}
+          />
+          <input
+            placeholder="Copper Value"
+            type="number"
+            value={copper_value}
+            onChange={(e) => setCopper_Value(e.target.value)}
           />
         <button type="submit">Add Item</button>
       </form>
