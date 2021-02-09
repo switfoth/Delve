@@ -71,4 +71,4 @@ def put_update_item(id):
     item.member_id = content["member_id"]
     item.type_id = content["type_id"]
     db.session.commit()
-    return redirect(f'/api/item/{id}')
+    return item.to_dict()

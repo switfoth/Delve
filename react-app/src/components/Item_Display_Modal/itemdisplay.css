@@ -10,21 +10,22 @@
   }
 
   .item-form {
+    display: flex;
   }
 
-  .new-item-row-1{
+  .edit-item-row-1{
     display: flex;
     flex-direction: row;
   }
-  .new-item-row-2{
+  .edit-item-row-2{
     display: flex;
     flex-direction: row;
   }
-  .new-item-row-3{
+  .edit-item-row-3{
     display: flex;
     flex-direction: row;
   }
-  .new-item-row-4{
+  .edit-item-row-4{
     display: flex;
     flex-direction: row;
     align-items: flex-start;

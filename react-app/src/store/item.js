@@ -2,6 +2,7 @@ const SET_ITEMS = 'item/setItems'
 const ADD_ITEM = 'item/addItem'
 const DELETE_ITEM = 'item/deleteItem'
 const SELECT_ITEM = 'item/selectItem'
+const UPDATE_ITEM = 'item/updateItem'
 
 const setItems = (items) => ({
     type: SET_ITEMS,
@@ -21,6 +22,11 @@ const deleteItem = (id) => ({
 const selectItem = (id) => ({
     type: SELECT_ITEM,
     payload: id
+})
+
+const updateItem = (item) => ({
+    type: UPDATE_ITEM,
+    payload: {item}
 })
 
 export const getPartyItems = (id) => async (dispatch) => {
@@ -50,6 +56,20 @@ export const addSingleItem = (newItem) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(addItem(data))
+    }
+}
+
+export const updateSingleItem = (itemToUpdate) => async (dispatch) => {
+    const res = await fetch(`/api/item/update/${itemToUpdate.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(itemToUpdate)
+    })
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(updateItem(data))
     }
 }
 
@@ -83,6 +103,17 @@ function reducer (state = initialstate, action) {
             newState = Object.assign({}, state);
             newState.itemList = [...newState.itemList, action.payload]
             return newState;
+        case UPDATE_ITEM:
+            newState = Object.assign({}, state);
+            const updatedList = newState.itemList.map( item => {
+                if (item.id === action.item.id){
+                    return action.item
+                } else {
+                    return item
+                }
+            })
+            newState.itemList = updatedList
+            return newState
         case DELETE_ITEM:
             newState = Object.assign({}, state);
             newState.itemList = newState.itemList.filter(item => {
