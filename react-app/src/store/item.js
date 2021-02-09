@@ -59,7 +59,7 @@ export const addSingleItem = (newItem) => async (dispatch) => {
     }
 }
 
-export const updateSingleItem = (itemToUpdate) => async (dispatch) => {
+export const editSingleItem = (itemToUpdate) => async (dispatch) => {
     const res = await fetch(`/api/item/update/${itemToUpdate.id}`, {
         method: "PUT",
         headers: {

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import "./mainpage.css";
 import SideBar from "../SideBar";
 import ItemFormModal from "../Item_Modal";
+import ItemDisplayModal from "../Item_Display_Modal/index";
 
 const MainPage = ()=>{
   const currentParty = useSelector(state => state.party.currentParty)
@@ -21,7 +22,7 @@ const MainPage = ()=>{
             <div>Gold:  {item.gold_value}</div>
             <div>Silver:  {item.silver_value}</div>
             <div>Copper:  {item.copper_value}</div>
-            <div>DETAILS</div>
+            <div><ItemDisplayModal/></div>
           </div>
         </>
       )

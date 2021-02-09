@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { editSingleItem } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype";
-import "./itemform.css";
+import "./itemdisplay.css";
 
-function ItemForm() {
-  const selectedItem = useSelector(state => state.item.currentItem)
+function ItemDisplay() {
+  const currentItem = useSelector(state => state.item.currentItem)
+  const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
 
   const [name, setName] = useState(selectedItem.name);
   const [type_id, setTypeId] = useState(selectedItem.type_id);
@@ -22,7 +23,6 @@ function ItemForm() {
   }, [dispatch])
 
   const party_id = useSelector(state => state.party.currentParty)
-  let member_id = useSelector(state => state.member.currentMember)
   const itemtypes = useSelector(state => state.itemtype.itemTypeList)
   const members = useSelector(state => state.member.memberList)
 
@@ -150,4 +150,4 @@ function ItemForm() {
   );
 }
 
-export default ItemForm;
+export default ItemDisplay;
