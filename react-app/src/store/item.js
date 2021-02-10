@@ -61,7 +61,7 @@ export const addSingleItem = (newItem) => async (dispatch) => {
 
 export const editSingleItem = (itemToUpdate) => async (dispatch) => {
     const res = await fetch(`/api/item/update/${itemToUpdate.id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
@@ -106,8 +106,8 @@ function reducer (state = initialstate, action) {
         case UPDATE_ITEM:
             newState = Object.assign({}, state);
             const updatedList = newState.itemList.map( item => {
-                if (item.id === action.item.id){
-                    return action.item
+                if (item.id === action.payload.item.id){
+                    return action.payload.item
                 } else {
                     return item
                 }

@@ -7,7 +7,9 @@ import "./itemdisplay.css";
 function ItemDisplay() {
   const currentItem = useSelector(state => state.item.currentItem)
   const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
+  const dispatch = useDispatch();
 
+  const [id, setId] = useState(selectedItem.id)
   const [name, setName] = useState(selectedItem.name);
   const [type_id, setTypeId] = useState(selectedItem.type_id);
   const [description, setDescription] = useState(selectedItem.description);
@@ -15,7 +17,7 @@ function ItemDisplay() {
   const [gold_value, setGold_Value] = useState(selectedItem.gold_value);
   const [silver_value, setSilver_Value] = useState(selectedItem.silver_value);
   const [copper_value, setCopper_Value] = useState(selectedItem.copper_value);
-  const [member_id, setMember_Id] = useState(selectedItem.member_id)
+  let [member_id, setMember_Id] = useState(selectedItem.member_id)
   const [errors, setErrors] = useState([]);
 
   useEffect(()=>{
@@ -26,16 +28,16 @@ function ItemDisplay() {
   const itemtypes = useSelector(state => state.itemtype.itemTypeList)
   const members = useSelector(state => state.member.memberList)
 
-  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    if (member_id === null){
+    if(member_id === "Nobody"){
       member_id = undefined
     }
     dispatch(
       editSingleItem({
+        id,
         name,
         type_id,
         description,
@@ -52,7 +54,7 @@ function ItemDisplay() {
 
   return (
     <div className="item-display">
-      <h1>Add Item</h1>
+      <h1>Item Details</h1>
       <form className="item-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -94,11 +96,10 @@ function ItemDisplay() {
             </select>
             <h3>Who claims this item?</h3>
             <select
-              placehodler="Member"
               value={member_id}
-              onChange={(e) => setMember_Id(e.target.value)}
+              onChange={(e) => {setMember_Id(e.target.value)}}
             >
-            <option value={null}>Nobody</option>
+            <option>Nobody</option>
             {members.map(memberSelector => {
                 return <option key={memberSelector.id} value={memberSelector.id}>{memberSelector.name}</option>
             })}

@@ -12,7 +12,7 @@ function ItemFormModal() {
       <button id="button" onClick={() => setShowModal(true)}>Add Item</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ItemForm />
+          <ItemForm/>
         </Modal>
       )}
     </>

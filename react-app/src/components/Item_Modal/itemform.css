@@ -10,6 +10,8 @@
   }
 
   .item-form {
+    display: flex;
+    flex-direction: column;
   }
 
   .new-item-row-1{
