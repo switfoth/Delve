@@ -17,12 +17,12 @@ const MainPage = ()=>{
       return (
         <>
           <div key={item.id} className="item-row">
-            <div>{item.name}</div>
-            <div>Platinum: {item.platinum_value}</div>
-            <div>Gold:  {item.gold_value}</div>
-            <div>Silver:  {item.silver_value}</div>
-            <div>Copper:  {item.copper_value}</div>
-            <div><ItemDisplayModal props={item.id}/></div>
+            <div id="row-item-name">{item.name}</div>
+            <div id="row-item-platinum">P: {item.platinum_value}</div>
+            <div id="row-item-gold">G:  {item.gold_value}</div>
+            <div id="row-item-silver">S:  {item.silver_value}</div>
+            <div id="row-item-copper">C:  {item.copper_value}</div>
+            <div id="row-item-button"><ItemDisplayModal props={item.id}/></div>
           </div>
         </>
       )

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { editSingleItem } from "../../store/item";
+import { editSingleItem, getMemberItems, getPartyItems } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype";
 import "./itemdisplay.css";
 
 function ItemDisplay() {
   const currentItem = useSelector(state => state.item.currentItem)
+  const currentMember = useSelector(state => state.member.currentMember)
+  const currentParty = useSelector(state => state.party.currentParty)
   const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
   const dispatch = useDispatch();
 
@@ -48,8 +50,11 @@ function ItemDisplay() {
         party_id,
         member_id
       })
-
     )
+    if(currentMember !== undefined || currentMember !== null){
+      dispatch(getMemberItems(currentMember))
+    } else
+    dispatch(getPartyItems(currentParty))
   };
 
   return (

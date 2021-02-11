@@ -57,7 +57,7 @@ def delete_item(id):
     db.session.commit()
     return {"message": "Item Deleted Successfully"}
 
-@item_routes.route('/update/<int:id>', methods=["PUT"])
+@item_routes.route('/update/<int:id>', methods=["PATCH"])
 def put_update_item(id):
     content = request.json
     item = Item.query.get(id)
@@ -68,7 +68,10 @@ def put_update_item(id):
     item.silver_value = content["silver_value"]
     item.copper_value = content["copper_value"]
     item.party_id = content["party_id"]
-    item.member_id = content["member_id"]
+    try:
+        item.member_id = content["member_id"]
+    except KeyError:
+        item.member_id = None
     item.type_id = content["type_id"]
     db.session.commit()
     return item.to_dict()

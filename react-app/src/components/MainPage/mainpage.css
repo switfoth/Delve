@@ -9,6 +9,10 @@
     float: left;
 }
 
+#choose-party {
+    margin-left: 50px;
+}
+
 #main-container {
     float: right;
 }
@@ -19,7 +23,25 @@
     border: black solid 1px;
     font-size: 18pt;
     height: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 45% 10% 10% 10% 10% 15%;
+}
+
+#row-item-name {
+}
+
+#row-item-platinum {
+}
+
+#row-item-gold {
+}
+
+#row-item-silver {
+}
+
+#row-item-copper {
+}
+
+#row-item-button {
+    margin: -8px;
 }

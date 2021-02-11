@@ -16,7 +16,7 @@ function ItemDisplayModal(props) {
       <button id="button" onClick={() => {
         dispatch(selectCurrentItem(item.props))
         setShowModal(true);
-        }}>Item Details</button>
+        }}>ITEM DETAILS</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ItemDisplay />

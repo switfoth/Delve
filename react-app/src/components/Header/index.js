@@ -7,7 +7,7 @@ const Header = ()=>{
     return (
         <>
             <div id='header'>
-                <h1>HEADER</h1>
+                <h1 id='delve-text'>DELVE</h1>
             </div>
         </>
     )

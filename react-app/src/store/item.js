@@ -1,3 +1,5 @@
+import currentMember from './member'
+import currentParty from './party'
 const SET_ITEMS = 'item/setItems'
 const ADD_ITEM = 'item/addItem'
 const DELETE_ITEM = 'item/deleteItem'
@@ -70,6 +72,8 @@ export const editSingleItem = (itemToUpdate) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(updateItem(data))
+        if (currentMember !== null || currentMember !== undefined) dispatch(getMemberItems(currentMember))
+        dispatch(getPartyItems(currentParty))
     }
 }
 
@@ -107,12 +111,16 @@ function reducer (state = initialstate, action) {
             newState = Object.assign({}, state);
             const updatedList = newState.itemList.map( item => {
                 if (item.id === action.payload.item.id){
-                    return action.payload.item
+                    if(item.member_id === action.payload.item.member_id){
+                        return action.payload.item
+                    }
                 } else {
                     return item
                 }
             })
-            newState.itemList = updatedList
+            newState.itemList = updatedList.filter(item =>{
+                return (!!item)
+            })
             return newState
         case DELETE_ITEM:
             newState = Object.assign({}, state);

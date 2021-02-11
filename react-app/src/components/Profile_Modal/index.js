@@ -12,7 +12,7 @@ function ProfileFormModal() {
 
   return (
     <>
-      <button id="profile-button" onClick={() => setShowModal(true)}>Profile</button>
+      <button id="profile-button" onClick={() => setShowModal(true)}>PROFILE</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ProfileForm user={sessionUser}/>

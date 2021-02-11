@@ -1,8 +1,9 @@
 #button {
-    background: cadetblue;
-    border: 0;
-    color: white;
+    background: white;
+    border: solid black 2px;
+    color: black;
     height: 35px;
     padding: 0 30px;
     margin: 5px;
+    font-weight: bolder ;
   };
