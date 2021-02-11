@@ -5,7 +5,7 @@ from flask_login import login_required, current_user
 from app.forms import NewItemForm
 item_routes = Blueprint('item', __name__)
 
-@item_routes.route('/')
+@item_routes.route('')
 def items():
     items = Item.query.all()
     return {"items": [item.to_dict() for item in items]}
@@ -17,7 +17,10 @@ def item(id):
 
 @item_routes.route('/party/<int:id>')
 def items_by_party(id):
-    items = Item.query.filter(Item.party_id == id)
+    items = Item.query.filter(
+        Item.party_id == id,
+        Item.member_id == None
+        )
     return {"items": [item.to_dict() for item in items]}
 
 @item_routes.route('/member/<int:id>')
@@ -54,7 +57,7 @@ def delete_item(id):
     db.session.commit()
     return {"message": "Item Deleted Successfully"}
 
-@item_routes.route('/update/<int:id>', methods=["PUT"])
+@item_routes.route('/update/<int:id>', methods=["PATCH"])
 def put_update_item(id):
     content = request.json
     item = Item.query.get(id)
@@ -65,7 +68,10 @@ def put_update_item(id):
     item.silver_value = content["silver_value"]
     item.copper_value = content["copper_value"]
     item.party_id = content["party_id"]
-    item.member_id = content["member_id"]
+    try:
+        item.member_id = content["member_id"]
+    except KeyError:
+        item.member_id = None
     item.type_id = content["type_id"]
     db.session.commit()
-    return redirect(f'/api/item/{id}')
+    return item.to_dict()

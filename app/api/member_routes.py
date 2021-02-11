@@ -17,6 +17,7 @@ def get_party_members(id):
     return {"members": [member.to_dict() for member in members]}
 
 @member_routes.route('/new', methods=["POST"])
+@login_required
 def post_new_member():
     form = NewMemberForm()
     form['csrf_token'].data = request.cookies['csrf_token']

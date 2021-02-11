@@ -4,7 +4,7 @@
     border: solid black 6px;
     height: 100%;
     box-sizing: border-box;
-    background-color: blanchedalmond;
+    background-color: whitesmoke;
     position: sticky;
     display: grid;
     grid-template-rows: 10% 4% 78% 8%;

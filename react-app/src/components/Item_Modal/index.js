@@ -9,10 +9,10 @@ function ItemFormModal() {
 
   return (
     <>
-      <button id="button" onClick={() => setShowModal(true)}>Add Item</button>
+      <button id="button" onClick={() => setShowModal(true)}>ADD ITEM</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ItemForm />
+          <ItemForm/>
         </Modal>
       )}
     </>

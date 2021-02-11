@@ -1,8 +1,8 @@
 #profile-button {
-    background: cadetblue;
-    border: 0;
-    color: white;
-    height: 35px;
-    padding: 0 30px;
-    margin: 5px;
+  background: white;
+  border: 2px solid black;
+  margin-top: 2px;
+  color: black;
+  height: 35px;
+  width: 100px;
   };

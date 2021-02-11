@@ -1,39 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { addSingleItem } from "../../store/item";
+import { editSingleItem, getMemberItems, getPartyItems } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype";
-import "./itemform.css";
+import "./itemdisplay.css";
 
-function ItemForm() {
-  const [name, setName] = useState("");
-  const [type_id, setTypeId] = useState(null);
-  const [description, setDescription] = useState("");
-  const [platinum_value, setPlatinum_Value] = useState(0);
-  const [gold_value, setGold_Value] = useState(0);
-  const [silver_value, setSilver_Value] = useState(0);
-  const [copper_value, setCopper_Value] = useState(0);
-  const [errors, setErrors] = useState([]);
-
-  const party_id = useSelector(state => state.party.currentParty)
-  let member_id = useSelector(state => state.member.currentMember)
-  const itemtypes = useSelector(state => state.itemtype.itemTypeList)
-
+function ItemDisplay() {
+  const currentItem = useSelector(state => state.item.currentItem)
+  const currentMember = useSelector(state => state.member.currentMember)
+  const currentParty = useSelector(state => state.party.currentParty)
+  const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
   const dispatch = useDispatch();
+
+  const [id, setId] = useState(selectedItem.id)
+  const [name, setName] = useState(selectedItem.name);
+  const [type_id, setTypeId] = useState(selectedItem.type_id);
+  const [description, setDescription] = useState(selectedItem.description);
+  const [platinum_value, setPlatinum_Value] = useState(selectedItem.platinum_value);
+  const [gold_value, setGold_Value] = useState(selectedItem.gold_value);
+  const [silver_value, setSilver_Value] = useState(selectedItem.silver_value);
+  const [copper_value, setCopper_Value] = useState(selectedItem.copper_value);
+  let [member_id, setMember_Id] = useState(selectedItem.member_id)
+  const [errors, setErrors] = useState([]);
 
   useEffect(()=>{
     dispatch(getItemTypes())
   }, [dispatch])
 
+  const party_id = useSelector(state => state.party.currentParty)
+  const itemtypes = useSelector(state => state.itemtype.itemTypeList)
+  const members = useSelector(state => state.member.memberList)
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    if (member_id === null){
+    if(member_id === "Nobody"){
       member_id = undefined
     }
     dispatch(
-      addSingleItem({
+      editSingleItem({
+        id,
         name,
         type_id,
         description,
@@ -44,13 +50,16 @@ function ItemForm() {
         party_id,
         member_id
       })
-
     )
+    if(currentMember !== undefined || currentMember !== null){
+      dispatch(getMemberItems(currentMember))
+    } else
+    dispatch(getPartyItems(currentParty))
   };
 
   return (
-    <div className="item-box">
-      <h1>Add Item</h1>
+    <div className="item-display">
+      <h1>Item Details</h1>
       <form className="item-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -89,6 +98,16 @@ function ItemForm() {
               {itemtypes.map(type => {
                 return <option key={type.id} value={type.id}>{type.name}</option>
               })}
+            </select>
+            <h3>Who claims this item?</h3>
+            <select
+              value={member_id}
+              onChange={(e) => {setMember_Id(e.target.value)}}
+            >
+            <option>Nobody</option>
+            {members.map(memberSelector => {
+                return <option key={memberSelector.id} value={memberSelector.id}>{memberSelector.name}</option>
+            })}
             </select>
           </div>
           <div id="new-item-row-4">
@@ -129,7 +148,7 @@ function ItemForm() {
               />
             </div>
             <div>
-              <button type="submit">Add Item</button>
+              <button type="submit">Edit Item</button>
             </div>
           </div>
       </form>
@@ -137,4 +156,4 @@ function ItemForm() {
   );
 }
 
-export default ItemForm;
+export default ItemDisplay;

@@ -11,7 +11,7 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileFormModal user={sessionUser} />
+        <ProfileFormModal user={sessionUser}/>
       </>
     );
   } else {

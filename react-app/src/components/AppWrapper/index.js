@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./appwrapper.css";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getItemTypes } from '../../store/itemtype'
 import MainPage from '../MainPage/index';
 import NavBar from '../NavBar/NavBar';
 import Header from '../Header/index';
@@ -14,12 +15,18 @@ const AppWrapper = ()=>{
     if (sessionUser) {
         sessionLinks = (
             <MainPage/>
-        );
+            );
     } else {
         sessionLinks = (
             <Welcome/>
         );
-     }
+    }
+
+    let dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getItemTypes());
+    }, [dispatch])
 
     return (
         <>
