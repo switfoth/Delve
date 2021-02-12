@@ -43,3 +43,13 @@
     width: 400px;
     height: 200px;
   }
+
+  #item-delete-button {
+      background: white;
+      border: 2px solid black;
+      margin-top: 2px;
+      color: black;
+      height: 35px;
+      width: 100px;
+      float: right;
+  };

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { editSingleItem, getMemberItems, getPartyItems } from "../../store/item";
+import { deleteSingleItem, editSingleItem, getMemberItems, getPartyItems } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype";
+import { Modal } from '../../context/Modal';
 import "./itemdisplay.css";
 
 function ItemDisplay() {
@@ -20,7 +21,9 @@ function ItemDisplay() {
   const [silver_value, setSilver_Value] = useState(selectedItem.silver_value);
   const [copper_value, setCopper_Value] = useState(selectedItem.copper_value);
   let [member_id, setMember_Id] = useState(selectedItem.member_id)
+  const [showModal, setShowModal] = useState(false)
   const [errors, setErrors] = useState([]);
+
 
   useEffect(()=>{
     dispatch(getItemTypes())
@@ -147,6 +150,15 @@ function ItemDisplay() {
                 onChange={(e) => setCopper_Value(e.target.value)}
               />
             </div>
+            <div id="item-delete-button" onClick={() =>{
+              dispatch(deleteSingleItem(selectedItem.id, selectedItem.member_id, selectedItem.party_id))
+              if (currentMember !== null || currentMember !== undefined) {
+                dispatch(getMemberItems(currentMember))
+              } else {
+                dispatch(getPartyItems(currentParty))
+              }
+              setShowModal(true);
+            }}>DELETE ITEM</div>
             <div>
               <button type="submit">Edit Item</button>
             </div>

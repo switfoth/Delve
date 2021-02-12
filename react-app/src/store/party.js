@@ -43,14 +43,15 @@ export const addSingleParty = (newParty) => async (dispatch) => {
     }
 }
 
-export const deleteSingleParty = (partyToDelete) => async (dispatch) => {
-    await fetch(`/api/party/delete/${partyToDelete.id}`, {
+export const deleteSingleParty = (partyToDelete, user_id) => async (dispatch) => {
+    await fetch(`/api/party/delete/${partyToDelete}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
     })
-    dispatch(deleteParty(partyToDelete.id))
+    dispatch(deleteParty(partyToDelete))
+    dispatch(getUserParties(user_id))
 }
 
 export const selectCurrentParty = (id) => async (dispatch) => {

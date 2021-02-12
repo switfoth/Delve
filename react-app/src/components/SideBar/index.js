@@ -5,7 +5,9 @@ import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store
 import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype"
 import PartyFormModal from '../Party_Creation_Modal/index';
+import PartyDeleteModal from '../Party_Delete_Modal/index'
 import MemberFormModal from '../Member_Creation_Modal/index';
+import MemberDeleteModal from '../Member_Delete_Modal/index';
 import "./sidebar.css";
 
 const SideBar = ()=>{
@@ -79,12 +81,14 @@ const SideBar = ()=>{
                 <PartyBackButton/>
                 <LoadMembers/>
                 <MemberFormModal/>
+                <PartyDeleteModal/>
             </>
         );
     } else if (currentParty !== null && currentMember !== null){
         sideBarContent = (
             <>
                 <MemberBackButton/>
+                <MemberDeleteModal/>
             </>
         )
     }

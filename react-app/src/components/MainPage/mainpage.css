@@ -1,12 +1,20 @@
 #main-page {
     border: solid black 2px;
     display: grid;
-    grid-template-columns: 23% 77%;
+    grid-template-columns: 23% 1% 76%;
 }
 
 
 #side-container {
     float: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#divider-bar {
+    border: solid black 2px;
+    height: 100%;
+    width: 0px;
 }
 
 #choose-party {
@@ -15,12 +23,15 @@
 
 #main-container {
     float: right;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .item-row {
     padding: 5px;
+    margin-left: 0px;
     box-sizing: border-box;
-    border: black solid 1px;
+    border-bottom: black solid 1px;
     font-size: 18pt;
     height: 40px;
     display: grid;

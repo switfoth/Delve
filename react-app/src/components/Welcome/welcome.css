@@ -2,7 +2,8 @@
     border: solid black 2px;
     align-items: center;
     justify-content: center;
-
+    display: flex;
+    flex-direction: row;
 }
 
 #temp-form{
@@ -12,4 +13,11 @@
 #welcome-message{
     justify-self: center;
     align-items: center;
+}
+
+#right-column{
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
 }

@@ -1,3 +1,6 @@
+import { getPartyItems } from "./item";
+import currentParty from "./party";
+
 const SET_MEMBERS = 'member/setMembers'
 const ADD_MEMBER = 'member/addMember'
 const DELETE_MEMBER = 'member/deleteMember'
@@ -44,13 +47,16 @@ export const addSingleMember = (newMember) => async (dispatch) => {
 }
 
 export const deleteSingleMember = (memberToDelete) => async (dispatch) => {
-    await fetch(`/api/member/delete/${memberToDelete.id}`, {
+    await fetch(`/api/member/delete/${memberToDelete}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
     })
-    dispatch(deleteMember(memberToDelete.id))
+    dispatch(deleteMember(memberToDelete))
+    dispatch(deselectMember())
+    dispatch(getPartyItems(currentParty))
+    dispatch(getPartyMembers(currentParty))
 }
 
 export const selectCurrentMember = (id) => async (dispatch) => {

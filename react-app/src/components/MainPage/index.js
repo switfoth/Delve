@@ -59,6 +59,7 @@ const MainPage = ()=>{
                 <div id='side-container'>
                     <SideBar id="main-sidebar"/>
                 </div>
+                <div id="divider-bar"></div>
                 <div id='main-container'>
                   {mainPageContent}
                 </div>

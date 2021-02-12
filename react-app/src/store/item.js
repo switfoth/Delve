@@ -1,5 +1,3 @@
-import currentMember from './member'
-import currentParty from './party'
 const SET_ITEMS = 'item/setItems'
 const ADD_ITEM = 'item/addItem'
 const DELETE_ITEM = 'item/deleteItem'
@@ -72,19 +70,24 @@ export const editSingleItem = (itemToUpdate) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(updateItem(data))
-        if (currentMember !== null || currentMember !== undefined) dispatch(getMemberItems(currentMember))
-        dispatch(getPartyItems(currentParty))
+        if (itemToUpdate.member_id !== null || itemToUpdate.member_id !== undefined) dispatch(getMemberItems(itemToUpdate.member_id))
+        dispatch(getPartyItems(itemToUpdate.member_id))
     }
 }
 
-export const deleteSingleItem = (itemToDelete) => async (dispatch) => {
-    await fetch(`/api/item/delete/${itemToDelete.id}`, {
+export const deleteSingleItem = (itemToDelete, member_id, party_id) => async (dispatch) => {
+    await fetch(`/api/item/delete/${itemToDelete}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
     })
-    dispatch(deleteItem(itemToDelete.id))
+    dispatch(deleteItem(itemToDelete))
+    if (member_id) {
+        dispatch(getMemberItems(member_id))
+    } else {
+        dispatch(getPartyItems())
+    }
 }
 
 export const selectCurrentItem = (id) => async (dispatch) => {
@@ -124,10 +127,12 @@ function reducer (state = initialstate, action) {
             return newState
         case DELETE_ITEM:
             newState = Object.assign({}, state);
-            newState.itemList = newState.itemList.filter(item => {
-                return item.id !== item.payload
+            const postDeleteList = newState.itemList.filter(item => {
+                return item.id !== item.payload})
+            newState.itemList = postDeleteList.filter(item =>{
+                return (!!item)
             })
-            return newState;
+            return newState
         case SELECT_ITEM:
             newState = Object.assign({}, state);
             newState.currentItem = action.payload

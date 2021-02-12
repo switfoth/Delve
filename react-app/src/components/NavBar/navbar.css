@@ -1,8 +1,18 @@
 #navbar {
     border: solid black 1px;
     justify-content: space-around;
+    padding-left: 5px;
 }
 
 #login-link {
     float: right;
+}
+
+#logout-button {
+        background: white;
+        border: 2px solid black;
+        margin-top: 2px;
+        color: black;
+        height: 35px;
+        width: 100px;
 }
