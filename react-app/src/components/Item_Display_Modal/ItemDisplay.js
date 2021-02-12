@@ -151,7 +151,7 @@ function ItemDisplay() {
               />
             </div>
             <div id="item-delete-button" onClick={() =>{
-              dispatch(deleteSingleItem(selectedItem))
+              dispatch(deleteSingleItem(selectedItem.id, selectedItem.member_id, selectedItem.party_id))
               if (currentMember !== null || currentMember !== undefined) {
                 dispatch(getMemberItems(currentMember))
               } else {

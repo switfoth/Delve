@@ -11,8 +11,8 @@ class Party(db.Model):
     copper = db.Column(db.Integer, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    members = db.relationship("Member", back_populates="party")
-    items = db.relationship("Item", back_populates="party")
+    members = db.relationship("Member", back_populates="party", cascade="all")
+    items = db.relationship("Item", back_populates="party", cascade="all")
     user = db.relationship("User", back_populates="parties")
 
     def to_dict(self):

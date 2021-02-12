@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSingleItem } from "../../store/item";
-import { deleteSingleParty, getUserParties } from '../../store/party';
+import { deleteSingleParty, deselectParty, getUserParties } from '../../store/party';
 import { deleteSingleMember} from '../../store/member'
 import "./partydeleteform.css";
 
@@ -31,14 +31,15 @@ function PartyDeleteForm() {
     itemsToDelete.forEach( el =>{
         dispatch(deleteSingleItem(el.id))
     })
-    dispatch(deleteSingleParty(currentParty))
+    dispatch(deleteSingleParty(currentParty, user.id))
+    dispatch(deselectParty())
     dispatch(getUserParties(user.id))
   };
 
   return (
-    <div className="member-box">
+    <div className="party-box">
       <h1>Are you sure?</h1>
-      <form className="member-delete-form" onSubmit={handleSubmit}>
+      <form className="party-delete-form" onSubmit={handleSubmit}>
         <h3>When you delete a party, ALL members and items will also be deleted.</h3>
         <button type="submit">Delete Party</button>
       </form>
