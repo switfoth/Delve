@@ -85,6 +85,8 @@ export const deleteSingleItem = (itemToDelete) => async (dispatch) => {
         }
     })
     dispatch(deleteItem(itemToDelete.id))
+    if (currentMember !== null || currentMember !== undefined) dispatch(getMemberItems(currentMember))
+    dispatch(getPartyItems(currentParty))
 }
 
 export const selectCurrentItem = (id) => async (dispatch) => {
@@ -124,10 +126,12 @@ function reducer (state = initialstate, action) {
             return newState
         case DELETE_ITEM:
             newState = Object.assign({}, state);
-            newState.itemList = newState.itemList.filter(item => {
-                return item.id !== item.payload
+            const postDeleteList = newState.itemList.filter(item => {
+                return item.id !== item.payload})
+            newState.itemList = postDeleteList.filter(item =>{
+                return (!!item)
             })
-            return newState;
+            return newState
         case SELECT_ITEM:
             newState = Object.assign({}, state);
             newState.currentItem = action.payload
