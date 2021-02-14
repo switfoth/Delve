@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSingleItem } from "../../store/item";
 import { deleteSingleParty, deselectParty, getUserParties } from '../../store/party';
 import { deleteSingleMember} from '../../store/member'
+import { Modal } from '../../context/Modal';
 import "./partydeleteform.css";
 
 function PartyDeleteForm() {
@@ -17,6 +18,7 @@ function PartyDeleteForm() {
       }
   })
   const currentItems = useSelector(state => state.item.itemList)
+  const [showModal, setShowModal] = useState(false)
   const itemsToDelete = currentItems.map(item =>{
       if(item.party_id === currentParty){
           return item
@@ -39,7 +41,7 @@ function PartyDeleteForm() {
   return (
     <div className="party-box">
       <h1>Are you sure?</h1>
-      <form className="party-delete-form" onSubmit={handleSubmit}>
+      <form className="party-delete-form" onSubmit={handleSubmit, setShowModal(true)}>
         <h3>When you delete a party, ALL members and items will also be deleted.</h3>
         <button type="submit">Delete Party</button>
       </form>

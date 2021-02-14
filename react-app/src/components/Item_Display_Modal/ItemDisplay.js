@@ -6,6 +6,7 @@ import { Modal } from '../../context/Modal';
 import "./itemdisplay.css";
 
 function ItemDisplay() {
+  const user_id = useSelector(state => state.session.user.id)
   const currentItem = useSelector(state => state.item.currentItem)
   const currentMember = useSelector(state => state.member.currentMember)
   const currentParty = useSelector(state => state.party.currentParty)
@@ -52,12 +53,8 @@ function ItemDisplay() {
         copper_value,
         party_id,
         member_id
-      })
+      }, party_id, member_id, user_id)
     )
-    if(currentMember !== undefined || currentMember !== null){
-      dispatch(getMemberItems(currentMember))
-    } else
-    dispatch(getPartyItems(currentParty))
   };
 
   return (
@@ -152,11 +149,6 @@ function ItemDisplay() {
             </div>
             <div id="item-delete-button" onClick={() =>{
               dispatch(deleteSingleItem(selectedItem.id, selectedItem.member_id, selectedItem.party_id))
-              if (currentMember !== null || currentMember !== undefined) {
-                dispatch(getMemberItems(currentMember))
-              } else {
-                dispatch(getPartyItems(currentParty))
-              }
               setShowModal(true);
             }}>DELETE ITEM</div>
             <div>

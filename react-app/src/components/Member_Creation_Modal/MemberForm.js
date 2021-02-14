@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addSingleMember } from '../../store/member';
+import { Modal } from '../../context/Modal';
 import "./memberform.css";
 
 function MemberForm() {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(true)
   const dispatch = useDispatch();
 
   const party_id = useSelector(state => state.party.currentParty)

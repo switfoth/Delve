@@ -1,3 +1,7 @@
+import { getPartyMembers } from './member'
+import { getUserParties } from './party'
+
+
 const SET_ITEMS = 'item/setItems'
 const ADD_ITEM = 'item/addItem'
 const DELETE_ITEM = 'item/deleteItem'
@@ -59,7 +63,7 @@ export const addSingleItem = (newItem) => async (dispatch) => {
     }
 }
 
-export const editSingleItem = (itemToUpdate) => async (dispatch) => {
+export const editSingleItem = (itemToUpdate, party_id, member_id) => async (dispatch) => {
     const res = await fetch(`/api/item/update/${itemToUpdate.id}`, {
         method: "PATCH",
         headers: {
@@ -70,8 +74,8 @@ export const editSingleItem = (itemToUpdate) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(updateItem(data))
-        if (itemToUpdate.member_id !== null || itemToUpdate.member_id !== undefined) dispatch(getMemberItems(itemToUpdate.member_id))
-        dispatch(getPartyItems(itemToUpdate.member_id))
+        if (itemToUpdate.member_id !== null || itemToUpdate.member_id !== undefined) dispatch(getMemberItems(itemToUpdate.member_id), getPartyMembers(itemToUpdate.party_id))
+        dispatch(getPartyItems(itemToUpdate.party_id), getUserParties(itemToUpdate.user_id))
     }
 }
 
@@ -83,11 +87,8 @@ export const deleteSingleItem = (itemToDelete, member_id, party_id) => async (di
         }
     })
     dispatch(deleteItem(itemToDelete))
-    if (member_id) {
-        dispatch(getMemberItems(member_id))
-    } else {
-        dispatch(getPartyItems())
-    }
+    if (itemToDelete.member_id !== null || itemToDelete.member_id !== undefined) dispatch(getMemberItems(member_id), getPartyMembers(member_id))
+    dispatch(getPartyItems(party_id), getUserParties(party_id))
 }
 
 export const selectCurrentItem = (id) => async (dispatch) => {

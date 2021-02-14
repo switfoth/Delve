@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { editSingleItem } from "../../store/item";
 import { deleteSingleMember, getPartyMembers } from '../../store/member';
+import { Modal } from '../../context/Modal';
 import "./memberdeleteform.css";
 
 function MemberDeleteForm() {
   const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(true)
 
   const currentParty = useSelector(state => state.party.currentParty)
   const currentMember = useSelector(state => state.member.currentMember)
