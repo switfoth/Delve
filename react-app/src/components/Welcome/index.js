@@ -9,7 +9,7 @@ const Welcome = ()=>{
         <>
             <div id="welcome-page">
                 <div id="left-column"></div>
-                    <img src="https://i.imgur.com/YL8CXDF.png" alt="Lewt the Kobold Adventurer"></img>
+                    <img src="https://i.imgur.com/8kETEyP.png" alt="Lewt the Kobold Adventurer"></img>
                 <div id="right-column">
                     <div id="welcome-message">
                         <h1>Welcome to Delve!</h1>
