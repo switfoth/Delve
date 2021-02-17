@@ -32,8 +32,19 @@ const MainPage = ()=>{
       )
     })
   }
+  const PartyNameDisplay = () =>{
+    let partyName = (!parties) ? null : parties.filter(party => {
+      return party.id === currentParty})
+    return <div>{`Ledger for ${partyName.name}:`}</div>
+  }
 
-  // Vartiable handles what is displayed when part is chosen but not a member, or member is
+  const MemberNameDisplay = () =>{
+    let memberName = (!members) ? null : members.filter(member => {
+      return member.id === currentMember})
+    return <div>{`Loot claimed by ${memberName.name}:`}</div>
+  }
+
+  // Variable handles what is displayed when part is chosen but not a member, or member is
   // chosen - if member is chosen, it only displays member items. With no member selected
   // it displays unclaimed party loot.
   let mainPageContent;
@@ -44,21 +55,17 @@ const MainPage = ()=>{
       </>
     )
   } else if (currentParty !== null && currentMember === null){
-    let partyName = parties.filter(party => {
-    return party.id === currentParty})
     mainPageContent=(
       <>
-        <div id="party-ledger"><h1>{`Ledger for ${partyName.name}:`}</h1></div>
+        <PartyNameDisplay/>
         <LoadItems/>
         <ItemFormModal/>
       </>
     )
   } else if (currentParty !== null && currentMember !== null){
-    let memberName = members.filter(member => {
-      return member.id === currentMember})
     mainPageContent=(
       <>
-        <div id="member-claim"><h1>{`Loot claimed by ${memberName.name}`}</h1></div>
+        <MemberNameDisplay/>
         <LoadItems/>
         <ItemFormModal/>
       </>
