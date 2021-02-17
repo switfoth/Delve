@@ -9,10 +9,18 @@
 }
 
 #logout-button {
-        background: white;
-        border: 2px solid black;
-        margin-top: 2px;
-        color: black;
-        height: 35px;
-        width: 100px;
+    align-items: center;
+    padding: 7px;
+    text-align: center;
+    background: white;
+    border: 2px solid black;
+    margin-left: 5px;
+    margin-top: 2px;
+    color: black;
+    height: 35px;
+    width: 100px;
+}
+
+#logged-in-div {
+    display: flex;
 }

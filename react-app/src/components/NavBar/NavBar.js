@@ -13,8 +13,10 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <ProfileFormModal user={sessionUser}/>
-        <div id="logout-button" onClick={dispatch(logout)}>LOG OUT</div>
+        <div id="logged-in-div">
+          <ProfileFormModal user={sessionUser}/>
+          <div id="logout-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
+        </div>
       </>
     );
   } else {

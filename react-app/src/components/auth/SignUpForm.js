@@ -14,6 +14,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       const user = await signUp(username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
+
       }
     }
   };

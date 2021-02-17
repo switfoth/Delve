@@ -1,5 +1,6 @@
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const ADD_ERROR = 'session/addError'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -10,18 +11,11 @@ const removeUser = () => ({
   type: REMOVE_USER
 });
 
-// export const login = ({ username, password }) => async (dispatch) => {
-//   const res = await fetch('/api/auth/login', {
-//     method: 'POST',
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify({ username, password })
-//   });
-//   if(res.ok) {
-//     const data = await res.json()
-//     dispatch(setUser(data));
-//   }
-//   return res;
-// };
+const addError = (error) => ({
+  type: ADD_ERROR,
+  payload: error
+})
+
 export const login = (user) => async (dispatch) => {
   const { username, password } = user;
   const response = await fetch('/api/auth/login', {
@@ -35,9 +29,11 @@ export const login = (user) => async (dispatch) => {
   if (response.ok) {
     let data = await response.json()
     dispatch(setUser(data));
+  } else {
+    let error = "Login failed - incorrect/nonexistent username or password entered."
+    dispatch(addError(error))
   }
 };
-
 
 export const restoreUser = () => async (dispatch) => {
   const res = await fetch('/api/auth');
@@ -51,7 +47,7 @@ export const restoreUser = () => async (dispatch) => {
 
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
-  const res = await fetch('/api/users/signup', {
+  const res = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
@@ -60,11 +56,11 @@ export const signup = (user) => async (dispatch) => {
       password
     })
   });
-  if (res.ok){
-    const data = await res.json()
+  const data = await res.json()
+  if(!data.errors){
     dispatch(setUser(data));
   }
-  return res;
+  return data
 };
 
 export const logout = () => async (dispatch) => {
@@ -77,7 +73,7 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
-const initialState = { user: null };
+const initialState = { user: null, errors: [] };
 
 function reducer(state = initialState, action) {
   let newState;
@@ -87,6 +83,10 @@ function reducer(state = initialState, action) {
       return newState;
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
+      return newState;
+    case ADD_ERROR:
+      newState = Object.assign({}, state);
+      newState.errors = [action.payload]
       return newState;
     default:
       return state;
