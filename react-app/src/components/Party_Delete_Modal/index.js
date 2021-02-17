@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PartyDeleteForm from './PartyDeleteForm';
-import './button.css'
+import './party-delete-button.css'
 
 function PartyDeleteModal() {
   const [showModal, setShowModal] = useState(false);

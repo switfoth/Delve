@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import MemberForm from './MemberForm';
-import './button.css'
+import './member-create-button.css'
 
 function MemberFormModal() {
   const [showModal, setShowModal] = useState(false);

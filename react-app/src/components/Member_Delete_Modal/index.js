@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import MemberDeleteForm from './MemberDeleteForm';
-import './button.css'
+import './member-delete-button.css'
 
 function MemberDeleteModal() {
   const [showModal, setShowModal] = useState(false);

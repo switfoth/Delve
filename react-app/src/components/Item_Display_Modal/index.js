@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import { selectCurrentItem } from '../../store/item';
 import ItemDisplay from './ItemDisplay';
-import './button.css'
+import './item-display-button.css'
 
 function ItemDisplayModal(props) {
   let item = props
