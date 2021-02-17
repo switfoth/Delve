@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./welcome.css";
-import SignUpForm from '../auth/SignUpForm';
+import SignupFormModal from '../Signup_Form_Modal/index.js';
 
 const Welcome = ()=>{
-    const [authenticated, setAuthenticated] = useState(false);
 
     return (
         <>
@@ -26,7 +25,7 @@ const Welcome = ()=>{
                     </div>
                     <br></br>
                     <div id="temp-form">
-                        <SignUpForm props={authenticated, setAuthenticated}/>
+                        <SignupFormModal/>
                     </div>
                 </div>
             </div>
