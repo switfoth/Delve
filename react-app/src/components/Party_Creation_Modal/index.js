@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PartyForm from './PartyForm';
-import './button.css'
+import './party-creation-button.css'
 
 function PartyFormModal() {
   const [showModal, setShowModal] = useState(false);

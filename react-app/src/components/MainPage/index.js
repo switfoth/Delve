@@ -5,13 +5,17 @@ import SideBar from "../SideBar";
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 
+// Main Page displays select information based on whether a party or member has been selected.
 const MainPage = ()=>{
   const currentParty = useSelector(state => state.party.currentParty)
+  const parties = useSelector(state => state.party.partyList)
   const currentMember = useSelector(state => state.member.currentMember)
+  const members = useSelector(state => state.member.memberList)
   const items = useSelector(state => state.item.itemList)
 
   const dispatch = useDispatch();
 
+  // Loads items after parameters (party or member) is set.
   const LoadItems = () =>{
     return items.map( item=>{
       return (
@@ -29,6 +33,9 @@ const MainPage = ()=>{
     })
   }
 
+  // Vartiable handles what is displayed when part is chosen but not a member, or member is
+  // chosen - if member is chosen, it only displays member items. With no member selected
+  // it displays unclaimed party loot.
   let mainPageContent;
   if (currentParty === null){
     mainPageContent=(
@@ -37,22 +44,28 @@ const MainPage = ()=>{
       </>
     )
   } else if (currentParty !== null && currentMember === null){
+    let partyName = parties.filter(party => {
+    return party.id === currentParty})
     mainPageContent=(
       <>
+        <div id="party-ledger"><h1>{`Ledger for ${partyName.name}:`}</h1></div>
         <LoadItems/>
         <ItemFormModal/>
       </>
     )
   } else if (currentParty !== null && currentMember !== null){
+    let memberName = members.filter(member => {
+      return member.id === currentMember})
     mainPageContent=(
       <>
+        <div id="member-claim"><h1>{`Loot claimed by ${memberName.name}`}</h1></div>
         <LoadItems/>
         <ItemFormModal/>
       </>
     )
   }
 
-
+  // The sidebar here is used to navigate between members and parties.
     return (
             <>
               <div id='main-page'>
