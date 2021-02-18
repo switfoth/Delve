@@ -33,15 +33,15 @@ const MainPage = ()=>{
     })
   }
   const PartyNameDisplay = () =>{
-    let partyName = (!parties) ? null : parties.filter(party => {
+    let partyName = (!parties) ? null : parties.find(party => {
       return party.id === currentParty})
-    return <div>{`Ledger for ${partyName.name}:`}</div>
+    return <div><h1>{`Ledger for ${partyName.name}:`}</h1></div>
   }
 
   const MemberNameDisplay = () =>{
-    let memberName = (!members) ? null : members.filter(member => {
+    let memberName = (!members) ? null : members.find(member => {
       return member.id === currentMember})
-    return <div>{`Loot claimed by ${memberName.name}:`}</div>
+    return <div><h1>{`Loot claimed by ${memberName.name}:`}</h1></div>
   }
 
   // Variable handles what is displayed when part is chosen but not a member, or member is
@@ -54,7 +54,7 @@ const MainPage = ()=>{
         <div id="choose-party"><h2>Please choose a party!</h2></div>
       </>
     )
-  } else if (currentParty !== null && currentMember === null){
+  } else if (currentParty !== null && currentMember === null || currentMember === undefined){
     mainPageContent=(
       <>
         <PartyNameDisplay/>

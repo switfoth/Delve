@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteSingleItem, editSingleItem, getMemberItems, getPartyItems } from "../../store/item";
+import { deselectMember } from "../../store/member"
 import { getItemTypes } from "../../store/itemtype";
 import "./itemdisplay.css";
 
@@ -20,7 +21,7 @@ function ItemDisplay() {
   const [gold_value, setGold_Value] = useState(selectedItem.gold_value);
   const [silver_value, setSilver_Value] = useState(selectedItem.silver_value);
   const [copper_value, setCopper_Value] = useState(selectedItem.copper_value);
-  let [member_id, setMember_Id] = useState(selectedItem.member_id)
+  const [member_id, setMember_Id] = useState(selectedItem.member_id)
   const [errors, setErrors] = useState([]);
 
 
@@ -36,9 +37,6 @@ function ItemDisplay() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    if(member_id === "Nobody"){
-      member_id = undefined
-    }
     dispatch(
       editSingleItem({
         id,
@@ -50,9 +48,12 @@ function ItemDisplay() {
         silver_value,
         copper_value,
         party_id,
-        member_id
+        member_id: member_id === "Nobody" ? undefined : member_id
       }, party_id, member_id, user_id)
     )
+    if(member_id === "Nobody"){
+      dispatch(deselectMember())
+    }
   };
 
   return (

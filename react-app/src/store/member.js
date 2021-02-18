@@ -26,6 +26,7 @@ const selectMember = (id) => ({
     payload: id
 })
 
+
 export const getPartyMembers = (id) => async (dispatch) => {
     const res = await fetch(`/api/member/${id}`)
     const data = await res.json();
@@ -63,7 +64,7 @@ export const selectCurrentMember = (id) => async (dispatch) => {
     dispatch(selectMember(id))
 }
 
-export const deselectMember = (id) => async (dispatch) => {
+export const deselectMember = () => async (dispatch) => {
     dispatch(selectMember(null))
 }
 
