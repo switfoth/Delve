@@ -6,7 +6,6 @@
     margin: 20px;
     margin-left: 100px;
     margin-right: 100px;
-    width: 800px;
   }
 
   .item-form {
@@ -44,12 +43,21 @@
     height: 200px;
   }
 
+  #item-edit-button {
+    background: white;
+    border: 2px solid black;
+    margin-top: 2px;
+    color: black;
+    height: 35px;
+    width: 100px;
+  }
+
   #item-delete-button {
       background: white;
+      text-align: center;
       border: 2px solid black;
       margin-top: 2px;
       color: black;
-      height: 35px;
+      height: 40px;
       width: 100px;
-      float: right;
   };

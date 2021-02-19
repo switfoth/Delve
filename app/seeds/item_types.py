@@ -1,6 +1,7 @@
-from app.models import db, ItemType
+from app.models import db, ItemType, Item
 
 def seed_item_types():
+
     weapon = ItemType(
         name="Weapon"
     )
@@ -41,6 +42,10 @@ def seed_item_types():
         name="Consumable"
     )
 
+    valuables = ItemType(
+        name="Valuables"
+    )
+
     vehicle = ItemType(
         name="Vehicle"
     )
@@ -59,11 +64,12 @@ def seed_item_types():
     db.session.add(tool)
     db.session.add(scroll)
     db.session.add(consumable)
+    db.session.add(valuables)
     db.session.add(vehicle)
     db.session.add(other)
 
     db.session.commit()
 
-    def undo_item_types():
-        db.session.execute('TRUNCATE item_types;')
-        db.session.commit()
+def undo_item_types():
+    db.session.execute('TRUNCATE item_types RESTART IDENTITY CASCADE;')
+    db.session.commit()

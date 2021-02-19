@@ -54,7 +54,7 @@ const MainPage = ()=>{
         <div id="choose-party"><h2>Please choose a party!</h2></div>
       </>
     )
-  } else if (currentParty !== null && currentMember === null || currentMember === undefined){
+  } else if (currentParty !== null && currentMember === null){
     mainPageContent=(
       <>
         <PartyNameDisplay/>

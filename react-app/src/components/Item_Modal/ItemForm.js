@@ -54,12 +54,12 @@ function ItemForm() {
   return (
     <div className="item-box">
       <h1>Add Item</h1>
-      <form className="item-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+      <form className="item-form" onSubmit={handleSubmit}>
           <div id="new-item-row-1">
             <h3>Item Name</h3>
             <input
@@ -132,7 +132,7 @@ function ItemForm() {
               />
             </div>
             <div>
-              <button type="submit">Add Item</button>
+              <button id="new-item-submit" type="submit">Add Item</button>
             </div>
           </div>
       </form>
