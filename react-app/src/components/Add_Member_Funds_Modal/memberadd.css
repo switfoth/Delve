@@ -1,30 +1,26 @@
-* {
-    box-sizing: border-box;
-  }
-
-  h1 {
+h1 {
     font-family: Arial, Helvetica, sans-serif;
   }
 
-.add-member-fund-form {
+.add-member-fund-display {
     display: flex;
+    flex-direction: column;
+}
+
+.add-member-fund-form {
 }
 
 #member-add-plat-row {
-    display: flex;
-    flex-direction: row;
+
 }
 #member-add-gold-row {
-    display: flex;
-    flex-direction: row;
+
 }
 #member-add-silver-row {
-    display: flex;
-    flex-direction: row;
+
 }
 #member-add-copper-row {
-    display: flex;
-    flex-direction: row;
+
 }
 
 #add-member-fund-confirm {

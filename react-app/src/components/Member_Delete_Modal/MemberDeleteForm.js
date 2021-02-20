@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { editSingleItem } from "../../store/item";
 import { deleteSingleMember, getPartyMembers } from '../../store/member';
+import { getPartyItems } from '../../store/item';
 import "./memberdeleteform.css";
 
 function MemberDeleteForm() {
@@ -24,7 +25,8 @@ function MemberDeleteForm() {
         dispatch(editSingleItem(el))
     })
     dispatch(deleteSingleMember(currentMember))
-    dispatch(getPartyMembers(currentParty))
+      .then(dispatch(getPartyMembers(currentParty)))
+      .then(dispatch(getPartyItems(currentParty)))
   };
 
   return (
