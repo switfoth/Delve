@@ -6,8 +6,6 @@
     margin: 20px;
     margin-left: 100px;
     margin-right: 100px;
-    max-width: 800px;
-    min-width: 200px;
 
   }
 
@@ -15,8 +13,41 @@
     margin: 5px;
   }
 
+  .new-item-row-1{
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+  }
+  .new-item-row-2{
+    display: flex;
+    flex-direction: row;
+  }
+  .new-item-row-3{
+    display: flex;
+    flex-direction: row;
+  }
+  .new-item-row-4{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .item-form {
+    display: flex;
+    flex-direction: row;
+  }
+
   h1 {
     font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #new-item-submit {
+    background: white;
+    border: 2px solid black;
+    margin-top: 2px;
+    color: black;
+    height: 35px;
+    width: 100px;
   }
 
   #item-form-text-box {

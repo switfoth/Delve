@@ -38,21 +38,68 @@
     grid-template-columns: 45% 10% 10% 10% 10% 15%;
 }
 
-#row-item-name {
-}
-
-#row-item-platinum {
-}
-
-#row-item-gold {
-}
-
-#row-item-silver {
-}
-
-#row-item-copper {
-}
-
 #row-item-button {
     margin: -8px;
+}
+
+#party-loot-liquid-wealth-row {
+    padding: 5px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: black solid 3px;
+    font-weight: bolder;
+    font-size: 18pt;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#party-loot-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#member-loot-liquid-wealth-row {
+    padding: 5px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: black solid 3px;
+    font-weight: bolder;
+    font-size: 18pt;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+#member-loot-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.deposit-and-withdraw {
+    padding: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.deposit-button {
+    background: white;
+    border: solid black 2px;
+    color: black;
+    height: 35px;
+    padding: 0 30px;
+    margin: 5px;
+    font-weight: bolder ;
+}
+
+.withdraw-button {
+    background: white;
+    border: solid black 2px;
+    color: black;
+    height: 35px;
+    padding: 0 30px;
+    margin: 5px;
+    font-weight: bolder ;
 }

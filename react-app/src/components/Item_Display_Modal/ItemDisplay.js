@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteSingleItem, editSingleItem, getMemberItems, getPartyItems } from "../../store/item";
+import { deleteSingleItem, editSingleItem } from "../../store/item";
+import { deselectMember } from "../../store/member"
 import { getItemTypes } from "../../store/itemtype";
 import "./itemdisplay.css";
 
 function ItemDisplay() {
   const user_id = useSelector(state => state.session.user.id)
   const currentItem = useSelector(state => state.item.currentItem)
-  const currentMember = useSelector(state => state.member.currentMember)
-  const currentParty = useSelector(state => state.party.currentParty)
   const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
   const dispatch = useDispatch();
 
@@ -20,7 +19,7 @@ function ItemDisplay() {
   const [gold_value, setGold_Value] = useState(selectedItem.gold_value);
   const [silver_value, setSilver_Value] = useState(selectedItem.silver_value);
   const [copper_value, setCopper_Value] = useState(selectedItem.copper_value);
-  let [member_id, setMember_Id] = useState(selectedItem.member_id)
+  const [member_id, setMember_Id] = useState(selectedItem.member_id)
   const [errors, setErrors] = useState([]);
 
 
@@ -36,9 +35,6 @@ function ItemDisplay() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    if(member_id === "Nobody"){
-      member_id = undefined
-    }
     dispatch(
       editSingleItem({
         id,
@@ -50,20 +46,23 @@ function ItemDisplay() {
         silver_value,
         copper_value,
         party_id,
-        member_id
+        member_id: member_id === "Nobody" ? undefined : member_id
       }, party_id, member_id, user_id)
     )
+    if(member_id === "Nobody"){
+      dispatch(deselectMember())
+    }
   };
 
   return (
     <div className="item-display">
       <h1>Item Details</h1>
-      <form className="item-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+      <form className="item-form" onSubmit={handleSubmit}>
           <div id="new-item-row-1">
             <h3>Item Name</h3>
             <input
@@ -145,12 +144,12 @@ function ItemDisplay() {
                 onChange={(e) => setCopper_Value(e.target.value)}
               />
             </div>
+            <div>
+              <button id="item-edit-button" type="submit">EDIT ITEM</button>
+            </div>
             <div id="item-delete-button" onClick={() =>{
               dispatch(deleteSingleItem(selectedItem.id, selectedItem.member_id, selectedItem.party_id))
             }}>DELETE ITEM</div>
-            <div>
-              <button type="submit">Edit Item</button>
-            </div>
           </div>
       </form>
     </div>

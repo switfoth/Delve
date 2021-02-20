@@ -43,7 +43,7 @@ def delete_party(id):
     db.session.commit()
     return {"message": "Party Deleted Successfully"}
 
-@party_routes.route("/update/<int:id>", methods=["PUT"])
+@party_routes.route("/update/<int:id>", methods=["PATCH"])
 def put_update_party(id):
     content = request.json
     party = Party.query.get(id)

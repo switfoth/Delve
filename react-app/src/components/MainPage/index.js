@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import "./mainpage.css";
-import SideBar from "../SideBar";
+import SideBar from '../SideBar/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
+import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
 
 // Main Page displays select information based on whether a party or member has been selected.
 const MainPage = ()=>{
@@ -33,7 +34,66 @@ const MainPage = ()=>{
     })
   }
 
-  // Vartiable handles what is displayed when part is chosen but not a member, or member is
+  const PartyNameDisplay = () =>{
+    let partyName = (!parties) ? null : parties.find(party => {
+      return party.id === currentParty})
+    return <div><h1>{`Ledger for ${partyName.name}:`}</h1></div>
+  }
+
+
+  const PartyLootLiquidWealth = () => {
+    let partyLoot = (!parties) ? null : parties.find(party => {
+      return party.id === currentParty})
+     return(
+     <>
+      <div id="party-loot-liquid-wealth-row">
+        <div id="party-loot-numbers">
+          <div id="party-loot-name">Total Liquid Wealth:</div>
+          <div id="party-loot-platinum">{`Platinum: ${partyLoot.platinum}`}</div>
+          <div id="party-loot-gold">{`Gold: ${partyLoot.gold}`}</div>
+          <div id="party-loot-silver">{`Silver: ${partyLoot.silver}`}</div>
+          <div id="party-loot-copper">{`Copper: ${partyLoot.copper}`}</div>
+        </div>
+        <div className="deposit-and-withdraw">
+          <div className="withdraw-button">Withdraw</div>
+          <div className="deposit-button">Deposit</div>
+        </div>
+      </div>
+     </>
+     )
+  }
+
+  const MemberLootLiquidWealth = () => {
+    let memberLoot = (!members) ? null : members.find(member => {
+      return member.id === currentMember})
+      return(
+        <>
+          <div id="member-loot-liquid-wealth-row">
+          <div id="member-loot-numbers">
+            <div id="member-loot-name">Total Liquid Wealth:</div>
+            <div id="member-loot-platinum">{`Platinum: ${memberLoot.platinum}`}</div>
+            <div id="member-loot-gold">{`Gold: ${memberLoot.gold}`}</div>
+            <div id="member-loot-silver">{`Silver: ${memberLoot.silver}`}</div>
+            <div id="member-loot-copper">{`Copper: ${memberLoot.copper}`}</div>
+            <div id="member-loot-add-money">Add</div>
+            <div id="member-loot-spend-money">Spend</div>
+          </div>
+          <div className="deposit-and-withdraw">
+            <div className="withdraw-button">Withdraw</div>
+            <MemberAddMoneyModal/>
+          </div>
+          </div>
+        </>
+        )
+  }
+
+  const MemberNameDisplay = () =>{
+    let memberName = (!members) ? null : members.find(member => {
+      return member.id === currentMember})
+    return <div><h1>{`Loot claimed by ${memberName.name}:`}</h1></div>
+  }
+
+  // Variable handles what is displayed when part is chosen but not a member, or member is
   // chosen - if member is chosen, it only displays member items. With no member selected
   // it displays unclaimed party loot.
   let mainPageContent;
@@ -44,23 +104,21 @@ const MainPage = ()=>{
       </>
     )
   } else if (currentParty !== null && currentMember === null){
-    let partyName = parties.filter(party => {
-    return party.id === currentParty})
     mainPageContent=(
       <>
-        <div id="party-ledger"><h1>{`Ledger for ${partyName.name}:`}</h1></div>
+        <PartyNameDisplay/>
         <LoadItems/>
         <ItemFormModal/>
+        <PartyLootLiquidWealth/>
       </>
     )
   } else if (currentParty !== null && currentMember !== null){
-    let memberName = members.filter(member => {
-      return member.id === currentMember})
     mainPageContent=(
       <>
-        <div id="member-claim"><h1>{`Loot claimed by ${memberName.name}`}</h1></div>
+        <MemberNameDisplay/>
         <LoadItems/>
         <ItemFormModal/>
+        <MemberLootLiquidWealth/>
       </>
     )
   }

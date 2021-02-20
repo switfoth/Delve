@@ -1,0 +1,33 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.add-member-fund-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-member-fund-form {
+}
+
+#member-add-plat-row {
+
+}
+#member-add-gold-row {
+
+}
+#member-add-silver-row {
+
+}
+#member-add-copper-row {
+
+}
+
+#add-member-fund-confirm {
+    background: white;
+    border: 2px solid black;
+    margin-top: 2px;
+    color: black;
+    height: 35px;
+    width: 100px;
+}

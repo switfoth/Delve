@@ -5,6 +5,7 @@ const SET_MEMBERS = 'member/setMembers'
 const ADD_MEMBER = 'member/addMember'
 const DELETE_MEMBER = 'member/deleteMember'
 const SELECT_MEMBER = 'member/selectMember'
+const UPDATE_MEMBER = 'member/updateMember'
 
 const setMembers = (members) => ({
     type: SET_MEMBERS,
@@ -24,6 +25,11 @@ const deleteMember = (id) => ({
 const selectMember = (id) => ({
     type: SELECT_MEMBER,
     payload: id
+})
+
+const updateMember = (member) => ({
+    type: UPDATE_MEMBER,
+    payload: {member}
 })
 
 export const getPartyMembers = (id) => async (dispatch) => {
@@ -46,6 +52,20 @@ export const addSingleMember = (newMember) => async (dispatch) => {
     }
 }
 
+export const editSingleMember = (memberToUpdate) => async (dispatch) => {
+    const res = await fetch(`/api/member/update/${memberToUpdate.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(memberToUpdate)
+    })
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(updateMember(data))
+    }
+}
+
 export const deleteSingleMember = (memberToDelete) => async (dispatch) => {
     await fetch(`/api/member/delete/${memberToDelete}`, {
         method: "DELETE",
@@ -63,7 +83,7 @@ export const selectCurrentMember = (id) => async (dispatch) => {
     dispatch(selectMember(id))
 }
 
-export const deselectMember = (id) => async (dispatch) => {
+export const deselectMember = () => async (dispatch) => {
     dispatch(selectMember(null))
 }
 
@@ -79,6 +99,19 @@ function reducer (state = initialstate, action) {
             newState = Object.assign({}, state);
             newState.memberList = [...newState.memberList, action.payload]
             return newState;
+        case UPDATE_MEMBER:
+            newState = Object.assign({}, state);
+            const updatedList = newState.memberList.map( member => {
+                if (member.id === action.payload.member.id){
+                    return action.payload.member
+                } else {
+                return member
+                }
+            })
+            newState.memberList = updatedList.filter(member =>{
+                return (!!member)
+            })
+            return newState
         case DELETE_MEMBER:
             newState = Object.assign({}, state);
             newState.memberList = newState.memberList.filter(member => {

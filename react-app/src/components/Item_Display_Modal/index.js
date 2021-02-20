@@ -13,7 +13,7 @@ function ItemDisplayModal(props) {
 
   return (
     <>
-      <button id="button" onClick={() => {
+      <button id="item-display-button" onClick={() => {
         dispatch(selectCurrentItem(item.props))
         setShowModal(true);
         }}>ITEM DETAILS</button>
