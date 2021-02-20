@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from './store/session'
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -13,7 +12,6 @@ function App() {
     (async() => {
       const user = await dispatch(sessionActions.restoreUser())
       if (!user.errors) {
-        setAuthenticated(true);
       }
       setLoaded(true);
     })();

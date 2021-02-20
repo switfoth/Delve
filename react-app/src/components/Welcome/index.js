@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./welcome.css";
 import SignupFormModal from '../Signup_Form_Modal/index.js';
 

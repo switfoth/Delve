@@ -1,4 +1,4 @@
-import { getPartyMembers } from './member'
+import { getPartyMembers, selectCurrentMember } from './member'
 import { getUserParties } from './party'
 
 
@@ -74,8 +74,11 @@ export const editSingleItem = (itemToUpdate, party_id, member_id, user_id) => as
     if (res.ok) {
         const data = await res.json()
         dispatch(updateItem(data))
-        if (itemToUpdate.member_id !== null || itemToUpdate.member_id !== undefined) dispatch(getMemberItems(itemToUpdate.member_id), getPartyMembers(itemToUpdate.party_id))
-        dispatch(getPartyItems(party_id), getUserParties(user_id))
+        if (itemToUpdate.member_id !== null || itemToUpdate.member_id !== undefined) {
+            dispatch(getMemberItems(itemToUpdate.member_id), getPartyMembers(itemToUpdate.party_id), selectCurrentMember(itemToUpdate.member_id) )
+        } else {
+            dispatch(getPartyItems(itemToUpdate.party_id), getUserParties(user_id), selectCurrentMember(itemToUpdate.member_id))
+        }
     }
 }
 
@@ -118,9 +121,8 @@ function reducer (state = initialstate, action) {
                     if(item.member_id === action.payload.item.member_id){
                         return action.payload.item
                     }
-                } else {
-                    return item
                 }
+                return item
             })
             newState.itemList = updatedList.filter(item =>{
                 return (!!item)

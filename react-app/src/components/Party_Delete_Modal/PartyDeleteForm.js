@@ -15,12 +15,14 @@ function PartyDeleteForm() {
       if(member.party_id === currentParty){
           return member
       }
+    return "Members Deleted"
   })
   const currentItems = useSelector(state => state.item.itemList)
   const itemsToDelete = currentItems.map(item =>{
       if(item.party_id === currentParty){
           return item
       }
+    return "Items Deleted"
   })
 
   const handleSubmit = (e) => {

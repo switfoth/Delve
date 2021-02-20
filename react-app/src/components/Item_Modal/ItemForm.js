@@ -14,8 +14,6 @@ function ItemForm() {
   const [copper_value, setCopper_Value] = useState(0);
   const [errors, setErrors] = useState([]);
 
-  const [showModal, setShowModal] = useState(true)
-
   const party_id = useSelector(state => state.party.currentParty)
   let member_id = useSelector(state => state.member.currentMember)
   const itemtypes = useSelector(state => state.itemtype.itemTypeList)
@@ -47,7 +45,6 @@ function ItemForm() {
         member_id
       })
     )
-    setShowModal(false)
   };
 
   return (

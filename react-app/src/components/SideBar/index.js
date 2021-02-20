@@ -21,7 +21,7 @@ const SideBar = ()=>{
     useEffect(()=> {
         dispatch(getUserParties(sessionUser.id));
         dispatch(getItemTypes())
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
     const LoadParties = () =>{
         return parties.map( party=> {

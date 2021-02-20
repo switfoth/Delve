@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import "./mainpage.css";
 import SideBar from '../SideBar/index'
 import ItemFormModal from "../Item_Modal";
@@ -13,8 +13,6 @@ const MainPage = ()=>{
   const currentMember = useSelector(state => state.member.currentMember)
   const members = useSelector(state => state.member.memberList)
   const items = useSelector(state => state.item.itemList)
-
-  const dispatch = useDispatch();
 
   // Loads items after parameters (party or member) is set.
   const LoadItems = () =>{
@@ -39,7 +37,6 @@ const MainPage = ()=>{
       return party.id === currentParty})
     return <div><h1>{`Ledger for ${partyName.name}:`}</h1></div>
   }
-
 
   const PartyLootLiquidWealth = () => {
     let partyLoot = (!parties) ? null : parties.find(party => {

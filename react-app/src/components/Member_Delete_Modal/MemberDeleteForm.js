@@ -15,6 +15,7 @@ function MemberDeleteForm() {
       if(item.member_id === currentMember){
           return item
       }
+    return "Items Moved"
   })
 
   const handleSubmit = (e) => {

@@ -11,7 +11,7 @@ function ItemDisplay() {
   const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
   const dispatch = useDispatch();
 
-  const [id, setId] = useState(selectedItem.id)
+  const id = selectedItem.id
   const [name, setName] = useState(selectedItem.name);
   const [type_id, setTypeId] = useState(selectedItem.type_id);
   const [description, setDescription] = useState(selectedItem.description);
