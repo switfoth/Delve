@@ -151,7 +151,6 @@ function ItemDisplay() {
               dispatch(deleteSingleItem(selectedItem.id, selectedItem.member_id, selectedItem.party_id))
             }}>DELETE ITEM</div>
           </div>
-          <div id="clear"></div>
       </form>
     </div>
   );

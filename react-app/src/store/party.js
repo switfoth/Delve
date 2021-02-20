@@ -2,6 +2,7 @@ const SET_PARTIES = 'party/setParties'
 const ADD_PARTY = 'party/addParty'
 const DELETE_PARTY = 'party/deleteParty'
 const SELECT_PARTY = 'party/selectParty'
+const UPDATE_PARTY = 'party/updateParty'
 
 const setParties = (parties) => ({
     type: SET_PARTIES,
@@ -23,6 +24,11 @@ const selectParty = (id) => ({
     payload: id
 })
 
+const updateParty = (party) => ({
+    type: UPDATE_PARTY,
+    payload: {party}
+})
+
 export const getUserParties = (id) => async (dispatch) => {
     const res = await fetch(`/api/party/user/${id}`)
     const data = await res.json();
@@ -40,6 +46,20 @@ export const addSingleParty = (newParty) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         dispatch(addParty(data))
+    }
+}
+
+export const editSingleParty = (partyToUpdate) => async (dispatch) => {
+    const res = await fetch(`/api/party/update/${partyToUpdate.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(partyToUpdate)
+    })
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(updateParty(data))
     }
 }
 
@@ -74,6 +94,19 @@ function reducer (state = initialstate, action) {
             newState = Object.assign({}, state);
             newState.partyList = [...newState.partyList, action.payload]
             return newState;
+        case UPDATE_PARTY:
+            newState = Object.assign({}, state);
+            const updatedList = newState.partyList.map( party => {
+                if (party.id === action.payload.party.id){
+                    return action.payload.party
+                } else {
+                return party
+                }
+            })
+            newState.partyList = updatedList.filter(party =>{
+                return (!!party)
+            })
+            return newState
         case DELETE_PARTY:
             newState = Object.assign({}, state);
             newState.partyList = newState.partyList.filter(party => {

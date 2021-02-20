@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addSingleItem } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype";
-import { Modal } from '../../context/Modal';
 import "./itemform.css";
 
 function ItemForm() {

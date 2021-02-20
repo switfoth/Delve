@@ -39,14 +39,13 @@ def delete_member(id):
     db.session.commit()
     return {"message": "Party Member Deleted Successfully"}
 
-@member_routes.route('/update/<int:id>', methods=["PUT"])
-def put_update_member():
+@member_routes.route('/update/<int:id>', methods=["PATCH"])
+def patch_update_member(id):
     content = request.json
     member = Member.query.get(id)
-    member.name = content["name"]
     member.platinum = content["platinum"]
     member.gold = content["gold"]
     member.silver = content["silver"]
     member.copper = content["copper"]
     db.session.commit()
-    return redirect(f'/api/member/{id}')
+    return member.to_dict()
