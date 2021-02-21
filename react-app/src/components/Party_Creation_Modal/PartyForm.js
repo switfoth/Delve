@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addSingleParty } from '../../store/party';
-import { Modal } from '../../context/Modal';
 import "./partyform.css";
 
 function PartyForm() {
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(true)
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.session.user)
@@ -21,7 +19,6 @@ function PartyForm() {
         user_id: user.id
       })
     )
-    setShowModal(false)
   };
 
   return (

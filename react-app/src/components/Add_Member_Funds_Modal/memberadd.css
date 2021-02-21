@@ -7,22 +7,6 @@ h1 {
     flex-direction: column;
 }
 
-.add-member-fund-form {
-}
-
-#member-add-plat-row {
-
-}
-#member-add-gold-row {
-
-}
-#member-add-silver-row {
-
-}
-#member-add-copper-row {
-
-}
-
 #add-member-fund-confirm {
     background: white;
     border: 2px solid black;

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import AddMemberMoney from './MemberAddForm';
-import './member-addfund-button.css'
+import './member-addfund-button.css';
 
 
 function MemberAddMoneyModal() {
   const [showModal, setShowModal] = useState(false);
-
 
   return (
     <>

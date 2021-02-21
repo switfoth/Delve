@@ -7,11 +7,10 @@ function AddMemberMoney() {
     const selectedMember = useSelector(state => state.member.memberList.find(ele => ele.id === currentMember))
     const dispatch = useDispatch()
 
-    const [id, setId] = useState(selectedMember.id)
-    const [platinum, setPlatinum] = useState("");
-    const [gold, setGold] = useState("");
-    const [silver, setSilver] = useState("");
-    const [copper, setCopper] = useState("");
+    const [platinum, setPlatinum] = useState(0);
+    const [gold, setGold] = useState(0);
+    const [silver, setSilver] = useState(0);
+    const [copper, setCopper] = useState(0);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,6 +37,7 @@ function AddMemberMoney() {
                         type="number"
                         value={platinum}
                         onChange={(e) => setPlatinum((e.target.value))}
+                        required
                     />
                 </div>
                 <div id="member-add-gold-row">
@@ -47,6 +47,7 @@ function AddMemberMoney() {
                         type="number"
                         value={gold}
                         onChange={(e) => setGold((e.target.value))}
+                        required
                     />
                 </div>
                 <div id="member-add-silver-row">
@@ -56,6 +57,7 @@ function AddMemberMoney() {
                         type="number"
                         value={silver}
                         onChange={(e) => setSilver((e.target.value))}
+                        required
                     />
                 </div>
                 <div id="member-add-copper-row">
@@ -65,6 +67,7 @@ function AddMemberMoney() {
                         type="number"
                         value={copper}
                         onChange={(e) => setCopper((e.target.value))}
+                        required
                     />
                 </div>
                 <div>

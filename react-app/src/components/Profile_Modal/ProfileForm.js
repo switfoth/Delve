@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
 import "./profileform.css";
 
 function ProfileForm({ user }) {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {

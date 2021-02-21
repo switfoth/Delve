@@ -1,10 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import "./mainpage.css";
 import SideBar from '../SideBar/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
+import MemberSubMoneyModal from "../Sub_Member_Funds_Modal";
+import PartyAddMoneyModal from "../Add_Party_Funds_Modal";
+import PartySubMoneyModal from "../Sub_Party_Funds_Modal";
 
 // Main Page displays select information based on whether a party or member has been selected.
 const MainPage = ()=>{
@@ -13,8 +16,6 @@ const MainPage = ()=>{
   const currentMember = useSelector(state => state.member.currentMember)
   const members = useSelector(state => state.member.memberList)
   const items = useSelector(state => state.item.itemList)
-
-  const dispatch = useDispatch();
 
   // Loads items after parameters (party or member) is set.
   const LoadItems = () =>{
@@ -40,7 +41,6 @@ const MainPage = ()=>{
     return <div><h1>{`Ledger for ${partyName.name}:`}</h1></div>
   }
 
-
   const PartyLootLiquidWealth = () => {
     let partyLoot = (!parties) ? null : parties.find(party => {
       return party.id === currentParty})
@@ -55,8 +55,8 @@ const MainPage = ()=>{
           <div id="party-loot-copper">{`Copper: ${partyLoot.copper}`}</div>
         </div>
         <div className="deposit-and-withdraw">
-          <div className="withdraw-button">Withdraw</div>
-          <div className="deposit-button">Deposit</div>
+          <PartySubMoneyModal/>
+          <PartyAddMoneyModal/>
         </div>
       </div>
      </>
@@ -79,7 +79,7 @@ const MainPage = ()=>{
             <div id="member-loot-spend-money">Spend</div>
           </div>
           <div className="deposit-and-withdraw">
-            <div className="withdraw-button">Withdraw</div>
+            <MemberSubMoneyModal/>
             <MemberAddMoneyModal/>
           </div>
           </div>

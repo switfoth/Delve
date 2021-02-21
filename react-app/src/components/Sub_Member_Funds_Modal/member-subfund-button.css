@@ -1,0 +1,11 @@
+#member-subfund-button {
+    align-items: center;
+    text-align: center;
+    background: white;
+    border: 2px solid black;
+    margin-left: 5px;
+    margin-top: 2px;
+    color: black;
+    height: 35px;
+    width: 100px;
+    };

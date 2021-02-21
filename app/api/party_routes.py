@@ -44,13 +44,12 @@ def delete_party(id):
     return {"message": "Party Deleted Successfully"}
 
 @party_routes.route("/update/<int:id>", methods=["PATCH"])
-def put_update_party(id):
+def patch_update_party(id):
     content = request.json
     party = Party.query.get(id)
-    party.name = content["name"]
     party.platinum = content["platinum"]
     party.gold = content["gold"]
     party.silver = content["silver"]
     party.copper = content["copper"]
     db.session.commit()
-    return redirect(f'/api/party/{id}')
+    return party.to_dict()
