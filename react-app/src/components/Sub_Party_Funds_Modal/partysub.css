@@ -1,0 +1,17 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.sub-party-fund-display {
+    display: flex;
+    flex-direction: column;
+}
+
+#sub-party-fund-confirm {
+    background: white;
+    border: 2px solid black;
+    margin-top: 2px;
+    color: black;
+    height: 35px;
+    width: 100px;
+}

@@ -5,6 +5,8 @@ import SideBar from '../SideBar/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
+import PartyAddMoneyModal from "../Add_Party_Funds_Modal";
+import PartySubMoneyModal from "../Sub_Party_Funds_Modal";
 
 // Main Page displays select information based on whether a party or member has been selected.
 const MainPage = ()=>{
@@ -52,8 +54,8 @@ const MainPage = ()=>{
           <div id="party-loot-copper">{`Copper: ${partyLoot.copper}`}</div>
         </div>
         <div className="deposit-and-withdraw">
-          <div className="withdraw-button">Withdraw</div>
-          <div className="deposit-button">Deposit</div>
+          <PartySubMoneyModal/>
+          <PartyAddMoneyModal/>
         </div>
       </div>
      </>
