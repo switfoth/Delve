@@ -1,10 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { editSingleItem } from "../../store/item";
-import { deleteSingleMember, getPartyMembers, selectCurrentMember } from '../../store/member';
+import { deleteSingleMember, deselectMember, getPartyMembers } from '../../store/member';
 import { getPartyItems } from '../../store/item';
 import "./memberdeleteform.css";
-import AddPartyMoney from "../Add_Party_Funds_Modal/PartyAddForm";
 import { editSingleParty } from "../../store/party";
 
 function MemberDeleteForm() {
@@ -43,6 +42,7 @@ function MemberDeleteForm() {
         dispatch(editSingleItem(el))
     })
     dispatch(deleteSingleMember(currentMember))
+      .then(dispatch(deselectMember()))
       .then(dispatch(getPartyMembers(currentParty)))
       .then(dispatch(getPartyItems(currentParty)))
       .then(dispatch(editSingleParty(partyToSend)))
