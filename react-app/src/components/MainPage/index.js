@@ -5,6 +5,7 @@ import SideBar from '../SideBar/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
+import MemberSubMoneyModal from "../Sub_Member_Funds_Modal";
 import PartyAddMoneyModal from "../Add_Party_Funds_Modal";
 import PartySubMoneyModal from "../Sub_Party_Funds_Modal";
 
@@ -78,7 +79,7 @@ const MainPage = ()=>{
             <div id="member-loot-spend-money">Spend</div>
           </div>
           <div className="deposit-and-withdraw">
-            <div className="withdraw-button">Withdraw</div>
+            <MemberSubMoneyModal/>
             <MemberAddMoneyModal/>
           </div>
           </div>
