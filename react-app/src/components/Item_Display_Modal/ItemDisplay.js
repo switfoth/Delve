@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteSingleItem, editSingleItem } from "../../store/item";
-import { deselectMember } from "../../store/member"
+import { deleteSingleItem, editSingleItem, getPartyItems } from "../../store/item";
+import { deselectMember, getPartyMembers } from "../../store/member";
 import { getItemTypes } from "../../store/itemtype";
 import "./itemdisplay.css";
 
@@ -9,6 +9,7 @@ function ItemDisplay() {
   const user_id = useSelector(state => state.session.user.id)
   const currentItem = useSelector(state => state.item.currentItem)
   const selectedItem = useSelector(state => state.item.itemList.find(ele => ele.id === currentItem))
+  const currentParty = useSelector(state => state.party.currentParty)
   const dispatch = useDispatch();
 
   const id = selectedItem.id
@@ -51,6 +52,8 @@ function ItemDisplay() {
     )
     if(member_id === "Nobody"){
       dispatch(deselectMember())
+        .then(dispatch(getPartyMembers(currentParty)))
+        .then(dispatch(getPartyItems(currentParty)))
     }
   };
 
