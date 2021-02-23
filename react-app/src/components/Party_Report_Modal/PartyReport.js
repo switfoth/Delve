@@ -4,9 +4,9 @@ import './party-report.css';
 
 function PartyReport() {
     const currentParty = useSelector(state => state.party.currentParty)
-    const selectedParty = useSelector(state => state.party.partyList.find(party => party.id === currentParty))
-    const partyMembers = useSelector(state => state.member.memberList.find(member => member.party_id === currentParty))
-    const partyItems = useSelector(state => state.item.itemList.find(item => item.party_id === currentParty))
+    const selectedParty = useSelector(state => state.party.partyList.find(ele => ele.id === currentParty))
+    const partyMembers = useSelector(state => state.member.memberList.map(member => member.party_id === currentParty))
+    const partyItems = useSelector(state => state.item.itemList.map(item => item.party_id === currentParty))
 
 
 
@@ -43,13 +43,13 @@ function PartyReport() {
             silv+= parseInt(item.silver_value)
             copp+= parseInt(item.copper_value)
         })
-        return <div>Plat: {this.plat} Gold: {this.gold} Silver: {this.silver} Copper: {this.copper}</div>
+        return <div>Plat: {plat} Gold: {gold} Silver: {silv} Copper: {copp}</div>
     }
 
     const PartyMemberWealthDisplay = () => {
         // A forEach that displays each party member and their liquid wealth
         // as well as the result from the partyMemberMaterialWealth function.
-        partyMembers.forEach(member => {
+         return partyMembers.forEach(member => {
             let matWealth = partyMemberMaterialWeath(member)
             return <div key={member.id} className="member-wealth-row">
                 <div>
@@ -71,11 +71,11 @@ function PartyReport() {
         })
     }
 
-    const AverageWealthPerPartyMember = () => {
+    // const AverageWealthPerPartyMember = () => {
         // Take the party total wealth and divide it by the number of
         // party members + 1: the extra 1 is the party loot.
         // Maybe have a hover-over descriptor explaining this.
-    }
+    // }
 
 return (
     <>
@@ -87,7 +87,7 @@ return (
             <div id="party-report-liquid-wealth"></div>
             <MaterialWealthFinder id="party-report-material-wealth"/>
             <div id="party-report-total-wealth"></div>
-            <AverageWealthPerPartyMember id="party-report-average-wealth"/>
+            {/* <AverageWealthPerPartyMember id="party-report-average-wealth"/> */}
         </div>
     </>
 )
