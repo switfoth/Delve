@@ -65,7 +65,7 @@ const MainPage = ()=>{
 
   const MemberLootLiquidWealth = () => {
     let memberLoot = (!members) ? null : members.find(member => {
-      return member.id === currentMember})
+      return member.id === parseInt(currentMember)})
       return(
         <>
           <div id="member-loot-liquid-wealth-row">
@@ -89,7 +89,7 @@ const MainPage = ()=>{
 
   const MemberNameDisplay = () =>{
     let memberName = (!members) ? null : members.find(member => {
-      return member.id === currentMember})
+      return member.id === parseInt(currentMember)})
     return <div><h1>{`Loot claimed by ${memberName.name}:`}</h1></div>
   }
 

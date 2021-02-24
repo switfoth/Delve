@@ -1,14 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import getAllPartyItems from '../../store/item';
 import './party-report.css';
 
 function PartyReport() {
     const currentParty = useSelector(state => state.party.currentParty)
-    const selectedParty = useSelector(state => state.party.partyList.find(ele => ele.id === currentParty))
-    const partyMembers = useSelector(state => state.member.memberList.map(member => member.party_id === currentParty))
-    const partyItems = useSelector(state => state.item.itemList.map(item => item.party_id === currentParty))
+    const selectedParty = useSelector(state => state.party.partyList.find(ele => ele.id === parseInt(currentParty)))
+    const partyMembers = useSelector(state => state.member.memberList.filter(member => member.party_id === parseInt(currentParty)))
+    const partyItems = useSelector(state => state.item.itemList.filter(item => item.party_id === parseInt(currentParty)))
 
-
+    let dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getAllPartyItems(selectedParty.id))
+    })
 
     function partyMemberMaterialWeath(partyMember) {
         // Find member in partyMembers, use a function that finds
@@ -18,7 +22,8 @@ function PartyReport() {
         let gold = 0
         let silv = 0
         let copp = 0
-        let memberItems = partyItems.map( item => {return item.member_id === partyMember.id} )
+        let memberItems = partyItems.filter( item => {return item.member_id === partyMember.id} )
+        console.log(memberItems, partyItems)
         memberItems.forEach(item => {
             plat+= parseInt(item.platinum_value)
             gold+= parseInt(item.gold_value)
@@ -36,7 +41,7 @@ function PartyReport() {
         let gold = 0
         let silv = 0
         let copp = 0
-        let addItems = partyItems.map( item => {return item.party_id === currentParty && item.member_id === null} )
+        let addItems = partyItems.filter( item => {return item.party_id === currentParty && item.member_id === null} )
         addItems.forEach(item => {
             plat+= parseInt(item.platinum_value)
             gold+= parseInt(item.gold_value)
@@ -49,7 +54,7 @@ function PartyReport() {
     const PartyMemberWealthDisplay = () => {
         // A forEach that displays each party member and their liquid wealth
         // as well as the result from the partyMemberMaterialWealth function.
-         return partyMembers.forEach(member => {
+         return partyMembers.map(member => {
             let matWealth = partyMemberMaterialWeath(member)
             return <div key={member.id} className="member-wealth-row">
                 <div>

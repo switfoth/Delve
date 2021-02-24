@@ -45,6 +45,14 @@ export const getMemberItems = (id) => async (dispatch) => {
     dispatch(setItems(data.items))
 }
 
+export const getAllPartyItems = (id) => async (dispatch) => {
+    const res = await fetch(`/api/item/party/all/${id}`)
+    console.log('store res:', res)
+    const data = await res.json();
+    console.log('store data:', data)
+    dispatch(setItems(data.items))
+}
+
 export const clearItems = () => async (dispatch) => {
     dispatch(setItems([]))
 }
