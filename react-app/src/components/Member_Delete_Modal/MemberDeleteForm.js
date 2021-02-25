@@ -41,15 +41,15 @@ function MemberDeleteForm() {
         el.member_id = null;
         dispatch(editSingleItem(el))
     })
-    dispatch(deleteSingleMember(currentMember))
+    dispatch(deleteSingleMember(parseInt(currentMember)))
       .then(dispatch(deselectMember()))
-      .then(dispatch(getPartyMembers(currentParty)))
-      .then(dispatch(getPartyItems(currentParty)))
+      .then(dispatch(getPartyMembers(parseInt(currentParty))))
+      .then(dispatch(getPartyItems(parseInt(currentParty))))
       .then(dispatch(editSingleParty(partyToSend)))
   };
 
   return (
-    <div className="member-box">
+    <div className="member-delete-box">
       <h1>Are you sure?</h1>
       <form className="member-delete-form" onSubmit={handleSubmit}>
         <h3>When you delete a member, all of their items will be added back to party loot.</h3>

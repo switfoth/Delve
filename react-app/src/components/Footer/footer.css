@@ -3,6 +3,7 @@
     align-items: center;
     border: solid black 2px;
     object-fit: contain;
+    font-size: 18pt;
     display: flex;
 }
 

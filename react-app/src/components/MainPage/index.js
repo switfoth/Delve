@@ -101,7 +101,7 @@ const MainPage = ()=>{
   if (currentParty === null){
     mainPageContent=(
       <>
-        <div id="choose-party"><h2>Please choose a party!</h2></div>
+        <div id="choose-party"><h2>Which party is this regarding?</h2></div>
         <transition name="bookkeeper slide">
           <img id="bookkeeper" src="https://i.imgur.com/1gO3YtI.png" alt="Image of the Bookkeeper"></img>
         </transition>

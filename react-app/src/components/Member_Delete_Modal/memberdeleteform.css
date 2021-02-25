@@ -1,0 +1,15 @@
+.member-delete-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        font-family: 'IM Fell French Canon SC', serif;
+    }
+
+.member-delete-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
