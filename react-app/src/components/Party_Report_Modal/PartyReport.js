@@ -12,7 +12,7 @@ function PartyReport() {
     let dispatch = useDispatch()
     useEffect(() => {
         dispatch(getAllPartyItems(selectedParty.id))
-    })
+    }, [dispatch]);
 
     function partyMemberMaterialWeath(partyMember) {
         // Find member in partyMembers, use a function that finds

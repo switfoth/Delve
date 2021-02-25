@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PartyReport from './PartyReport';
 import './party-report-button.css'
+import { getAllPartyItems } from '../../store/item';
+import { useDispatch, useSelector } from 'react-redux';
 
 function PartyReportModal() {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const currentParty = useSelector(state => state.party.currentParty)
 
 
   return (

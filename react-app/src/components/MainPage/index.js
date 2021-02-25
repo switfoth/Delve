@@ -9,6 +9,7 @@ import MemberSubMoneyModal from "../Sub_Member_Funds_Modal";
 import PartyAddMoneyModal from "../Add_Party_Funds_Modal";
 import PartySubMoneyModal from "../Sub_Party_Funds_Modal";
 
+
 // Main Page displays select information based on whether a party or member has been selected.
 const MainPage = ()=>{
   const currentParty = useSelector(state => state.party.currentParty)
@@ -101,6 +102,9 @@ const MainPage = ()=>{
     mainPageContent=(
       <>
         <div id="choose-party"><h2>Please choose a party!</h2></div>
+        <transition name="bookkeeper slide">
+          <img id="bookkeeper" src="https://i.imgur.com/1gO3YtI.png" alt="Image of the Bookkeeper"></img>
+        </transition>
       </>
     )
   } else if (currentParty !== null && currentMember === null){

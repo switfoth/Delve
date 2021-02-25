@@ -21,3 +21,17 @@
     align-items: center;
     text-align: center;
 }
+
+#lewt-welcome{
+    animation: 0.5s ease slideInFromBottom;
+}
+
+@keyframes slideInFromBottom{
+    0%{
+        transform: translateY(1000px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}

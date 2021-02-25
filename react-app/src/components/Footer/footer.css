@@ -1,5 +1,28 @@
 #footer {
     box-sizing: border-box;
+    align-items: center;
     border: solid black 2px;
-    text-align: end;
+    object-fit: contain;
+    display: flex;
+}
+
+#linkedin {
+    padding-top: 5px;
+    padding-left: 5px;
+    height: 50px;
+    object-fit: contain;
+}
+
+#twitter {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 50px;
+    object-fit: contain;
+}
+
+#github {
+    padding-top: 5px;
+    height: 50px;
+    object-fit: contain;
 }

@@ -17,6 +17,23 @@
     width: 0px;
 }
 
+#bookkeeper {
+    position:fixed;
+    bottom: 0px;
+    right: 0px;
+    animation: 1s ease slideInFromRight;
+}
+
+@keyframes slideInFromRight {
+    0%{
+        transform: translateX(800px);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
 #choose-party {
     margin-left: 50px;
 }
