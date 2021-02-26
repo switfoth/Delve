@@ -21,7 +21,5 @@
 #modal-content {
   border: black solid 4px;
   position: absolute;
-  display:flex;
-  flex-direction: row;
   background-color:white;
 }

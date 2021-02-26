@@ -43,7 +43,7 @@ const SideBar = ()=>{
             <div className="party-block" onClick={()=>{
                 dispatch(deselectParty())
                 dispatch(clearItems())
-            }}>Back to Party List</div>
+            }}>Back to Main Menu</div>
         )
     }
 
@@ -64,7 +64,7 @@ const SideBar = ()=>{
             <div className="party-block" onClick={()=>{
                 dispatch(deselectMember())
                 dispatch(getPartyItems(currentParty))
-            }}>Back to Member List</div>
+            }}>Back to Party Ledger</div>
         )
     }
 

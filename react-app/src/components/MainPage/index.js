@@ -103,7 +103,7 @@ const MainPage = ()=>{
       <>
         <div id="choose-party"><h2>Which party is this regarding?</h2></div>
         <transition name="bookkeeper slide">
-          <img id="bookkeeper" src="https://i.imgur.com/1gO3YtI.png" alt="Image of the Bookkeeper"></img>
+          <img id="bookkeeper" src="https://i.imgur.com/1gO3YtI.png" alt="Kobold Bookkeeper"></img>
         </transition>
       </>
     )
