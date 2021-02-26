@@ -4,7 +4,7 @@ import { editSingleMember } from "../../store/member";
 
 function AddMemberMoney() {
     const currentMember = useSelector(state => state.member.currentMember)
-    const selectedMember = useSelector(state => state.member.memberList.find(ele => ele.id === currentMember))
+    const selectedMember = useSelector(state => state.member.memberList.find(ele => ele.id === parseInt(currentMember)))
     const dispatch = useDispatch()
 
     const [platinum, setPlatinum] = useState(0);

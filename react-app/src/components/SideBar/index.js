@@ -8,6 +8,7 @@ import PartyFormModal from '../Party_Creation_Modal/index';
 import PartyDeleteModal from '../Party_Delete_Modal/index'
 import MemberFormModal from '../Member_Creation_Modal/index';
 import MemberDeleteModal from '../Member_Delete_Modal/index';
+import PartyReportModal from '../Party_Report_Modal/index';
 import "./sidebar.css";
 
 const SideBar = ()=>{
@@ -42,7 +43,7 @@ const SideBar = ()=>{
             <div className="party-block" onClick={()=>{
                 dispatch(deselectParty())
                 dispatch(clearItems())
-            }}>Back to Party List</div>
+            }}>Back to Main Menu</div>
         )
     }
 
@@ -63,7 +64,7 @@ const SideBar = ()=>{
             <div className="party-block" onClick={()=>{
                 dispatch(deselectMember())
                 dispatch(getPartyItems(currentParty))
-            }}>Back to Member List</div>
+            }}>Back to Party Ledger</div>
         )
     }
 
@@ -81,6 +82,7 @@ const SideBar = ()=>{
                 <PartyBackButton/>
                 <LoadMembers/>
                 <MemberFormModal/>
+                <PartyReportModal/>
                 <PartyDeleteModal/>
             </>
         );

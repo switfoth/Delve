@@ -1,5 +1,10 @@
-* {
-    box-sizing: border-box;
+
+
+  .item-display{
+    margin: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-family: 'IM Fell French Canon SC', serif;
   }
 
   .item-form {
@@ -26,10 +31,6 @@
 
   .item-form > * {
     margin: 5px;
-  }
-
-  h1 {
-    font-family: Arial, Helvetica, sans-serif;
   }
 
   #item-form-text-box {

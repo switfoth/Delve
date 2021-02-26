@@ -4,7 +4,7 @@ import { editSingleParty } from "../../store/party";
 
 function SubPartyMoney() {
     const currentParty = useSelector(state => state.party.currentParty)
-    const selectedParty = useSelector(state => state.party.partyList.find(ele => ele.id === currentParty))
+    const selectedParty = useSelector(state => state.party.partyList.find(ele => ele.id === parseInt(currentParty)))
     const dispatch = useDispatch();
     const name = selectedParty.name
 

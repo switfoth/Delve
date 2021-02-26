@@ -11,11 +11,13 @@
 }
 
 #logout-button {
+    box-sizing: border-box;
     align-items: center;
     padding: 7px;
     text-align: center;
     background: white;
     border: 2px solid black;
+    font-weight: bolder;
     margin-left: 5px;
     margin-top: 2px;
     color: black;

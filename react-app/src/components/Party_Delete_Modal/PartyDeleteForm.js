@@ -27,23 +27,17 @@ function PartyDeleteForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    membersToDelete.forEach( el =>{
-        dispatch(deleteSingleMember(el.id))
-    })
-    itemsToDelete.forEach( el =>{
-        dispatch(deleteSingleItem(el.id))
-    })
     dispatch(deleteSingleParty(currentParty, user.id))
     dispatch(deselectParty())
     dispatch(getUserParties(user.id))
   };
 
   return (
-    <div className="party-box">
+    <div className="party-delete-box">
       <h1>Are you sure?</h1>
       <form className="party-delete-form" onSubmit={handleSubmit}>
         <h3>When you delete a party, ALL members and items will also be deleted.</h3>
-        <button type="submit">Delete Party</button>
+        <button id="party-delete-form-button" type="submit">Delete Party</button>
       </form>
     </div>
   );

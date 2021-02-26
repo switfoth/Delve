@@ -28,7 +28,7 @@ function ItemForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
+    if (type_id === null) setErrors(["Please select an item category."])
     if (member_id === null){
       member_id = undefined
     }

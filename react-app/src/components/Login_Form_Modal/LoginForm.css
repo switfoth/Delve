@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 
 .login-container {
   display: flex;
@@ -17,10 +15,10 @@
   align-items: center;
 }
 
-.login-form > *{
-  margin: 10px;
+#login-form-title {
+  font-family: 'IM Fell French Canon SC', serif;
 }
 
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
+.login-form > *{
+  margin: 10px;
 }

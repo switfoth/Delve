@@ -9,6 +9,7 @@ import MemberSubMoneyModal from "../Sub_Member_Funds_Modal";
 import PartyAddMoneyModal from "../Add_Party_Funds_Modal";
 import PartySubMoneyModal from "../Sub_Party_Funds_Modal";
 
+
 // Main Page displays select information based on whether a party or member has been selected.
 const MainPage = ()=>{
   const currentParty = useSelector(state => state.party.currentParty)
@@ -65,7 +66,7 @@ const MainPage = ()=>{
 
   const MemberLootLiquidWealth = () => {
     let memberLoot = (!members) ? null : members.find(member => {
-      return member.id === currentMember})
+      return member.id === parseInt(currentMember)})
       return(
         <>
           <div id="member-loot-liquid-wealth-row">
@@ -75,8 +76,6 @@ const MainPage = ()=>{
             <div id="member-loot-gold">{`Gold: ${memberLoot.gold}`}</div>
             <div id="member-loot-silver">{`Silver: ${memberLoot.silver}`}</div>
             <div id="member-loot-copper">{`Copper: ${memberLoot.copper}`}</div>
-            <div id="member-loot-add-money">Add</div>
-            <div id="member-loot-spend-money">Spend</div>
           </div>
           <div className="deposit-and-withdraw">
             <MemberSubMoneyModal/>
@@ -89,7 +88,7 @@ const MainPage = ()=>{
 
   const MemberNameDisplay = () =>{
     let memberName = (!members) ? null : members.find(member => {
-      return member.id === currentMember})
+      return member.id === parseInt(currentMember)})
     return <div><h1>{`Loot claimed by ${memberName.name}:`}</h1></div>
   }
 
@@ -100,7 +99,10 @@ const MainPage = ()=>{
   if (currentParty === null){
     mainPageContent=(
       <>
-        <div id="choose-party"><h2>Please choose a party!</h2></div>
+        <div id="choose-party"><h2>Which party is this regarding?</h2></div>
+        <transition name="bookkeeper slide">
+          <img id="bookkeeper" src="https://i.imgur.com/1gO3YtI.png" alt="Kobold Bookkeeper"></img>
+        </transition>
       </>
     )
   } else if (currentParty !== null && currentMember === null){

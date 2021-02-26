@@ -10,7 +10,10 @@
     justify-self: center;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+
 #welcome-message{
+    font-family: 'Junge', serif;
     justify-self: center;
     align-items: center;
 }
@@ -20,4 +23,18 @@
     align-content: center;
     align-items: center;
     text-align: center;
+}
+
+#lewt-welcome{
+    animation: 0.5s ease slideInFromBottom;
+}
+
+@keyframes slideInFromBottom{
+    0%{
+        transform: translateY(1000px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
 }

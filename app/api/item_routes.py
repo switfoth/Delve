@@ -23,6 +23,13 @@ def items_by_party(id):
         )
     return {"items": [item.to_dict() for item in items]}
 
+@item_routes.route('/party/all/<int:id>')
+def all_party_items(id):
+    items = Item.query.filter(
+        Item.party_id == id
+        )
+    return {"items": [item.to_dict() for item in items]}
+
 @item_routes.route('/member/<int:id>')
 def items_by_member(id):
     items = Item.query.filter(Item.member_id == id)

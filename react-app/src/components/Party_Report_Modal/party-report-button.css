@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
-
-#delete-member-button {
+#party-report-button {
     border: solid black 3px;
     text-align: center;
     font-size: 20pt;
@@ -10,3 +8,7 @@
     background-color: white;
     font-family: 'IM Fell French Canon SC', serif;
     };
+
+#party-report-modal-box {
+    overflow-y: scroll;
+}
