@@ -148,7 +148,7 @@ function PartyReport() {
 
     return (
         <div>
-            <h1>Report for {selectedParty.name}:</h1>
+            <h1 id="report-title">Report for {selectedParty.name}:</h1>
                 <div id="party-report">
                     <div>
                     </div>

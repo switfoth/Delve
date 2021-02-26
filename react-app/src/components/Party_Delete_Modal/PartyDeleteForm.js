@@ -27,12 +27,6 @@ function PartyDeleteForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    membersToDelete.forEach( el =>{
-        dispatch(deleteSingleMember(el.id))
-    })
-    itemsToDelete.forEach( el =>{
-        dispatch(deleteSingleItem(el.id))
-    })
     dispatch(deleteSingleParty(currentParty, user.id))
     dispatch(deselectParty())
     dispatch(getUserParties(user.id))

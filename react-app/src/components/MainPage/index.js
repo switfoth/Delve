@@ -76,8 +76,6 @@ const MainPage = ()=>{
             <div id="member-loot-gold">{`Gold: ${memberLoot.gold}`}</div>
             <div id="member-loot-silver">{`Silver: ${memberLoot.silver}`}</div>
             <div id="member-loot-copper">{`Copper: ${memberLoot.copper}`}</div>
-            <div id="member-loot-add-money">Add</div>
-            <div id="member-loot-spend-money">Spend</div>
           </div>
           <div className="deposit-and-withdraw">
             <MemberSubMoneyModal/>
