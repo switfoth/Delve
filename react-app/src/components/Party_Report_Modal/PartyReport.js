@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import getAllPartyItems from '../../store/item';
+import { getAllPartyItems } from '../../store/item';
 import './party-report.css';
 
 function PartyReport() {
@@ -10,9 +10,10 @@ function PartyReport() {
     const partyItems = useSelector(state => state.item.itemList.filter(item => item.party_id === parseInt(currentParty)))
 
     let dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(getAllPartyItems(selectedParty.id))
-    }, [dispatch]);
+    }, [selectedParty]);
 
     function partyMemberMaterialWeath(partyMember) {
         // Find member in partyMembers, use a function that finds
@@ -23,7 +24,6 @@ function PartyReport() {
         let silv = 0
         let copp = 0
         let memberItems = partyItems.filter( item => {return item.member_id === partyMember.id} )
-        console.log(memberItems, partyItems)
         memberItems.forEach(item => {
             plat+= parseInt(item.platinum_value)
             gold+= parseInt(item.gold_value)
@@ -48,7 +48,16 @@ function PartyReport() {
             silv+= parseInt(item.silver_value)
             copp+= parseInt(item.copper_value)
         })
-        return <div>Plat: {plat} Gold: {gold} Silver: {silv} Copper: {copp}</div>
+        return (
+            <>
+                <div id="party-report-material-wealth"><h2>Party Material Wealth:</h2>
+                    <div>Plat: {plat} Gold: {gold} Silver: {silv} Copper: {copp}</div>
+                </div>
+                <div id="party-report-liquid-wealth"><h2>Party Liquid Wealth:</h2>
+                    <div>Plat: {selectedParty.platinum} Gold: {selectedParty.gold} Silver: {selectedParty.silver} Copper: {selectedParty.copper}</div>
+                </div>
+            </>
+        )
     }
 
     const PartyMemberWealthDisplay = () => {
@@ -76,15 +85,52 @@ function PartyReport() {
         })
     }
 
-    // const AverageWealthPerPartyMember = () => {
+    function totalPartyAndMemberWealthCalculator(sParty, pMembers, pItems){
+        let plat = 0
+        let gold = 0
+        let silv = 0
+        let copp = 0
+        let addItems = pItems.filter( item => {return item.party_id} )
+        console.log(addItems)
+        addItems.forEach(item => {
+            plat+= parseInt(item.platinum_value)
+            gold+= parseInt(item.gold_value)
+            silv+= parseInt(item.silver_value)
+            copp+= parseInt(item.copper_value)
+        })
+        console.log("after addItems added:", plat, gold, silv, copp)
+        let addLiquid = pMembers.filter( member => {return member.party_id} )
+        console.log(addLiquid)
+        addLiquid.forEach(member => {
+            plat+= parseInt(member.platinum)
+            gold+= parseInt(member.gold)
+            silv+= parseInt(member.silver)
+            copp+= parseInt(member.copper)
+        })
+        console.log("after addLiquid added:", plat, gold, silv, copp)
+        return {plat: (plat + sParty.platinum), gold: (sParty.gold), silv: (sParty.silver), copp: (sParty.copper)}
+
+
+    }
+
+    const AverageWealthPerPartyMember = () => {
         // Take the party total wealth and divide it by the number of
         // party members + 1: the extra 1 is the party loot.
         // Maybe have a hover-over descriptor explaining this.
-    // }
+        let partySums = totalPartyAndMemberWealthCalculator(selectedParty, partyMembers, partyItems)
+        let divider = partyMembers.length
+        return (
+            <>
+                <div id="party-report-party-worth"><h2>Party Overall Worth:</h2>
+                    <div>Plat: {partySums.plat}, Gold: {partySums.gold}, Silver: {partySums.silv}, Copper: {partySums.copp}</div>
+                </div>
+            </>
+        )
+    }
 
 return (
     <>
-        <div className="party-report">
+        <div id="party-report">
             <div>
                 <h1>Report for {selectedParty.name}:</h1>
             </div>
@@ -92,7 +138,7 @@ return (
             <div id="party-report-liquid-wealth"></div>
             <MaterialWealthFinder id="party-report-material-wealth"/>
             <div id="party-report-total-wealth"></div>
-            {/* <AverageWealthPerPartyMember id="party-report-average-wealth"/> */}
+            <AverageWealthPerPartyMember id="party-report-average-wealth"/>
         </div>
     </>
 )

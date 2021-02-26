@@ -2,8 +2,11 @@
     box-sizing: border-box;
   }
 
-  .party-report {
-    display: flex;
+  #party-report {
+    margin: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-family: 'IM Fell French Canon SC', serif;
   }
 
   #party-report-members{

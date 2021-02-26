@@ -46,11 +46,11 @@ export const getMemberItems = (id) => async (dispatch) => {
 }
 
 export const getAllPartyItems = (id) => async (dispatch) => {
-    const res = await fetch(`/api/item/party/all/${id}`)
-    console.log('store res:', res)
-    const data = await res.json();
-    console.log('store data:', data)
-    dispatch(setItems(data.items))
+    if(id){
+        const res = await fetch(`/api/item/party/all/${id}`)
+        const data = await res.json();
+        dispatch(setItems(data.items))
+    }
 }
 
 export const clearItems = () => async (dispatch) => {

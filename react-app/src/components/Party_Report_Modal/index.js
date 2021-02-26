@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PartyReport from './PartyReport';
 import './party-report-button.css'
-import { getAllPartyItems } from '../../store/item';
+import { getPartyItems } from '../../store/item';
 import { useDispatch, useSelector } from 'react-redux';
 
 function PartyReportModal() {

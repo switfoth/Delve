@@ -1,6 +1,15 @@
 .add-party-fund-display {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    margin: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-family: 'IM Fell French Canon SC', serif;
+}
+
+.add-party-fund-form > * {
+    margin: 5px;
 }
 
 #add-party-fund-confirm {
