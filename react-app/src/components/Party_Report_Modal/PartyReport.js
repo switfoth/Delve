@@ -13,7 +13,7 @@ function PartyReport() {
 
     useEffect(() => {
         dispatch(getAllPartyItems(selectedParty.id))
-    }, [selectedParty]);
+    }, [dispatch]);
 
     function partyMemberMaterialWeath(partyMember) {
         // Find member in partyMembers, use a function that finds
@@ -50,12 +50,15 @@ function PartyReport() {
         })
         return (
             <>
-                <div id="party-report-material-wealth"><h2>Party Material Wealth:</h2>
+                <div>
+                    <div id="party-report-material-wealth"><h2>Party Material Wealth:</h2></div>
                     <div>Plat: {plat} Gold: {gold} Silver: {silv} Copper: {copp}</div>
                 </div>
-                <div id="party-report-liquid-wealth"><h2>Party Liquid Wealth:</h2>
+                <div>
+                    <div id="party-report-liquid-wealth"><h2>Party Liquid Wealth:</h2></div>
                     <div>Plat: {selectedParty.platinum} Gold: {selectedParty.gold} Silver: {selectedParty.silver} Copper: {selectedParty.copper}</div>
                 </div>
+
             </>
         )
     }
@@ -67,6 +70,7 @@ function PartyReport() {
             let matWealth = partyMemberMaterialWeath(member)
             return <div key={member.id} className="member-wealth-row">
                 <div>
+                    <div><h3>{member.name}</h3></div>
                     <div id="member-wealth-liq-row">
                         Liquid Wealth - P: {member.platinum} G: {member.gold} S: {member.silver} C: {member.copper}
                     </div>
@@ -91,6 +95,7 @@ function PartyReport() {
         let silv = 0
         let copp = 0
         let addItems = pItems.filter( item => {return item.party_id} )
+        let addLiquid = pMembers.filter( member => {return member.party_id} )
         console.log(addItems)
         addItems.forEach(item => {
             plat+= parseInt(item.platinum_value)
@@ -99,7 +104,6 @@ function PartyReport() {
             copp+= parseInt(item.copper_value)
         })
         console.log("after addItems added:", plat, gold, silv, copp)
-        let addLiquid = pMembers.filter( member => {return member.party_id} )
         console.log(addLiquid)
         addLiquid.forEach(member => {
             plat+= parseInt(member.platinum)
@@ -108,7 +112,7 @@ function PartyReport() {
             copp+= parseInt(member.copper)
         })
         console.log("after addLiquid added:", plat, gold, silv, copp)
-        return {plat: (plat + sParty.platinum), gold: (sParty.gold), silv: (sParty.silver), copp: (sParty.copper)}
+        return {plat: (plat + sParty.platinum), gold: (gold + sParty.gold), silv: (silv + sParty.silver), copp: (copp + sParty.copper)}
 
 
     }
@@ -118,29 +122,50 @@ function PartyReport() {
         // party members + 1: the extra 1 is the party loot.
         // Maybe have a hover-over descriptor explaining this.
         let partySums = totalPartyAndMemberWealthCalculator(selectedParty, partyMembers, partyItems)
-        let divider = partyMembers.length
+        let divider = partyMembers.length + 1
+        function fundDivider(sums, divide){
+            let result = {}
+            result.plat = Math.floor(sums.plat / divide)
+            result.gold = Math.floor(sums.gold / divide)
+            result.silv = Math.floor(sums.silv / divide)
+            result.copp = Math.floor(sums.copp / divide)
+            console.log("fundDivider result:", result)
+            return result
+        }
+        let partyAverage = fundDivider(partySums, divider)
         return (
             <>
                 <div id="party-report-party-worth"><h2>Party Overall Worth:</h2>
-                    <div>Plat: {partySums.plat}, Gold: {partySums.gold}, Silver: {partySums.silv}, Copper: {partySums.copp}</div>
+                    <div>Plat: {partySums.plat}</div>
+                    <div>Gold: {partySums.gold}</div>
+                    <div>Silver: {partySums.silv}</div>
+                    <div>Copper: {partySums.copp}</div>
+                </div>
+                <div id="average-wealth-per-party-member"><h2>Target Average per Party Member and Party Stash:</h2>
+                    <div>Plat: {partyAverage.plat}</div>
+                    <div>Gold: {partyAverage.gold}</div>
+                    <div>Silver: {partyAverage.silv}</div>
+                    <div>Copper: {partyAverage.copp}</div>
                 </div>
             </>
         )
     }
 
 return (
-    <>
         <div id="party-report">
             <div>
                 <h1>Report for {selectedParty.name}:</h1>
             </div>
-            <PartyMemberWealthDisplay id="party-report-members"/>
-            <div id="party-report-liquid-wealth"></div>
-            <MaterialWealthFinder id="party-report-material-wealth"/>
-            <div id="party-report-total-wealth"></div>
-            <AverageWealthPerPartyMember id="party-report-average-wealth"/>
+            <div id="#party-report-members">
+                <PartyMemberWealthDisplay/>
+            </div>
+            <div id="party-report-material-wealth">
+                <MaterialWealthFinder/>
+            </div>
+            <div id="party-report-average-wealth">
+                <AverageWealthPerPartyMember/>
+            </div>
         </div>
-    </>
 )
 }
 

@@ -8,3 +8,7 @@
     background-color: white;
     font-family: 'IM Fell French Canon SC', serif;
     };
+
+#party-report-modal-box {
+    overflow-y: scroll;
+}
