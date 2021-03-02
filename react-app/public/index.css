@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
-#body {
+html{
+    height:100%;
+    font-size:14pt;
+}
+
+body {
     padding: 0%;
     height: 100vh;
     margin-top: 0px;
     margin-bottom: 0px;
-    display: flex;
     overflow-y: hidden;
+    background-image: url('https://i.imgur.com/5vRYH79.png');
+    height:100%;
+    padding:0%;
 }

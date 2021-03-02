@@ -7,8 +7,9 @@ const Welcome = ()=>{
     return (
         <>
             <div id="welcome-page">
-                <div id="left-column"></div>
+                <div id="left-column">
                     <img id="lewt-welcome" src="https://i.imgur.com/7xzMLzi.png" alt="Lewt the Kobold Adventurer"></img>
+                </div>
                 <div id="right-column">
                     <div id="welcome-message">
                         <h1>Welcome to Delve!</h1>
