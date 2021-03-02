@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
 #profile-button {
-  background: white;
-  border: 2px solid black;
-  margin-top: 2px;
-  color: black;
-  font-weight: bolder;
-  height: 35px;
-  width: 100px;
-  font-family: 'IM Fell French Canon SC', serif;
+  box-sizing: border-box;
+    align-items: center;
+    background: white;
+    border: 2px solid black;
+    margin-right: auto;
+    margin-left: 5px;
+    color: black;
+    height: 95%;
+    width: 10%;
+    float: left;
+    padding: .25em;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.25rem;
+    font-family: 'IM Fell French Canon SC', serif;
   };
