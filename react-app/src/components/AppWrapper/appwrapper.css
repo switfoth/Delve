@@ -1,5 +1,4 @@
 #app-wrapper {
-    max-width: 2000px;
     margin-left: 12%;
     margin-right: 12%;
     border: solid black 6px;
@@ -10,4 +9,15 @@
     display: grid;
     grid-template-rows: 10% 4% 78% 8%;
     overflow-y: hidden;
+}
+
+@media (max-width: 600px) {
+    #app-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y: auto;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }

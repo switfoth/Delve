@@ -3,8 +3,9 @@
 
 #main-page {
     border: solid black 2px;
-    display: grid;
-    grid-template-columns: 23% 1% 76%;
+    /* display: grid;
+    grid-template-columns: 23% 1% 76%; */
+    display: flex;
 }
 
 
@@ -12,6 +13,7 @@
     float: left;
     overflow-x: hidden;
     overflow-y: auto;
+    width: 20%;
 }
 
 #divider-bar {
@@ -46,16 +48,21 @@
     font-family: 'Tillana', cursive;;
 }
 
+h1 {
+    margin-left: 10px;
+}
+
 #main-container {
     float: right;
     overflow-x: hidden;
     overflow-y: auto;
     font-family: 'Tillana', cursive;;
+    width: 80%;
 }
 
 .item-row {
     padding: 4px;
-    margin-left: 0px;
+    margin-left: 5px;
     box-sizing: border-box;
     border-bottom: black solid 1px;
     font-size: 20pt;

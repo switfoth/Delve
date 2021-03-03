@@ -46,3 +46,23 @@
         transform: translateY(0);
     }
 }
+
+@media (max-width: 600px) {
+    #left-column{
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+    }
+    #lewt-welcome{
+        visibility: hidden;
+    }
+    #right-column{
+        width: 100%;
+    }
+    #welcome-message{
+        font-size: 1.25rem;
+    }
+    #welcome-page{
+        flex-direction: column;
+    }
+}

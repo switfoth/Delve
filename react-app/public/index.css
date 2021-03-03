@@ -16,3 +16,17 @@ body {
     height:100%;
     padding:0%;
 }
+
+/* Media Queries Below */
+
+@media (max-width: 600px) {
+    html{
+        font-size:8pt;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body{
+        width: 100%;
+    }
+}

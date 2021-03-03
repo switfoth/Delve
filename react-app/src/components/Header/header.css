@@ -3,7 +3,7 @@
     box-sizing: border-box;
     border: solid black 2px;
     font-weight: bolder;
-    font-size: 28pt;
+    font-size: 2rem;
     font-family: 'Junge', serif;
     font-weight: 700;
     display: flex;
@@ -22,4 +22,10 @@
     height: 100px;
     margin-right: 50px;
     margin-top:15px
+}
+
+@media (max-width: 600px) {
+    #gem-logo{
+        height: 50px;
+    }
 }
