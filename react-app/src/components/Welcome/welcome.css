@@ -4,6 +4,8 @@
     justify-content: center;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 #temp-form{
@@ -16,7 +18,7 @@
     font-family: 'Junge', serif;
     justify-self: center;
     align-items: center;
-    font-size: 1.4rem;
+    font-size: 1vw;
 }
 
 #left-column{
