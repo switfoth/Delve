@@ -31,3 +31,9 @@ body {
         margin: 0px;
     }
 }
+
+.delve-button:hover,
+.delve-button:focus {
+    background-color: black;
+    color: white;
+}

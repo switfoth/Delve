@@ -9,7 +9,7 @@ function ItemFormModal() {
 
   return (
     <>
-      <button id="new-item-button" className="button" onClick={() => setShowModal(true)}>ADD ITEM</button>
+      <button id="new-item-button" className="delve-button" onClick={() => setShowModal(true)}>ADD ITEM</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ItemForm/>

@@ -28,7 +28,7 @@ const SideBar = ()=>{
         return parties.map( party=> {
             return (
                 <>
-                    <div key={party.id} className="party-block" onClick={() => {
+                    <div key={party.id} className="party-block" className="delve-button" onClick={() => {
                         dispatch(selectCurrentParty(party.id));
                         dispatch(getPartyMembers(party.id))
                         dispatch(getPartyItems(party.id))
@@ -40,7 +40,7 @@ const SideBar = ()=>{
 
     const PartyBackButton = () =>{
         return (
-            <div className="party-block" className="button" onClick={()=>{
+            <div className="party-block" className="delve-button" onClick={()=>{
                 dispatch(deselectParty())
                 dispatch(clearItems())
             }}>Back to Main Menu</div>
@@ -51,7 +51,7 @@ const SideBar = ()=>{
     const LoadMembers = () =>{
             return members.map( member=> {
                 return (
-                    <div key={member.id} className="member-block" onClick={() => {
+                    <div key={member.id} className="member-block" className="delve-button" onClick={() => {
                         dispatch(selectCurrentMember(member.id));
                         dispatch(getMemberItems(member.id))
                     }}>{member.name}</div>
@@ -61,7 +61,7 @@ const SideBar = ()=>{
 
     const MemberBackButton = () =>{
         return (
-            <div className="party-block" className="button" onClick={()=>{
+            <div className="party-block" className="delve-button" onClick={()=>{
                 dispatch(deselectMember())
                 dispatch(getPartyItems(currentParty))
             }}>Back to Party Ledger</div>
