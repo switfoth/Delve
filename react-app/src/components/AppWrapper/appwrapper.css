@@ -15,8 +15,7 @@
     #app-wrapper{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        overflow-y: auto;
+        overflow-y: hidden;
         margin-left: 0px;
         margin-right: 0px;
     }

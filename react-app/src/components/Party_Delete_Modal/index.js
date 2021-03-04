@@ -9,7 +9,7 @@ function PartyDeleteModal() {
 
   return (
     <>
-      <button id="delete-party-button" onClick={() => setShowModal(true)}>Delete Party</button>
+      <button id="delete-party-button" className="button" onClick={() => setShowModal(true)}>Delete Party</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PartyDeleteForm />

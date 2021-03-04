@@ -9,7 +9,7 @@ function MemberDeleteModal() {
 
   return (
     <>
-      <button id="delete-member-button" onClick={() => setShowModal(true)}>Delete Member</button>
+      <button id="delete-member-button" className="button" onClick={() => setShowModal(true)}>Delete Member</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <MemberDeleteForm />

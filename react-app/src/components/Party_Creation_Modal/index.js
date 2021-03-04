@@ -9,7 +9,7 @@ function PartyFormModal() {
 
   return (
     <>
-      <button id="make-party-button" onClick={() => setShowModal(true)}>Create Party</button>
+      <button id="make-party-button" className="button" onClick={() => setShowModal(true)}>Create Party</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PartyForm />

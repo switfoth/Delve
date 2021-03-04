@@ -9,7 +9,7 @@ function PartySubMoneyModal() {
 
     return (
         <>
-            <button id="member-subfund-button" onClick={() => {
+            <button id="member-subfund-button" className="button" onClick={() => {
                     setShowModal(true);
                 }}>WITHDRAW</button>
             {showModal && (

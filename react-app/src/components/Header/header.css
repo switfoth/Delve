@@ -27,5 +27,10 @@
 @media (max-width: 600px) {
     #gem-logo{
         height: 50px;
+        margin-top: 5px;
+    }
+    #delve-text {
+        margin-top: 5px;
+        margin-right: 10px;
     }
 }

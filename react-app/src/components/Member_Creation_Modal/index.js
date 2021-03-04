@@ -9,7 +9,7 @@ function MemberFormModal() {
 
   return (
     <>
-      <button id="make-member-button" onClick={() => setShowModal(true)}>Add Member</button>
+      <button id="make-member-button" className="button" onClick={() => setShowModal(true)}>Add Member</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <MemberForm />
