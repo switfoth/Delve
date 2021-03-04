@@ -128,7 +128,7 @@ function ItemForm() {
               />
             </div>
             <div>
-              <button id="new-item-submit" type="submit">Add Item</button>
+              <button id="new-item-submit" className="delve-button" type="submit">Add Item</button>
             </div>
           </div>
       </form>
