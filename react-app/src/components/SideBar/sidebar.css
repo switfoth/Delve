@@ -1,32 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
 #sidebar {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     margin-left: 0%;
 }
 
-#party-block {
-    border: solid black 1px;
-    text-align: center;
-    font-size: 20pt;
-    font-weight: bolder;
-    height: 50px;
-    padding: 5px;
-    margin: 5px;
-    color: black;
-    background-color: white;
-    font-family: 'IM Fell French Canon SC', serif;
+#sidebar.party-block {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 25%;
 }
 
-#member-block {
-    border: solid black 1px;
-    text-align: center;
-    font-size: 20pt;
-    font-weight: bolder;
-    height: 50px;
-    padding: 5px;
-    margin: 5px;
-    color: black;
-    background-color: white;
-    font-family: 'IM Fell French Canon SC', serif;
+#sidebar.member-block {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 20%;
 }

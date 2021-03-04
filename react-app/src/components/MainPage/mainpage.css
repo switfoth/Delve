@@ -24,6 +24,7 @@
 
 #bookkeeper {
     position:fixed;
+    width: 30%;
     bottom: 0px;
     right: 0px;
     animation: 1s ease slideInFromRight;

@@ -81,9 +81,9 @@ const SideBar = ()=>{
             <>
                 <PartyBackButton/>
                 <LoadMembers/>
-                <MemberFormModal/>
-                <PartyReportModal/>
-                <PartyDeleteModal/>
+                <MemberFormModal id="add-member-sidebar"/>
+                <PartyReportModal id="party-report-sidebar"/>
+                <PartyDeleteModal id="party-delete-sidebar"/>
             </>
         );
     } else if (currentParty !== null && currentMember !== null){
