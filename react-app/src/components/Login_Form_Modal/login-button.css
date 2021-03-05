@@ -1,13 +1,6 @@
 #login-button {
-    background: white;
-    border: 2px solid black;
-    margin-top: 2px;
-    margin-right: 5px;
-    margin-left: auto;
-    color: black;
-    height: 35px;
-    width: 100px;
+    right: 0px;
     float: right;
-    font-weight: bolder;
-    font-family: 'IM Fell French Canon SC', serif;
-  };
+    height: 4vh;
+    width: 10vh;
+};

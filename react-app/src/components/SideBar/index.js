@@ -28,7 +28,7 @@ const SideBar = ()=>{
         return parties.map( party=> {
             return (
                 <>
-                    <div key={party.id} className="party-block" onClick={() => {
+                    <div key={party.id} className="party-block delve-button" onClick={() => {
                         dispatch(selectCurrentParty(party.id));
                         dispatch(getPartyMembers(party.id))
                         dispatch(getPartyItems(party.id))
@@ -40,7 +40,7 @@ const SideBar = ()=>{
 
     const PartyBackButton = () =>{
         return (
-            <div className="party-block" onClick={()=>{
+            <div className="party-block delve-button" onClick={()=>{
                 dispatch(deselectParty())
                 dispatch(clearItems())
             }}>Back to Main Menu</div>
@@ -51,7 +51,7 @@ const SideBar = ()=>{
     const LoadMembers = () =>{
             return members.map( member=> {
                 return (
-                    <div key={member.id} className="member-block" onClick={() => {
+                    <div key={member.id} className="member-block delve-button" onClick={() => {
                         dispatch(selectCurrentMember(member.id));
                         dispatch(getMemberItems(member.id))
                     }}>{member.name}</div>
@@ -61,7 +61,7 @@ const SideBar = ()=>{
 
     const MemberBackButton = () =>{
         return (
-            <div className="party-block" onClick={()=>{
+            <div className="party-block delve-button" onClick={()=>{
                 dispatch(deselectMember())
                 dispatch(getPartyItems(currentParty))
             }}>Back to Party Ledger</div>
@@ -81,9 +81,9 @@ const SideBar = ()=>{
             <>
                 <PartyBackButton/>
                 <LoadMembers/>
-                <MemberFormModal/>
-                <PartyReportModal/>
-                <PartyDeleteModal/>
+                <MemberFormModal id="add-member-sidebar"/>
+                <PartyReportModal id="party-report-sidebar"/>
+                <PartyDeleteModal id="party-delete-sidebar"/>
             </>
         );
     } else if (currentParty !== null && currentMember !== null){

@@ -151,9 +151,9 @@ function ItemDisplay() {
               />
             </div>
             <div>
-              <button id="item-edit-button" type="submit">EDIT ITEM</button>
+              <button id="item-edit-button" className="delve-button" type="submit">EDIT ITEM</button>
             </div>
-            <div id="item-delete-button" onClick={() =>{
+            <div id="item-delete-button" className="delve-button" onClick={() =>{
               dispatch(deleteSingleItem(selectedItem.id, selectedItem.member_id, selectedItem.party_id))
             }}>DELETE ITEM</div>
           </div>

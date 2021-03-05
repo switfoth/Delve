@@ -9,7 +9,7 @@ function MemberAddMoneyModal() {
 
   return (
     <>
-      <button id="member-addfund-button" onClick={() => {
+      <button id="member-addfund-button" className="delve-button" onClick={() => {
         setShowModal(true);
         }}>DEPOSIT</button>
       {showModal && (

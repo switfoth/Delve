@@ -1,11 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
-#body {
+html{
+    height:100%;
+    font-size:14pt;
+}
+
+body {
     padding: 0%;
     height: 100vh;
     margin-top: 0px;
     margin-bottom: 0px;
-    display: flex;
     overflow-y: hidden;
+    background: url('https://i.imgur.com/5vRYH79.png') no-repeat center center;
+    height:100%;
+    padding:0%;
+}
+
+.delve-button {
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border: 2px solid black;
+    margin: 2px 5px;
+    color: black;
+    font-family: 'IM Fell French Canon SC', serif;
+    font-weight: bolder;
+    font-size: 2vmin;
+    padding:.15vw;
+}
+
+.delve-button:hover,
+.delve-button:focus {
+    background-color: black;
+    color: white;
+}
+
+/* Media Queries Below */
+
+@media (max-width: 600px) {
+    html{
+        font-size:8pt;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    body{
+        width: 100%;
+        margin: 0px;
+    }
 }

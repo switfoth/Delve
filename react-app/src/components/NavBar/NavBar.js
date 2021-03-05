@@ -15,7 +15,7 @@ const NavBar = () => {
       <>
         <div id="logged-in-div">
           <ProfileFormModal user={sessionUser}/>
-          <div id="logout-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
+          <div id="logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
         </div>
       </>
     );

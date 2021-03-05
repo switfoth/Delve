@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
 #party-subfund-button {
-    align-items: center;
-    text-align: center;
-    background: white;
-    border: 2px solid black;
-    margin-left: 5px;
-    margin-top: 2px;
-    color: black;
-    height: 35px;
-    width: 100px;
-    font-weight: bolder;
-    font-family: 'IM Fell French Canon SC', serif;
-    };
+    border: solid black 4px;
+};
