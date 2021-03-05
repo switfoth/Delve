@@ -1,3 +1,6 @@
 #login-button {
-
-  };
+    right: 0px;
+    float: right;
+    height: 4vh;
+    width: 10vh;
+};
