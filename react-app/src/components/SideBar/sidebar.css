@@ -7,14 +7,10 @@
     margin-left: 0%;
 }
 
-#sidebar.party-block {
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 25%;
+.party-block {
+    border: solid black 1px
 }
 
-#sidebar.member-block {
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 20%;
+.member-block {
+    border: solid black 1px
 }

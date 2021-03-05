@@ -62,7 +62,7 @@ h1 {
 }
 
 .item-row {
-    padding: 4px;
+    /* padding: 4px; */
     margin-left: 5px;
     box-sizing: border-box;
     border-bottom: black solid 1px;
@@ -70,14 +70,10 @@ h1 {
     font-weight: bold;
     height: 40px;
     display: grid;
-    align-items: center;
     grid-template-columns: 45% 10% 10% 10% 10% 15%;
     font-family: 'Tillana', cursive;;
 }
 
-#row-item-button {
-    padding-bottom: 6px;
-}
 
 #party-loot-liquid-wealth-row {
     padding: 5px;
@@ -85,9 +81,8 @@ h1 {
     box-sizing: border-box;
     border: black solid 3px;
     font-weight: bolder;
-    font-size: 22pt;
+    font-size: 2.5vh;
     font-weight: bold;
-    height: 100px;
     display: flex;
     flex-direction: column;
     font-family: 'Tillana', cursive;;
@@ -100,14 +95,14 @@ h1 {
 }
 
 #member-loot-liquid-wealth-row {
+    flex-basis: 100%;
     padding: 5px;
     margin-left: 0px;
     box-sizing: border-box;
     border: black solid 3px;
     font-weight: bolder;
-    font-size: 22pt;
+    font-size: 2.5vh;
     font-weight: bold;
-    height: 100px;
     display: flex;
     flex-direction: column;
     font-family: 'Tillana', cursive;;
@@ -119,17 +114,14 @@ h1 {
     justify-content: space-between;
 }
 
+.row-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
 .deposit-and-withdraw {
     padding: 5px;
     padding-bottom: 5px;
     display: flex;
     flex-direction: row-reverse;
-}
-
-.deposit-button {
-
-}
-
-.withdraw-button {
-
 }

@@ -1,6 +1,7 @@
 #party-report-button {
-
-    };
+    border-radius: 25%;
+    border: solid black 4px;
+};
 
 #party-report-modal-box {
     overflow-y: scroll;

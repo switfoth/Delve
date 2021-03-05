@@ -55,6 +55,7 @@ const MainPage = ()=>{
           <div id="party-loot-silver">{`Silver: ${partyLoot.silver}`}</div>
           <div id="party-loot-copper">{`Copper: ${partyLoot.copper}`}</div>
         </div>
+        <div className="row-break"></div>
         <div className="deposit-and-withdraw">
           <PartySubMoneyModal/>
           <PartyAddMoneyModal/>
@@ -70,17 +71,18 @@ const MainPage = ()=>{
       return(
         <>
           <div id="member-loot-liquid-wealth-row">
-          <div id="member-loot-numbers">
-            <div id="member-loot-name">Total Liquid Wealth:</div>
-            <div id="member-loot-platinum">{`Platinum: ${memberLoot.platinum}`}</div>
-            <div id="member-loot-gold">{`Gold: ${memberLoot.gold}`}</div>
-            <div id="member-loot-silver">{`Silver: ${memberLoot.silver}`}</div>
-            <div id="member-loot-copper">{`Copper: ${memberLoot.copper}`}</div>
-          </div>
-          <div className="deposit-and-withdraw">
-            <MemberSubMoneyModal/>
-            <MemberAddMoneyModal/>
-          </div>
+            <div id="member-loot-numbers">
+              <div id="member-loot-name">Total Liquid Wealth:</div>
+              <div id="member-loot-platinum">{`Platinum: ${memberLoot.platinum}`}</div>
+              <div id="member-loot-gold">{`Gold: ${memberLoot.gold}`}</div>
+              <div id="member-loot-silver">{`Silver: ${memberLoot.silver}`}</div>
+              <div id="member-loot-copper">{`Copper: ${memberLoot.copper}`}</div>
+            </div>
+            <div className="row-break"></div>
+            <div className="deposit-and-withdraw">
+              <MemberSubMoneyModal/>
+              <MemberAddMoneyModal/>
+            </div>
           </div>
         </>
         )

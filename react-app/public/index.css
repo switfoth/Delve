@@ -22,12 +22,12 @@ body {
     text-align: center;
     background-color: white;
     border: 2px solid black;
-    margin-left: 5px;
-    margin-top: 2px;
+    margin: 2px 5px;
     color: black;
     font-family: 'IM Fell French Canon SC', serif;
     font-weight: bolder;
     font-size: 1.2vw;
+    padding:.15vw;
 }
 
 .delve-button:hover,

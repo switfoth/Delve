@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
 #make-member-button {
-
-  };
+  border-radius: 25%;
+  border: solid black 4px;
+};
