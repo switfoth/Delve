@@ -68,3 +68,9 @@
         flex-direction: column;
     }
 }
+
+@media (orientation: portrait) {
+    #welcome-page{
+        height: 100%;
+    }
+}

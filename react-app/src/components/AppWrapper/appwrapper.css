@@ -20,3 +20,14 @@
         margin-right: 0px;
     }
 }
+
+@media (orientation: portrait) {
+    #app-wrapper{
+        display: flex;
+        flex-direction: column;
+        overflow-y: hidden;
+        margin-left: 0;
+        margin-right: 0;
+        height: 100%;
+    }
+}

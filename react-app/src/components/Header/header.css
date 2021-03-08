@@ -25,11 +25,17 @@
 
 @media (max-width: 600px) {
     #gem-logo{
-        height: 50px;
+        height: 36px;
         margin-top: 5px;
     }
     #delve-text {
-        margin-top: 5px;
+        margin-top: 30px;
         margin-right: 10px;
+    }
+}
+
+@media (orientation: portrait) {
+    #header {
+        height: 10vmin;
     }
 }
