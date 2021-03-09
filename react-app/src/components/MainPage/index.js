@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import "./mainpage.css";
 import SideBar from '../SideBar/index'
+import MobileMenu from '../Mobile_Menu/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
@@ -132,7 +133,8 @@ const MainPage = ()=>{
             <>
               <div id='main-page'>
                 <div id='side-container'>
-                    <SideBar id="main-sidebar"/>
+                    <MobileMenu id="main-mobile-menu"/>
+                    {/* <SideBar id="main-sidebar"/> */}
                 </div>
                 <div id="divider-bar"></div>
                 <div id='main-container'>

@@ -12,10 +12,10 @@ function App() {
     (async() => {
       const user = await dispatch(sessionActions.restoreUser())
       if (!user.errors) {
+        setLoaded(true);
       }
-      setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, setLoaded]);
 
   if (!loaded) {
     return null;
