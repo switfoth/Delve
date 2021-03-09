@@ -1,9 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getUserParties, selectCurrentParty, deselectParty } from '../../store/party';
 import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store/member';
 import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
 import { getItemTypes } from "../../store/itemtype"
+import PartyFormModal from '../Party_Creation_Modal/index';
+import PartyDeleteModal from '../Party_Delete_Modal/index'
+import MemberFormModal from '../Member_Creation_Modal/index';
+import MemberDeleteModal from '../Member_Delete_Modal/index';
+import PartyReportModal from '../Party_Report_Modal/index';
 import './mobile-menu.css'
 
 
@@ -15,6 +20,8 @@ function MobileMenu() {
     const currentMember = useSelector(state => state.member.currentMember)
     const dispatch = useDispatch();
 
+    const [menuPos, setMenuPos] = useState("width: 0px");
+
     useEffect(()=> {
         dispatch(getUserParties(sessionUser.id));
         dispatch(getItemTypes())
@@ -24,7 +31,7 @@ function MobileMenu() {
         return parties.map( party=> {
             return (
                 <>
-                    <div key={party.id} className="party-block delve-button" onClick={() => {
+                    <div key={party.id} className="mobile-party-block mobile-delve-button" onClick={() => {
                         dispatch(selectCurrentParty(party.id));
                         dispatch(getPartyMembers(party.id))
                         dispatch(getPartyItems(party.id))
@@ -36,7 +43,7 @@ function MobileMenu() {
 
     const PartyBackButton = () =>{
         return (
-            <div className="party-block delve-button" onClick={()=>{
+            <div className="mobile-party-block mobile-delve-button" onClick={()=>{
                 dispatch(deselectParty())
                 dispatch(clearItems())
             }}>Back to Main</div>
@@ -47,7 +54,7 @@ function MobileMenu() {
     const LoadMembers = () =>{
             return members.map( member=> {
                 return (
-                    <div key={member.id} className="member-block delve-button" onClick={() => {
+                    <div key={member.id} className="mobile-member-block mobile-delve-button" onClick={() => {
                         dispatch(selectCurrentMember(member.id));
                         dispatch(getMemberItems(member.id))
                     }}>{member.name}</div>
@@ -57,7 +64,7 @@ function MobileMenu() {
 
     const MemberBackButton = () =>{
         return (
-            <div className="party-block delve-button" onClick={()=>{
+            <div className="mobile-party-block mobile-delve-button" onClick={()=>{
                 dispatch(deselectMember())
                 dispatch(getPartyItems(currentParty))
             }}>Back to Party</div>
@@ -92,15 +99,18 @@ function MobileMenu() {
     }
 
     return(
-        <>
-            <div id='mobile-sidebar'>
-                {mobileSidebarContent}
+        <div className="openbtn" onClick={setMenuPos("width: 50%")}>
+            <div className="sidenav" style={menuPos}>
+                <a href="javascript:void(0)" class="closebtn" onClick={setMenuPos("width: 0px")}>X</a>
+                <div id='mobile-sidebar'>
+                    {mobileSidebarContent}
+                </div>
+                <div id='mobile-sidebar-bottom'>
+                    <ProfileFormModal user={sessionUser}/>
+                    <div id="logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
+                </div>
             </div>
-            <div id='mobile-sidebar-bottom'>
-                <ProfileFormModal user={sessionUser}/>
-                <div id="logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
-            </div>
-        </>
+        </div>
 
     );
 }
