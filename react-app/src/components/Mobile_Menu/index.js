@@ -39,7 +39,7 @@ function MobileMenu() {
             <div className="party-block delve-button" onClick={()=>{
                 dispatch(deselectParty())
                 dispatch(clearItems())
-            }}>Back to Main Menu</div>
+            }}>Back to Main</div>
         )
     }
 
@@ -60,13 +60,48 @@ function MobileMenu() {
             <div className="party-block delve-button" onClick={()=>{
                 dispatch(deselectMember())
                 dispatch(getPartyItems(currentParty))
-            }}>Back to Party Ledger</div>
+            }}>Back to Party</div>
+        )
+    }
+
+    let mobileSidebarContent;
+    if (currentParty === null){
+        mobileSidebarContent =(
+            <>
+                <LoadParties/>
+                <PartyFormModal/>
+            </>
+        );
+    } else if (currentParty !== null && currentMember === null){
+        mobileSidebarContent = (
+            <>
+                <PartyBackButton/>
+                <LoadMembers/>
+                <MemberFormModal id="mobile-add-member-sidebar"/>
+                <PartyReportModal id="mobile-party-report-sidebar"/>
+                <PartyDeleteModal id="mobile-party-delete-sidebar"/>
+            </>
+        );
+    } else if (currentParty !== null && currentMember !== null){
+        mobileSidebarContent = (
+            <>
+                <MemberBackButton/>
+                <MemberDeleteModal/>
+            </>
         )
     }
 
     return(
         <>
+            <div id='mobile-sidebar'>
+                {mobileSidebarContent}
+            </div>
+            <div id='mobile-sidebar-bottom'>
+                <ProfileFormModal user={sessionUser}/>
+                <div id="logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
+            </div>
         </>
+
     );
 }
 
