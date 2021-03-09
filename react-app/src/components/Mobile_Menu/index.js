@@ -130,7 +130,7 @@ function MobileMenu() {
             </div>
         </div>
 
-    );
+    )
 }
 
 export default MobileMenu;

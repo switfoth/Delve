@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import "./mainpage.css";
 import SideBar from '../SideBar/index'
-import MobileMenu from '../Mobile_Menu/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
@@ -18,6 +17,10 @@ const MainPage = ()=>{
   const currentMember = useSelector(state => state.member.currentMember)
   const members = useSelector(state => state.member.memberList)
   const items = useSelector(state => state.item.itemList)
+
+  const [leftConWidth, setLeftConWidth] = useState({width: '0'});
+  const [rightConWidth, setRightConWidth] = useState({width: '500'});
+  console.log(leftConWidth, rightConWidth)
 
   // Loads items after parameters (party or member) is set.
   const LoadItems = () =>{
@@ -132,12 +135,14 @@ const MainPage = ()=>{
     return (
             <>
               <div id='main-page'>
-                <div id='side-container'>
-                    <MobileMenu id="main-mobile-menu"/>
-                    {/* <SideBar id="main-sidebar"/> */}
+                <div onClick={()=>{
+
+                }} style={{}}></div>
+                <div id='side-container' style={leftConWidth}>
+                    <SideBar id="main-sidebar"/>
                 </div>
                 <div id="divider-bar"></div>
-                <div id='main-container'>
+                <div id='main-container' style={rightConWidth}>
                   {mainPageContent}
                 </div>
               </div>
