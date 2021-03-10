@@ -143,8 +143,8 @@ const MainPage = ()=>{
                 <div id='main-container' style={rightConWidth}>
                   <div id="mobile-sidebar-button" onClick={()=>{
                     if(leftConWidth.width === '0' ){
-                      setLeftConWidth({width: '100%'})
-                      setRightConWidth({width: '0%'})
+                      setLeftConWidth({width: '60%'})
+                      setRightConWidth({width: '40%'})
                     } else {
                       setLeftConWidth({width: '0'})
                       setRightConWidth({width: '100%'})

@@ -72,25 +72,25 @@ const SideBar = ()=>{
     if (currentParty === null){
         sideBarContent =(
             <>
-                <LoadParties/>
-                <PartyFormModal/>
+                <LoadParties className="sidebar-delve-button"/>
+                <PartyFormModal className="sidebar-delve-button"/>
             </>
         );
     } else if (currentParty !== null && currentMember === null){
         sideBarContent = (
             <>
-                <PartyBackButton/>
-                <LoadMembers/>
-                <MemberFormModal id="add-member-sidebar"/>
-                <PartyReportModal id="party-report-sidebar"/>
-                <PartyDeleteModal id="party-delete-sidebar"/>
+                <PartyBackButton className="sidebar-delve-button"/>
+                <LoadMembers className="sidebar-delve-button"/>
+                <MemberFormModal className="sidebar-delve-button" id="add-member-sidebar"/>
+                <PartyReportModal className="sidebar-delve-button" id="party-report-sidebar"/>
+                <PartyDeleteModal className="sidebar-delve-button" id="party-delete-sidebar"/>
             </>
         );
     } else if (currentParty !== null && currentMember !== null){
         sideBarContent = (
             <>
-                <MemberBackButton/>
-                <MemberDeleteModal/>
+                <MemberBackButton className="sidebar-delve-button"/>
+                <MemberDeleteModal className="sidebar-delve-button"/>
             </>
         )
     }
