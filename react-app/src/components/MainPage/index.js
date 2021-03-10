@@ -19,10 +19,6 @@ const MainPage = ()=>{
   const members = useSelector(state => state.member.memberList)
   const items = useSelector(state => state.item.itemList)
 
-  const [leftConWidth, setLeftConWidth] = useState({width: '0'});
-  const [rightConWidth, setRightConWidth] = useState({width: '500'});
-  console.log(leftConWidth, rightConWidth)
-
   // Loads items after parameters (party or member) is set.
   const LoadItems = () =>{
     return items.map( item=>{
@@ -136,20 +132,12 @@ const MainPage = ()=>{
     return (
             <>
               <div id='main-page'>
-                <div id='side-container' style={leftConWidth}>
+                <div id='side-container'>
                     <SideBar id="main-sidebar"/>
                 </div>
+                <div id="mobile-sidebar-button">&#9776;</div>
                 <div id="divider-bar"></div>
-                <div id='main-container' style={rightConWidth}>
-                  <div id="mobile-sidebar-button" onClick={()=>{
-                    if(leftConWidth.width === '0' ){
-                      setLeftConWidth({width: '60%'})
-                      setRightConWidth({width: '40%'})
-                    } else {
-                      setLeftConWidth({width: '0'})
-                      setRightConWidth({width: '100%'})
-                    }
-                  }} style={{backgroundColor: 'red', width: '100px', height: '100px'}}></div>
+                <div id='main-container'>
                   {mainPageContent}
                 </div>
               </div>
