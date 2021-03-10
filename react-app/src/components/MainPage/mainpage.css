@@ -30,6 +30,12 @@
     animation: 1s ease slideInFromRight;
 }
 
+#mobile-sidebar-button {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
 @keyframes slideInFromRight {
     0%{
         transform: translateX(800px);

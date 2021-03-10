@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import "./mainpage.css";
 import SideBar from '../SideBar/index'
+import MobileMenu from '../Mobile_Menu/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
@@ -135,14 +136,20 @@ const MainPage = ()=>{
     return (
             <>
               <div id='main-page'>
-                <div onClick={()=>{
-
-                }} style={{}}></div>
                 <div id='side-container' style={leftConWidth}>
                     <SideBar id="main-sidebar"/>
                 </div>
                 <div id="divider-bar"></div>
                 <div id='main-container' style={rightConWidth}>
+                  <div id="mobile-sidebar-button" onClick={()=>{
+                    if(leftConWidth.width === '0' ){
+                      setLeftConWidth({width: '100%'})
+                      setRightConWidth({width: '0%'})
+                    } else {
+                      setLeftConWidth({width: '0'})
+                      setRightConWidth({width: '100%'})
+                    }
+                  }} style={{backgroundColor: 'red', width: '100px', height: '100px'}}></div>
                   {mainPageContent}
                 </div>
               </div>
