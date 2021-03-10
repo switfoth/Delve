@@ -23,8 +23,8 @@
 
 @media (orientation: portrait) {
     #app-wrapper{
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-rows: 0px 0px 90vh 10vh;
         overflow-y: hidden;
         margin-left: 0;
         margin-right: 0;

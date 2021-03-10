@@ -12,6 +12,10 @@
     justify-self: center;
 }
 
+#welcome-screen-mobile-login{
+    visibility: hidden;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
 
 #welcome-message{
@@ -72,5 +76,9 @@
 @media (orientation: portrait) {
     #welcome-page{
         height: 100%;
+    }
+
+    #welcome-screen-mobile-login{
+        visibility: visible;
     }
 }

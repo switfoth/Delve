@@ -1,6 +1,7 @@
 import React from "react";
 import "./welcome.css";
 import SignupFormModal from '../Signup_Form_Modal/index.js';
+import LoginFormModal from '../Login_Form_Modal/index.js';
 
 const Welcome = ()=>{
 
@@ -27,6 +28,10 @@ const Welcome = ()=>{
                     <br></br>
                     <div id="temp-form">
                         <SignupFormModal/>
+                    </div>
+                    <br></br>
+                    <div id="welcome-screen-mobile-login">
+                        <LoginFormModal/>
                     </div>
                 </div>
             </div>

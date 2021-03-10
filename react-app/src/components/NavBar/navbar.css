@@ -9,3 +9,11 @@
 #logged-in-div {
     display: flex;
 }
+
+@media (orientation: portrait){
+    #navbar {
+        visibility: hidden;
+        height: 0px;
+        width: 0px;
+    }
+}

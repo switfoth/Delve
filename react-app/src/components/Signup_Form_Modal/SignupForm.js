@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import LoginFormModal from "../Login_Form_Modal";
 import "./SignupForm.css";
 
 const SignupForm = () => {
@@ -56,6 +57,8 @@ const SignupForm = () => {
           />
         <button type="submit">Sign Up</button>
       </form>
+      <div>Already a member?</div>
+      <LoginFormModal/>
     </div>
   );
 };
