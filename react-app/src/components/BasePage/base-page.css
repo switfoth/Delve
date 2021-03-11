@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&display=swap');
 
 html{
@@ -34,11 +34,11 @@ body {
 .delve-button:focus {
     background-color: black;
     color: white;
-} */
+}
 
 /* Media Queries Below */
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
     html{
         font-size:8pt;
         width: 100%;
@@ -49,4 +49,4 @@ body {
         width: 100%;
         margin: 0px;
     }
-} */
+}

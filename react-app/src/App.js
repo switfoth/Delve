@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./components/NavBar/NavBar.js";
-import AppWrapper from "./components/AppWrapper/index.js"
 import { useDispatch } from "react-redux";
 import * as sessionActions from './store/session'
+import BasePage from "./components/BasePage/index.js";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -22,9 +21,7 @@ function App() {
   }
 
   return (
-      <AppWrapper>
-        <NavBar/>
-      </AppWrapper>
+    <BasePage/>
   );
 }
 

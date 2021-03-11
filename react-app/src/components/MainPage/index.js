@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import "./mainpage.css";
 import SideBar from '../SideBar/index'
-import MobileMenu from '../Mobile_Menu/index'
 import ItemFormModal from "../Item_Modal";
 import ItemDisplayModal from "../Item_Display_Modal/";
 import MemberAddMoneyModal from "../Add_Member_Funds_Modal";
