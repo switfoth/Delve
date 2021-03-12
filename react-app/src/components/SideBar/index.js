@@ -20,13 +20,19 @@ const SideBar = ()=>{
     const dispatch = useDispatch();
 
     const [mobileSidebarWidth, setMobileSidebarWidth] = useState({width: null})
-    const [sideNav, setSideNav] = useState(false)
 
     useEffect(()=> {
         dispatch(getUserParties(sessionUser.id));
         dispatch(getItemTypes())
     }, [dispatch, sessionUser.id])
 
+    let handleSideBar = ()=>{
+        if (mobileSidebarWidth.width === null){
+            return setMobileSidebarWidth({width: '60vw'})
+        } else {
+            return setMobileSidebarWidth({width: null})
+        }
+    }
 
     const LoadParties = () =>{
         return parties.map( party=> {
@@ -101,7 +107,8 @@ const SideBar = ()=>{
 
     return (
         <>
-            <div id="mobile-sidebar-button" onClick={setSideNav(!sideNav)}>&#9776;</div>
+            <div id="mobile-sidebar-button" onClick={
+                ()=>{handleSideBar(); console.log(mobileSidebarWidth)}}>&#9776;</div>
             <div id='sidebar' style={mobileSidebarWidth}>
                 {sideBarContent}
             </div>
