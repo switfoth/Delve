@@ -1,11 +1,21 @@
 .sub-member-fund-display {
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 20px;
     margin-left: 100px;
     margin-right: 100px;
     font-family: 'IM Fell French Canon SC', serif;
+}
+
+.sub-member-fund-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-member-fund-form > * {
+    margin: 10px;
 }
 
 #sub-member-fund-confirm {
