@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getUserParties, selectCurrentParty, deselectParty } from '../../store/party';
 import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store/member';
@@ -19,10 +19,22 @@ const SideBar = ()=>{
     const currentMember = useSelector(state => state.member.currentMember)
     const dispatch = useDispatch();
 
+    const [sideNav, setSideNav] = useState('closed')
+
     useEffect(()=> {
         dispatch(getUserParties(sessionUser.id));
         dispatch(getItemTypes())
     }, [dispatch, sessionUser.id])
+
+    function handleSideNav(){
+        if(sideNav === 'closed'){
+          sidebar.style.width = "60vh"
+          setSideNav('open')
+        } else {
+          sidebar.style.width = "0vh"
+          setSideNav('closed')
+        }
+      }
 
     const LoadParties = () =>{
         return parties.map( party=> {
@@ -96,9 +108,12 @@ const SideBar = ()=>{
     }
 
     return (
+        <>
+            <div id="mobile-sidebar-button" onClick={handleSideNav()}>&#9776;</div>
             <div id='sidebar'>
                 {sideBarContent}
             </div>
+        </>
     )
 }
 

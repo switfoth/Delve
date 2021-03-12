@@ -127,6 +127,8 @@ const MainPage = ()=>{
     )
   }
 
+
+
   // The sidebar here is used to navigate between members and parties.
     return (
             <>
@@ -134,7 +136,6 @@ const MainPage = ()=>{
                 <div id='side-container'>
                     <SideBar id="main-sidebar"/>
                 </div>
-                <div id="mobile-sidebar-button">&#9776;</div>
                 <div id="divider-bar"></div>
                 <div id='main-container'>
                   {mainPageContent}
