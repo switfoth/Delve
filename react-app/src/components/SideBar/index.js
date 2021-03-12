@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getUserParties, selectCurrentParty, deselectParty } from '../../store/party';
 import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store/member';
 import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
-import { getItemTypes } from "../../store/itemtype"
+import { getItemTypes } from "../../store/itemtype";
+import { logout } from "../../store/session";
 import PartyFormModal from '../Party_Creation_Modal/index';
 import PartyDeleteModal from '../Party_Delete_Modal/index'
 import MemberFormModal from '../Member_Creation_Modal/index';
@@ -113,6 +114,7 @@ const SideBar = ()=>{
             <div id='sidebar' style={mobileSidebarWidth}>
                 {sideBarContent}
                 <ProfileFormModal id="mobile-sidebar-profile-button"/>
+                <div id="mobile-logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
             </div>
         </>
     )

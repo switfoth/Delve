@@ -30,6 +30,10 @@
     visibility: hidden;
 }
 
+#mobile-logout-button{
+    visibility: hidden;
+}
+
 .party-block {
     border: solid black 1px;
     text-align: center;
@@ -68,6 +72,10 @@
     }
 
     #mobile-sidebar-profile-button{
+        visibility: visible;
+    }
+
+    #mobile-logout-button{
         visibility: visible;
     }
 }
