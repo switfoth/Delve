@@ -42,4 +42,7 @@
         width: 0vw;
         overflow-x: hidden;
     }
+    #mobile-sidebar-button {
+        visibility: visible;
+    }
 }
