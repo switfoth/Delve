@@ -26,12 +26,20 @@
     z-index: +1;
 }
 
+#mobile-sidebar-profile-button{
+    visibility: hidden;
+}
+
 .party-block {
-    border: solid black 1px
+    border: solid black 1px;
+    text-align: center;
+    justify-content: center;
 }
 
 .member-block {
-    border: solid black 1px
+    border: solid black 1px;
+    text-align: center;
+    justify-content: center;
 }
 
 @media (orientation: portrait){
@@ -49,7 +57,17 @@
         padding-top: 10vh ;
     }
 
-    .sidebar-delve-button{
-        width: 500px;
+    .party-block {
+        height: 5vh;
+        width: 40vh;
+    }
+
+    .member-block {
+        height: 5vh;
+        width: 40vh;
+    }
+
+    #mobile-sidebar-profile-button{
+        visibility: visible;
     }
 }
