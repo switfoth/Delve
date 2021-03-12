@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getUserParties, selectCurrentParty, deselectParty } from '../../store/party';
 import { getPartyMembers, selectCurrentMember, deselectMember} from '../../store/member';
 import { getPartyItems, getMemberItems, clearItems } from "../../store/item";
-import { getItemTypes } from "../../store/itemtype"
+import { getItemTypes } from "../../store/itemtype";
+import { logout } from "../../store/session";
 import PartyFormModal from '../Party_Creation_Modal/index';
 import PartyDeleteModal from '../Party_Delete_Modal/index'
 import MemberFormModal from '../Member_Creation_Modal/index';
 import MemberDeleteModal from '../Member_Delete_Modal/index';
 import PartyReportModal from '../Party_Report_Modal/index';
+import ProfileFormModal from '../Profile_Modal/index';
 import "./sidebar.css";
 
 const SideBar = ()=>{
@@ -19,10 +21,20 @@ const SideBar = ()=>{
     const currentMember = useSelector(state => state.member.currentMember)
     const dispatch = useDispatch();
 
+    const [mobileSidebarWidth, setMobileSidebarWidth] = useState({width: null})
+
     useEffect(()=> {
         dispatch(getUserParties(sessionUser.id));
         dispatch(getItemTypes())
     }, [dispatch, sessionUser.id])
+
+    let handleSideBar = ()=>{
+        if (mobileSidebarWidth.width === null){
+            return setMobileSidebarWidth({width: '60vw'})
+        } else {
+            return setMobileSidebarWidth({width: null})
+        }
+    }
 
     const LoadParties = () =>{
         return parties.map( party=> {
@@ -96,9 +108,15 @@ const SideBar = ()=>{
     }
 
     return (
-            <div id='sidebar'>
+        <>
+            <div id="mobile-sidebar-button" onClick={
+                ()=>{handleSideBar(); console.log(mobileSidebarWidth)}}>&#9776;</div>
+            <div id='sidebar' style={mobileSidebarWidth}>
                 {sideBarContent}
+                <ProfileFormModal id="mobile-sidebar-profile-button"/>
+                <div id="mobile-logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
             </div>
+        </>
     )
 }
 
