@@ -50,27 +50,27 @@
 
 Delve is fairly simple in its operation by design. When at the welcome screen you will be greeted with a familiar sight of a **Log In** prompt as well as a **Sign Up** prompt - if you do not have an account in the databse you will need to do the latter.
 
-*Image Placeholder*
+![Sign Up Demonstration](https://i.imgur.com/UPA2qRS.gif)
 
 Once you have logged in you will be taken to the main menu - on the left side you will see a sidebar if you're running the app on a computer, otherwise you will see a hamburger menu in the top left on mobile. This side menu contains all of the parties you have created using Delve - if you have none, all you will see is the option to create one.
 
-*Image Placeholder*
+![Main Menu example](https://i.imgur.com/mvdWbyF.gif)
 
 After creating, then selecting a party, you will be at the main menu for the party. On the side menu now you will have several options - the option to add party members, the option to select already added party members, the ability to delete the party, as well as the party report.
 
-*Image Placeholder*
+![Party Screen](https://i.imgur.com/5IAXpdt.png)
 
 Before I get into the report, you'll see on the right is a list of all items you have added. Adding an item is simple - you just need to choose "**Add Item**", put in a name, a description, choose a category, then fill in how much the item is worth. When you click "Add" on the item screen it will then add it to the inventory! This will automatically add it to the inventory of a party member if you have one selected, otherwise it will go to the party loot.
 
-*Image Placeholder*
+![Add Item Example](https://i.imgur.com/c5QZCl7.gif)
 
 You will also see under the items on the party and/or member pages that there is a listing for the liquid wealth, as well. Delve keeps track of this, along with the value of each item you store. By hitting "**Desposit**" or "**Withdraw**" you will be able to add or subtract the different Platinum, Gold, Silver and Copper values from your party or party members. Yes, you can go negative. I won't try to tell you how to run your games!
 
-*Image Placeholder*
+![Add and withdraw funds](https://i.imgur.com/dd4KKu5.gif)
 
 If you want to change who owns a piece of loot, edit the values, name, or description of a piece of loot, or delete it, you simply click on the "**Details**" button to the right of an item and you will find you can edit all of these values.
 
-*Image Placeholder*
+![Editing item](https://i.imgur.com/p4E3SvJ.gif)
 
 Now that I've covered the basics of Delve's operation, the Party Report will make a little more sense. The party report is a screen that collects and displays the following data:
 
@@ -81,7 +81,7 @@ Now that I've covered the basics of Delve's operation, the Party Report will mak
 
 I calculated the average by taking the total wealth and dividing it by the number of party members + 1, because I find it's best practice to leave party funds open for expenses that benefit all, but that's just how I've done things in the past.
 
-*Image Placeholder*
+![Party report screen](https://i.imgur.com/uSsvhcN.gif)
 
 And that's it, really! You now know all there is to Delve in its current iteration. I plan on updating this ReadMe as new features are added in the future.
 
