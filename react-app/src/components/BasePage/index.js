@@ -1,22 +1,23 @@
 import React from "react";
 import AppWrapper from '../AppWrapper/index';
+import { Helmet } from 'react-helmet';
 import './base-page.css';
 
 const BasePage = ()=>{
 
-return (
-    <>
-        <head>
-            <meta charset="utf-8" />
-            <title>Delve</title>
-            <meta property="og:image" content="https://i.imgur.com/SfMlija.png" />
-            <meta property="og:description" content="Delve is a loot tracker for Dungeons and Dragons and other D20 based systems that lets you keep track of parties, party members, and the loot associated with them!" />
-            <meta property="og:url"content="http://delve-tracker.herokuapp.com" />
-            <meta property="og:title" content="Delve - Dungeons and Dragons Loot Tracker" />
-        </head>
-            <AppWrapper id="root" style={{height: '100%'}}/>
-    </>
-)
+    return (
+        <html lang="en" prefix="og: http://ogp.me/ns#">
+            <Helmet>
+                <meta charset="utf-8" />
+                <meta property="og:title" content="Delve App" />
+                <meta name="image" property="og:image" content="https://i.imgur.com/SfMlija.png" />
+                <meta name="author" content="Seth Witfoth" />
+                <meta property="og:description" content="Delve: Loot Tracking for Dungeons and Dragons"/>
+                <meta property="og:url" content="https://delve-tracker.herokuapp.com/" />
+            </Helmet>
+                <AppWrapper id="root" style={{height: '100%'}}/>
+        </html>
+    )
 }
 
 export default BasePage
