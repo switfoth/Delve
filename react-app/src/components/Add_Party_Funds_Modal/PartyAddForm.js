@@ -73,7 +73,7 @@ function AddPartyMoney() {
                     />
                 </div>
                 <div>
-                    <button id="add-party-fun-confirm" type="submit">CONFIRM</button>
+                    <button className="delve-button" id="add-party-fun-confirm" type="submit">CONFIRM</button>
                 </div>
             </form>
         </div>

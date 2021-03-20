@@ -73,7 +73,7 @@ function SubPartyMoney() {
                     />
                 </div>
                 <div>
-                    <button id="sub-party-fund-confirm" type="submit">CONFIRM</button>
+                    <button className="delve-button" id="sub-party-fund-confirm" type="submit">CONFIRM</button>
                 </div>
             </form>
         </div>

@@ -71,7 +71,7 @@ function SubMemberMoney() {
                     />
                 </div>
                 <div>
-                    <button id="sub-member-fund-confirm" type="submit">CONFIRM</button>
+                    <button className="delve-button" id="sub-member-fund-confirm" type="submit">CONFIRM</button>
                 </div>
             </form>
         </div>
