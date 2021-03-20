@@ -113,7 +113,9 @@ const SideBar = ()=>{
                 ()=>{handleSideBar(); console.log(mobileSidebarWidth)}}>&#9776;</div>
             <div id='sidebar' style={mobileSidebarWidth}>
                 {sideBarContent}
-                <ProfileFormModal id="mobile-sidebar-profile-button"/>
+                <div id="mobile-profile-button">
+                <ProfileFormModal/>
+                </div>
                 <div id="mobile-logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
             </div>
         </>
