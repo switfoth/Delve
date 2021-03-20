@@ -29,7 +29,7 @@ function AddPartyMoney() {
     }
 
     return (
-        <div className="add-party-fund-display">
+        <div className="item-display">
             <h1> Add Funds </h1>
             <form className="add-party-fund-form" onSubmit={handleSubmit}>
                 <div id="party-add-plat-row">

@@ -27,7 +27,7 @@ function AddMemberMoney() {
     }
 
     return (
-        <div className="add-member-fund-display">
+        <div className="item-display">
             <h1> Add Funds </h1>
             <form className="add-member-fund-form" onSubmit={handleSubmit}>
                 <div id="member-add-plat-row">

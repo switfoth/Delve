@@ -29,7 +29,7 @@ function SubPartyMoney() {
     }
 
     return (
-        <div className="sub-party-fund-display">
+        <div className="item-display">
             <h1> Withdraw Funds </h1>
             <form className="sub-party-fund-form" onSubmit={handleSubmit}>
                 <div id="party-sub-plat-row">

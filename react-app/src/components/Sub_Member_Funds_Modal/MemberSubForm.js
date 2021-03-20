@@ -27,7 +27,7 @@ function SubMemberMoney() {
     }
 
     return (
-        <div className="sub-member-fund-display">
+        <div className="item-display">
             <h1> Withdraw Funds </h1>
             <form className="sub-member-fund-form" onSubmit={handleSubmit}>
                 <div id="member-sub-plat-row">
