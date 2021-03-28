@@ -30,9 +30,9 @@ const SideBar = ()=>{
 
     let handleSideBar = ()=>{
         if (mobileSidebarWidth.width === null){
-            return setMobileSidebarWidth({width: '60vw'})
+            return setMobileSidebarWidth({width: '60vw', transition: '0.5s'})
         } else {
-            return setMobileSidebarWidth({width: null})
+            return setMobileSidebarWidth({width: null, transition: '0.5s'})
         }
     }
 
@@ -110,11 +110,11 @@ const SideBar = ()=>{
     return (
         <>
             <div id="mobile-sidebar-button" onClick={
-                ()=>{handleSideBar(); console.log(mobileSidebarWidth)}}>&#9776;</div>
+                ()=>{handleSideBar();}}>&#9776;</div>
             <div id='sidebar' style={mobileSidebarWidth}>
                 {sideBarContent}
-                <div id="mobile-profile-button">
-                <ProfileFormModal/>
+                <div>
+                <ProfileFormModal id="mobile-profile-button"/>
                 </div>
                 <div id="mobile-logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
             </div>

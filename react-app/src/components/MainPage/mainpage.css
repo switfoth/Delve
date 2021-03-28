@@ -143,6 +143,12 @@ h1 {
         height: 80vh;
         border: hidden;
     }
+    #choose-party{
+        visibility: hidden;
+    }
+    #bookkeeper{
+        visibility: hidden;
+    }
     #side-container {
         width: 0px;
     }

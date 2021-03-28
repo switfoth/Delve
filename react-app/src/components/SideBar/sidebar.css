@@ -61,6 +61,11 @@
         padding-top: 10vh ;
     }
 
+    .delve-button{
+        width: 40vmax;
+        height: 8vmax;
+    }
+
     .party-block {
         height: 5vh;
         width: 40vh;
@@ -73,9 +78,11 @@
 
     #mobile-profile-button{
         visibility: visible;
+        width: 30vmax;
     }
 
     #mobile-logout-button{
         visibility: visible;
+        width: 30vmax;
     }
 }
