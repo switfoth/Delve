@@ -24,7 +24,7 @@
 @media (orientation: portrait) {
     #app-wrapper{
         display: grid;
-        grid-template-rows: 10vh 0vh 80vh 10vh;
+        grid-template-rows: 10vh 0px 80vh 10vh;
         overflow-y: hidden;
         margin-left: 0;
         margin-right: 0;

@@ -58,17 +58,18 @@
         width: 0vw;
         border-right: solid black 3px;
         overflow-x: hidden;
-        padding-top: 10vh ;
+        padding-top: 13vh ;
     }
 
     .delve-button{
-        width: 40vmax;
+        width:max-content;
+        word-wrap: normal;
         height: 8vmax;
     }
 
     .party-block {
         height: 5vh;
-        width: 40vh;
+        width: max-content;
     }
 
     .member-block {
@@ -84,5 +85,8 @@
     #mobile-logout-button{
         visibility: visible;
         width: 30vmax;
+        font-size: 30pt;
+        text-align: center;
+        align-content: center;
     }
 }
