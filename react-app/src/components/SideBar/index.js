@@ -114,7 +114,7 @@ const SideBar = ()=>{
             <div id='sidebar' style={mobileSidebarWidth}>
                 {sideBarContent}
                 <div>
-                <ProfileFormModal id="mobile-profile-button"/>
+                <ProfileFormModal/>
                 </div>
                 <div id="mobile-logout-button" className="delve-button" onClick={()=>{dispatch(logout())}}>LOG OUT</div>
             </div>

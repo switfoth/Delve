@@ -137,7 +137,7 @@ h1 {
 
 @media (orientation: portrait) {
     #main-page{
-        padding-top: 9.5vh;
+
         display: flex;
         flex-direction: row;
         height: 80vh;

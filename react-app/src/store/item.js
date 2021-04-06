@@ -98,8 +98,8 @@ export const deleteSingleItem = (itemToDelete, member_id, party_id) => async (di
         }
     })
     dispatch(deleteItem(itemToDelete))
-    if (itemToDelete.member_id !== null || itemToDelete.member_id !== undefined) dispatch(getMemberItems(member_id), getPartyMembers(member_id))
     dispatch(getPartyItems(party_id), getUserParties(party_id))
+    if (itemToDelete.member_id !== null || itemToDelete.member_id !== undefined) dispatch(getMemberItems(member_id), getPartyMembers(member_id))
 }
 
 export const selectCurrentItem = (id) => async (dispatch) => {
