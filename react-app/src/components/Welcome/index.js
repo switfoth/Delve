@@ -2,8 +2,18 @@ import React from "react";
 import "./welcome.css";
 import SignupFormModal from '../Signup_Form_Modal/index.js';
 import LoginFormModal from '../Login_Form_Modal/index.js';
+import * as sessionActions from "../../store/session";
+import { useDispatch } from "react-redux";
 
 const Welcome = ()=>{
+    const dispatch = useDispatch();
+    let username = "Demo";
+    let password = "password";
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.login({ username, password }))
+      };
 
     return (
         <>
@@ -32,6 +42,10 @@ const Welcome = ()=>{
                     <br></br>
                     <div id="welcome-screen-mobile-login">
                         <LoginFormModal/>
+                    </div>
+                    <br></br>
+                    <div id="demo-button">
+                        <button className="delve-button" onClick={handleSubmit}>Demo Login</button>
                     </div>
                 </div>
             </div>
