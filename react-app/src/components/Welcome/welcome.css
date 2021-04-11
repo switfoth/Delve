@@ -43,6 +43,10 @@
     width: 68%;
 }
 
+#mobile-break{
+    visibility: hidden;
+}
+
 @keyframes slideInFromBottom{
     0%{
         transform: translateY(1000px);
@@ -71,6 +75,9 @@
     #welcome-page{
         flex-direction: column;
     }
+    #mobile-break{
+        visibility: visible;
+    }
 }
 
 @media (orientation: portrait) {
@@ -93,6 +100,9 @@
     }
 
     #welcome-screen-mobile-login{
+        visibility: visible;
+    }
+    #mobile-break{
         visibility: visible;
     }
 }

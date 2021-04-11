@@ -39,7 +39,7 @@ const Welcome = ()=>{
                     <div id="temp-form">
                         <SignupFormModal/>
                     </div>
-                    <br></br>
+                    <br id="mobile-break"></br>
                     <div id="welcome-screen-mobile-login">
                         <LoginFormModal/>
                     </div>
