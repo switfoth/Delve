@@ -85,6 +85,8 @@ I calculated the average by taking the total wealth and dividing it by the numbe
 
 And that's it, really! You now know all there is to Delve in its current iteration. I plan on updating this ReadMe as new features are added in the future.
 
+Current features on the horizon: Password reset/recovery, item selling, UI touchups.
+
 Happy Delving!
 
 -----------------------
